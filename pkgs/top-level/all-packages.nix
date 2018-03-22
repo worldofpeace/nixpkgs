@@ -16912,6 +16912,10 @@ with pkgs;
 
   gnome-mpv = callPackage ../applications/video/gnome-mpv { };
 
+  gnome-recipes = callPackage ../applications/misc/gnome-recipes {
+    inherit (gnome3) gnome-online-accounts rest gnome-autoar gspell;
+  };
+
   gollum = callPackage ../applications/misc/gollum { };
 
   googleearth = callPackage ../applications/misc/googleearth { };
