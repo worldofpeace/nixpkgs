@@ -1,0 +1,22 @@
+diff --git a/plugins/outline/C/CtagsSymbolOutline.vala b/plugins/outline/C/CtagsSymbolOutline.vala
+index acfb59d1..001fe7fd 100644
+--- a/plugins/outline/C/CtagsSymbolOutline.vala
++++ b/plugins/outline/C/CtagsSymbolOutline.vala
+@@ -52,7 +52,7 @@ public class Code.Plugins.CtagsSymbolOutline : Object, Code.Plugins.SymbolOutlin
+             cancellable.cancel ();
+         cancellable = new GLib.Cancellable ();
+         var command = new Granite.Services.SimpleCommand (Environment.get_home_dir (),
+-            "/usr/bin/ctags -f - --format=2 --excmd=n --fields=nsK --extra= "+
++            "@ctags@ -f - --format=2 --excmd=n --fields=nsK --extra= "+
+             "--sort=no " + doc.file.get_path ());
+         command.done.connect ((command, status) => {parse_output (command, status, cancellable);});
+         command.run ();
+@@ -235,7 +235,7 @@ public class Code.Plugins.CtagsSymbolOutline : Object, Code.Plugins.SymbolOutlin
+     public static string[] get_supported_types () {
+         string stdout;
+         try {
+-            Process.spawn_sync (null, {"/usr/bin/ctags", "--list-languages"}, null, 0, null, out stdout);
++            Process.spawn_sync (null, {"@ctags@", "--list-languages"}, null, 0, null, out stdout);
+         } catch (Error e) {
+             error (e.message);
+         }

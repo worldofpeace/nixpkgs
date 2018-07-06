@@ -6,6 +6,7 @@ lib.makeScope pkgs.newScope (self: with self; {
   libgee = pkgs.gnome3.libgee;
   libgda = pkgs.gnome3.libgda;
   libpeas = pkgs.gnome3.libpeas;
+  vte = pkgs.gnome3.vte;
 
   defaultIconTheme = elementary-icon-theme;
 
@@ -14,6 +15,10 @@ lib.makeScope pkgs.newScope (self: with self; {
   elementary-calculator = callPackage ./apps/elementary-calculator { };
 
   elementary-camera = callPackage ./apps/elementary-camera { };
+
+  elementary-code = callPackage ./apps/elementary-code {
+    inherit (gnome3) libgit2-glib;
+  };
 
   elementary-gtk-theme = callPackage ./elementary-gtk-theme { };
 
