@@ -41,4 +41,8 @@ lib.makeScope pkgs.newScope (self: with self; {
   elementary-icon-theme = callPackage ./elementary-icon-theme { };
 
   elementary-shortcut-overlay = callPackage ./desktop/elementary-shortcut-overlay { };
+
+  gala = callPackage ./desktop/gala {
+    inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
+   };
 })
