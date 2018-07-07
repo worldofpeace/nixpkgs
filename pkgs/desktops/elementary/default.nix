@@ -28,6 +28,10 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   elementary-music = callPackage ./apps/elementary-music { };
 
+  elementary-photos = callPackage ./apps/elementary-photos {
+    inherit (gnome3) geocode-glib gexiv2 rest;
+   };
+
   elementary-screenshot-tool = callPackage ./apps/elementary-screenshot-tool { };
 
   elementary-terminal = callPackage ./apps/elementary-terminal { };
