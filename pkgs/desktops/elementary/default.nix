@@ -40,6 +40,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   ### Desktop Components
 
+  cerbere = callPackage ./desktop/cerbere { };
+
   elementary-gtk-theme = callPackage ./elementary-gtk-theme { };
 
   elementary-icon-theme = callPackage ./elementary-icon-theme { };
