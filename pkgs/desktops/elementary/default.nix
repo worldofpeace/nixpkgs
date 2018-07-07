@@ -42,9 +42,9 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   cerbere = callPackage ./desktop/cerbere { };
 
-  elementary-gtk-theme = callPackage ./elementary-gtk-theme { };
+  elementary-gtk-theme = callPackage ./desktop/elementary-gtk-theme { };
 
-  elementary-icon-theme = callPackage ./elementary-icon-theme { };
+  elementary-icon-theme = callPackage ./desktop/elementary-icon-theme { };
 
   elementary-shortcut-overlay = callPackage ./desktop/elementary-shortcut-overlay { };
 
