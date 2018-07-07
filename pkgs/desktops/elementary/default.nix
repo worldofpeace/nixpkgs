@@ -26,6 +26,8 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) libgit2-glib;
   };
 
+  elementary-files = callPackage ./apps/elementary-files { };
+
   elementary-music = callPackage ./apps/elementary-music { };
 
   elementary-photos = callPackage ./apps/elementary-photos {
