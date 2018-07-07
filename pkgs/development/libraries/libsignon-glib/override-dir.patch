@@ -1,0 +1,28 @@
+diff --git a/meson_options.txt b/meson_options.txt
+index eb48f98..19103cf 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,5 +1,6 @@
+ option('tests', type : 'boolean', description : 'Build with test support')
+ option('debug', type : 'boolean', value: false, description : 'Printing of debug messages')
+ option('python', type : 'boolean', description : 'Build with python support')
++option('pygi-overrides-dir', type : 'string', value : '', description: 'Path to pygobject overrides directory')
+ option('documentation', type : 'boolean', description : 'Generate the documentation of the library')
+ option('introspection', type : 'boolean', description : 'Build with the GObject introspection support')
+diff --git a/pygobject/meson.build b/pygobject/meson.build
+index 7a07e39..a6b8c11 100644
+--- a/pygobject/meson.build
++++ b/pygobject/meson.build
+@@ -10,7 +10,11 @@ if py_override_cmd.returncode() != 0
+     error('Error getting the GObject Introspection override directory: ' + py_override_cmd.stderr())
+ endif
+ 
+-py_override = py_override_cmd.stdout()
++py_override = get_option('pygi-overrides-dir')
++if py_override == ''
++    py_override = py_override_cmd.stdout()
++endif
++
+ 
+ install_data(
+     'Signon.py',
