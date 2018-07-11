@@ -59,4 +59,6 @@ lib.makeScope pkgs.newScope (self: with self; {
    wingpanel = callPackage ./desktop/wingpanel {
      inherit (gnome3) mutter;
     };
+
+   wingpanel-indicator-power = callPackage ./desktop/indicators/power { };
 })
