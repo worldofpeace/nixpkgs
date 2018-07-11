@@ -72,4 +72,6 @@ lib.makeScope pkgs.newScope (self: with self; {
    wingpanel-indicator-keyboard = callPackage ./desktop/indicators/keyboard { };
    wingpanel-indicator-ayatana = callPackage ./desktop/indicators/ayatana { };
    wingpanel-indicator-datetime = callPackage ./desktop/indicators/datetime { };
+   wingpanel-indicator-a11y = callPackage ./desktop/indicators/a11y { };
+   
 })
