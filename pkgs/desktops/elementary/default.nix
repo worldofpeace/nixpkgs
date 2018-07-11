@@ -69,4 +69,5 @@ lib.makeScope pkgs.newScope (self: with self; {
    wingpanel-indicator-nightlight = callPackage ./desktop/indicators/nightlight { };
    wingpanel-indicator-notifications = callPackage ./desktop/indicators/notifications { };
    wingpanel-indicator-sound = callPackage ./desktop/indicators/sound { };
+   wingpanel-indicator-keyboard = callPackage ./desktop/indicators/keyboard { };
 })
