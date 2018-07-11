@@ -67,4 +67,5 @@ lib.makeScope pkgs.newScope (self: with self; {
    wingpanel-indicator-bluetooth = callPackage ./desktop/indicators/bluetooth { };
    wingpanel-indicator-session = callPackage ./desktop/indicators/session { };
    wingpanel-indicator-nightlight = callPackage ./desktop/indicators/nightlight { };
+   wingpanel-indicator-notifications = callPackage ./desktop/indicators/notifications { };
 })
