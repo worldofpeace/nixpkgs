@@ -64,4 +64,5 @@ lib.makeScope pkgs.newScope (self: with self; {
    wingpanel-indicator-network = callPackage ./desktop/indicators/network {
      inherit (gnome3) networkmanagerapplet;
    };
+   wingpanel-indicator-bluetooth = callPackage ./desktop/indicators/bluetooth { };
 })
