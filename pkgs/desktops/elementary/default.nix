@@ -52,6 +52,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   elementary-shortcut-overlay = callPackage ./desktop/elementary-shortcut-overlay { };
 
+  elementary-wallpapers = callPackage ./desktop/elementary-wallpapers { };
+
   gala = callPackage ./desktop/gala {
     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
    };
