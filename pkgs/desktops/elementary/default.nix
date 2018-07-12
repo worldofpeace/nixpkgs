@@ -60,18 +60,18 @@ lib.makeScope pkgs.newScope (self: with self; {
      inherit (gnome3) mutter;
     };
 
-   wingpanel-indicator-power = callPackage ./desktop/indicators/power { };
-   wingpanel-indicator-network = callPackage ./desktop/indicators/network {
+   wingpanel-indicator-a11y = callPackage ./desktop/indicators/a11y { };
+   wingpanel-indicator-ayatana = callPackage ./desktop/indicators/ayatana { };
+   wingpanel-indicator-bluetooth = callPackage ./desktop/indicators/bluetooth { };
+   wingpanel-indicator-datetime = callPackage ./desktop/indicators/datetime { };
+   wingpanel-indicator-keyboard = callPackage ./desktop/indicators/keyboard { };
+   wingpanel-indicator-network = callPackage ./desktop/indicators/network { 
      inherit (gnome3) networkmanagerapplet;
    };
-   wingpanel-indicator-bluetooth = callPackage ./desktop/indicators/bluetooth { };
-   wingpanel-indicator-session = callPackage ./desktop/indicators/session { };
    wingpanel-indicator-nightlight = callPackage ./desktop/indicators/nightlight { };
    wingpanel-indicator-notifications = callPackage ./desktop/indicators/notifications { };
+   wingpanel-indicator-power = callPackage ./desktop/indicators/power { };
+   wingpanel-indicator-session = callPackage ./desktop/indicators/session { };
    wingpanel-indicator-sound = callPackage ./desktop/indicators/sound { };
-   wingpanel-indicator-keyboard = callPackage ./desktop/indicators/keyboard { };
-   wingpanel-indicator-ayatana = callPackage ./desktop/indicators/ayatana { };
-   wingpanel-indicator-datetime = callPackage ./desktop/indicators/datetime { };
-   wingpanel-indicator-a11y = callPackage ./desktop/indicators/a11y { };
    
 })
