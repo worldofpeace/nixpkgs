@@ -54,6 +54,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   elementary-wallpapers = callPackage ./desktop/elementary-wallpapers { };
 
+  elementary-sound-theme = callPackage ./desktop/elementary-sound-theme { };
+
   gala = callPackage ./desktop/gala {
     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
    };
