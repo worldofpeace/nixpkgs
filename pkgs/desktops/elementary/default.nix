@@ -103,4 +103,6 @@ lib.makeScope pkgs.newScope (self: with self; {
 
    switchboard = callPackage ./desktop/switchboard { };
 
+   switchboard-plug-sound = callPackage ./desktop/switchboard-plugs/sound { };
+
 })
