@@ -95,4 +95,8 @@ lib.makeScope pkgs.newScope (self: with self; {
    wingpanel-indicator-session = callPackage ./desktop/indicators/session { };
    wingpanel-indicator-sound = callPackage ./desktop/indicators/sound { };
 
+   ### SWITCHBOARD
+
+   switchboard = callPackage ./desktop/switchboard { };
+
 })
