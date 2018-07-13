@@ -4,7 +4,7 @@
 lib.makeScope pkgs.newScope (self: with self; {
 
   wingpanelIndicators = [
-    wingpanel-indicator-a11y wingpanel-indicator-ayatana
+    wingpanel-applications-menu wingpanel-indicator-a11y wingpanel-indicator-ayatana
     wingpanel-indicator-bluetooth wingpanel-indicator-datetime
     wingpanel-indicator-keyboard wingpanel-indicator-network
     wingpanel-indicator-nightlight wingpanel-indicator-notifications
@@ -80,6 +80,10 @@ lib.makeScope pkgs.newScope (self: with self; {
    wingpanel = callPackage ./desktop/wingpanel {
      inherit (gnome3) mutter;
     };
+
+  wingpanel-applications-menu = callPackage ./desktop/wingpanel-applications-menu {
+     inherit (gnome3) gnome-menus;
+  };
 
    wingpanel-indicator-a11y = callPackage ./desktop/indicators/a11y { };
    wingpanel-indicator-ayatana = callPackage ./desktop/indicators/ayatana { };
