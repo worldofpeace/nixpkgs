@@ -121,4 +121,8 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) libgnomekbd;
   };
 
+  switchboard-plug-network = callPackage ./desktop/switchboard-plugs/network {
+    inherit (gnome3) networkmanagerapplet;
+  };
+
 })

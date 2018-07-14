@@ -1,0 +1,14 @@
+diff --git a/src/Widgets/VPN/VPNPage.vala b/src/Widgets/VPN/VPNPage.vala
+index 23c3ae9..a678cbf 100644
+--- a/src/Widgets/VPN/VPNPage.vala
++++ b/src/Widgets/VPN/VPNPage.vala
+@@ -86,8 +86,7 @@ namespace Network {
+             add_button.tooltip_text = _("Add VPN Connection…");
+             add_button.clicked.connect (() => {
+                 add_button.sensitive = false;
+-                var command = new Granite.Services.SimpleCommand ("/usr/bin",
+-                                                    "nm-connection-editor --create --type=vpn");
++                var command = new Granite.Services.SimpleCommand ("@networkmanagerapplet@", "bin/nm-connection-editor --create --type=vpn");
+                 command.done.connect ((exit) => {
+                     if (exit != 0) {
+                         var dialog = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE, "%s", _("Failed to run Connection Editor."));
