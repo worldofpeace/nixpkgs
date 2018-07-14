@@ -140,4 +140,6 @@ lib.makeScope pkgs.newScope (self: with self; {
   switchboard-plug-printers = callPackage ./desktop/switchboard-plugs/printers { };
 
   switchboard-plug-about = callPackage ./desktop/switchboard-plugs/about { };
+
+  switchboard-plug-a11y = callPackage ./desktop/switchboard-plugs/a11y { };
 })
