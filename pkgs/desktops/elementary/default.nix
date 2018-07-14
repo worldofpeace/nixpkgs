@@ -20,7 +20,7 @@ lib.makeScope pkgs.newScope (self: with self; {
     switchboard-plug-notifications switchboard-plug-datetime
     switchboard-plug-printers switchboard-plug-about
     switchboard-plug-a11y switchboard-plug-security-privacy
-    switchboard-plug-security-sharing
+    switchboard-plug-security-sharing switchboard-plug-power
   ];
 
   apps = [
@@ -153,4 +153,6 @@ lib.makeScope pkgs.newScope (self: with self; {
   switchboard-plug-security-privacy = callPackage ./desktop/switchboard-plugs/security-privacy { };
 
   switchboard-plug-sharing = callPackage ./desktop/switchboard-plugs/sharing { };
+
+  switchboard-plug-power = callPackage ./desktop/switchboard-plugs/power { };
 })
