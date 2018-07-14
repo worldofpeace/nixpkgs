@@ -14,6 +14,13 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   switchboardPlugs = [
     switchboard-plug-sound switchboard-plug-pantheon-shell
+    switchboard-plug-keyboard switchboard-plug-network
+    switchboard-plug-applications switchboard-plug-mouse-touchpad
+    switchboard-plug-display switchboard-plug-bluetooth
+    switchboard-plug-notifications switchboard-plug-datetime
+    switchboard-plug-printers switchboard-plug-about
+    switchboard-plug-a11y switchboard-plug-security-privacy
+    switchboard-plug-security-sharing
   ];
 
   apps = [
