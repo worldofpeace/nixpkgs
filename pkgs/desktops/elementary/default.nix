@@ -144,4 +144,6 @@ lib.makeScope pkgs.newScope (self: with self; {
   switchboard-plug-a11y = callPackage ./desktop/switchboard-plugs/a11y { };
 
   switchboard-plug-security-privacy = callPackage ./desktop/switchboard-plugs/security-privacy { };
+
+  switchboard-plug-sharing = callPackage ./desktop/switchboard-plugs/sharing { };
 })
