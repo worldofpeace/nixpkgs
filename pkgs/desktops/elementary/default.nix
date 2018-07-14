@@ -126,4 +126,6 @@ lib.makeScope pkgs.newScope (self: with self; {
   };
 
   switchboard-plug-applications = callPackage ./desktop/switchboard-plugs/applications { };
+
+  switchboard-plug-mouse-touchpad = callPackage ./desktop/switchboard-plugs/mouse-touchpad { };
 })
