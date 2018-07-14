@@ -125,4 +125,5 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) networkmanagerapplet;
   };
 
+  switchboard-plug-applications = callPackage ./desktop/switchboard-plugs/applications { };
 })
