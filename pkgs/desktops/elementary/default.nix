@@ -117,4 +117,8 @@ lib.makeScope pkgs.newScope (self: with self; {
      inherit (gnome3)  gnome-settings-daemon gnome-desktop gexiv2;
     };
 
+  switchboard-plug-keyboard = callPackage ./desktop/switchboard-plugs/keyboard {
+    inherit (gnome3) libgnomekbd;
+  };
+  
 })
