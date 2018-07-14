@@ -136,4 +136,6 @@ lib.makeScope pkgs.newScope (self: with self; {
   switchboard-plug-notifications = callPackage ./desktop/switchboard-plugs/notifications { };
 
   switchboard-plug-datetime = callPackage ./desktop/switchboard-plugs/datetime { };
+
+  switchboard-plug-printers = callPackage ./desktop/switchboard-plugs/printers { };
 })
