@@ -12,6 +12,10 @@ lib.makeScope pkgs.newScope (self: with self; {
     wingpanel-indicator-session wingpanel-indicator-sound
   ];
 
+  switchboardPlugs = [
+    switchboard-plug-sound switchboard-plug-pantheon-shell
+  ];
+
   apps = [
     elementary-calculator elementary-calendar
     elementary-camera elementary-code elementary-files
