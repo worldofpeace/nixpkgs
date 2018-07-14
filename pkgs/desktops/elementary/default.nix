@@ -109,4 +109,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
    switchboard-plug-sound = callPackage ./desktop/switchboard-plugs/sound { };
 
+   switchboard-plug-pantheon-shell = callPackage ./desktop/switchboard-plugs/pantheon-shell { 
+     inherit (gnome3)  gnome-settings-daemon gnome-desktop gexiv2;
+    };
+
 })
