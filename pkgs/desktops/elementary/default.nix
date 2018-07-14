@@ -77,9 +77,13 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
    };
 
-   wingpanel = callPackage ./desktop/wingpanel {
-     inherit (gnome3) mutter;
-    };
+   elementary-greeter = callPackage ./desktop/greeter {
+     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
+   };
+
+  wingpanel = callPackage ./desktop/wingpanel {
+    inherit (gnome3) mutter;
+  };
 
   wingpanel-applications-menu = callPackage ./desktop/wingpanel-applications-menu {
      inherit (gnome3) gnome-menus;
