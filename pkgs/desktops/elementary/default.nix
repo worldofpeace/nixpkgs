@@ -132,4 +132,6 @@ lib.makeScope pkgs.newScope (self: with self; {
   switchboard-plug-display = callPackage ./desktop/switchboard-plugs/display { };
 
   switchboard-plug-bluetooth = callPackage ./desktop/switchboard-plugs/bluetooth { };
+
+  switchboard-plug-notifications = callPackage ./desktop/switchboard-plugs/notifications { };
 })
