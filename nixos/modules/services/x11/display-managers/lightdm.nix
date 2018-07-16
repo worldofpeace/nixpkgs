@@ -81,6 +81,7 @@ in
     ./lightdm-greeters/gtk.nix
     ./lightdm-greeters/mini.nix
     ./lightdm-greeters/enso-os.nix
+    ./lightdm-greeters/elementary.nix
   ];
 
   options = {
