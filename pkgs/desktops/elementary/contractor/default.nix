@@ -1,4 +1,4 @@
-{ mkElementary, meson, ninja, pkgconfig, vala, glib, libgee, dbus, glib-networking, gobjectIntrospection }:
+ { mkElementary, meson, ninja, pkgconfig, vala, glib, libgee, dbus, glib-networking, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "contractor";
