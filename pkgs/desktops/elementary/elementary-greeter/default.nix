@@ -1,8 +1,8 @@
 { mkElementary, pkgconfig, fetchpatch, substituteAll, makeWrapper, meson, ninja, vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3, granite, libgee, bamf
-, gnome-settings-daemon, libcanberra, libcanberra-gtk3, gnome-desktop, mutter
-, plank, gobjectIntrospection, gdk_pixbuf, defaultIconTheme, wingpanel, glibc
-, elementary-gtk-theme, elementary-wallpapers, lightdm, numlockx, clutter-gtk, wrapGAppsHook }:
+, desktop-file-utils, gettext, libxml2, glib, gtk3, granite, libgee, gnome-settings-daemon
+, gnome-desktop, mutter, gobjectIntrospection, gdk_pixbuf, defaultIconTheme, wingpanel
+, elementary-gtk-theme, elementary-wallpapers, elementary-default-settings, lightdm
+, numlockx, clutter-gtk, libglvnd, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "greeter";
@@ -35,12 +35,11 @@ mkElementary rec {
     granite
     gtk3
     libgee
+    libglvnd
     lightdm
     mutter
     wingpanel
   ];
-
-  mesonBuildType = "debug";
 
   patches = [
     (fetchpatch {
@@ -51,7 +50,13 @@ mkElementary rec {
       src = ./gsd.patch;
       gnome-settings-daemon = "${gnome-settings-daemon}/libexec";
     })
+    ./01-sbin-bin.patch
+    ./01-sysconfdir-install.patch
   ];
+
+  # This constant is baked into the program
+  # for discovery of the greeter configuration
+  mesonFlags = [" --sysconfdir=/etc" ];
 
   prePatch = ''
     # numlockx was hardcoded runtime dependency
@@ -59,17 +64,19 @@ mkElementary rec {
       --replace "/usr/bin/numlockx" "${numlockx}/bin/numlockx"
   '';
 
-  dontWrapGApps = true;
+  preFixup = ''
+    # So It gets the default gtk and icon themes
+    gappsWrapperArgs+=(
+      --prefix XDG_CONFIG_DIRS : "${elementary-default-settings}/etc"
+    )
+  '';
 
   postFixup = ''
-    wrapProgram $out/bin/io.elementary.greeter \
-      "''${gappsWrapperArgs[@]}"
-    
     substituteInPlace $out/share/xgreeters/io.elementary.greeter.desktop \
       --replace  "Exec=io.elementary.greeter" "Exec=$out/bin/io.elementary.greeter"
-    
+
     substituteInPlace $out/etc/lightdm/io.elementary.greeter.conf \
-      --replace "#default-wallpaper=/usr/share/backgrounds/elementaryos-default" "default-wallpaper=\"${elementary-wallpapers}/usr/share/backgrounds/elementary/Ryan Schroeder.jpg\""
+      --replace "#default-wallpaper=/usr/share/backgrounds/elementaryos-default" "default-wallpaper=${elementary-wallpapers}/share/backgrounds/elementary/Pablo Garcia Saldana.jpg"
   '';
 
   meta = {
