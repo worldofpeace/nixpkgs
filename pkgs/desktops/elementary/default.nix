@@ -70,6 +70,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   #### DESKTOP
 
+  elementary-default-settings = callPackage ./elementary-default-settings { };
+  
   elementary-greeter = callPackage ./elementary-greeter {
     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
   };
