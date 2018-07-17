@@ -1,17 +1,16 @@
-{ mkElementary, pkgconfig, fetchpatch, makeWrapper, meson, ninja, vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3
-, granite, libgee, bamf, gnome-settings-daemon
-, libcanberra, libcanberra-gtk3, gnome-desktop, mutter
-, plank, gobjectIntrospection, gdk_pixbuf, defaultIconTheme
-, wingpanel, glibc, elementary-gtk-theme, elementary-wallpapers, lightdm, clutter-gtk, wrapGAppsHook }:
+{ mkElementary, pkgconfig, fetchpatch, substituteAll, makeWrapper, meson, ninja, vala
+, desktop-file-utils, gettext, libxml2, glib, gtk3, granite, libgee, bamf
+, gnome-settings-daemon, libcanberra, libcanberra-gtk3, gnome-desktop, mutter
+, plank, gobjectIntrospection, gdk_pixbuf, defaultIconTheme, wingpanel, glibc
+, elementary-gtk-theme, elementary-wallpapers, lightdm, numlockx, clutter-gtk, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "greeter";
-  version = "6c42198b54f6d9eaaaa6c5eb8c7cae16e01dde57";
+  version = "4e73eefa1096df38a824162fe75fc05765f31844";
 
-  name = "elementary-${pname}-2018-07-08";
+  name = "elementary-${pname}-2018-05-16";
 
-  sha256 = "1fxb9cmgdjqa3kbcfc2gmafiyg8c19n8w64zw0zr2vn6lb14ii57";
+  sha256 = "0545vi9cmarsdcy911gq5ihz5k51zigjp61sldgxds72sig5lwch";
 
   nativeBuildInputs = [
     desktop-file-utils
@@ -41,21 +40,29 @@ mkElementary rec {
     wingpanel
   ];
 
-  dontWrapGApps = true;
+  mesonBuildType = "debug";
 
   patches = [
-    # See https://github.com/elementary/greeter/pull/145
     (fetchpatch {
-      url = "https://github.com/elementary/greeter/commit/37c02b076bfedbdd95bad90624a02ee84accc2f1.patch";
-      sha256 = "14s6md8gn0vaayx9h2rhap9vavqkxjxpxj522pg9b706cafbkz8a";
+      url = "https://copr-dist-git.fedorainfracloud.org/cgit/decathorpe/elementary-nightly/pantheon-greeter.git/plain/00-disable-gsettings.patch";
+      sha256 = "18his4ckv6916k83a9a9n6mqhrp58ws8y9zjd4yaj1r6957927pf";
+    })
+    (substituteAll {
+      src = ./gsd.patch;
+      gnome-settings-daemon = "${gnome-settings-daemon}/libexec";
     })
   ];
 
+  prePatch = ''
+    # numlockx was hardcoded runtime dependency
+    substituteInPlace  ./src/PantheonGreeter.vala \
+      --replace "/usr/bin/numlockx" "${numlockx}/bin/numlockx"
+  '';
+
+  dontWrapGApps = true;
+
   postFixup = ''
     wrapProgram $out/bin/io.elementary.greeter \
-      "''${gappsWrapperArgs[@]}"
-
-    wrapProgram $out/bin/io.elementary.greeter-compositor \
       "''${gappsWrapperArgs[@]}"
     
     substituteInPlace $out/share/xgreeters/io.elementary.greeter.desktop \
