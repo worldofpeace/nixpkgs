@@ -76,6 +76,10 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
   };
 
+  elementary-session-settings = callPackage ./elementary-session-settings {
+    inherit (gnome3) gnome-session;
+   };
+
   elementary-shortcut-overlay = callPackage ./elementary-shortcut-overlay { };
 
   gala = callPackage ./gala {
