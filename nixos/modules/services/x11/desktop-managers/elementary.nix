@@ -11,6 +11,8 @@ let
      mkdir -p $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas
      cp -rf ${pkgs.gnome3.gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas*/glib-2.0/schemas/*.xml $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas
 
+     ${concatMapStrings (pkg: "cp -rf ${pkg}/share/gsettings-schemas/*/glib-2.0/schemas/*.xml $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas\n") cfg.extraGSettingsOverridePackages}
+
      chmod -R a+w $out/share/gsettings-schemas/nixos-gsettings-overrides
      cat - > $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/nixos-defaults.gschema.override <<- EOF
        [org.gnome.desktop.background]
@@ -18,6 +20,8 @@ let
 
        [org.gnome.desktop.screensaver]
        picture-uri='${pkgs.nixos-artwork.wallpapers.gnome-dark}/share/artwork/gnome/Gnome_Dark.png'
+
+       ${cfg.extraGSettingsOverrides}
      EOF
 
      ${pkgs.glib.dev}/bin/glib-compile-schemas $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/
@@ -33,6 +37,18 @@ in
         type = types.bool;
         default = false;
         description = "Enable the elementary desktop manager";
+      };
+
+      extraGSettingsOverrides = mkOption {
+        default = "";
+        type = types.lines;
+        description = "Additional gsettings overrides.";
+      };
+
+      extraGSettingsOverridePackages = mkOption {
+        default = [];
+        type = types.listOf types.path;
+        description = "List of packages for which gsettings are overridden.";
       };
 
       debug = mkEnableOption "gnome-session debug messages";
@@ -106,23 +122,39 @@ in
 
           export XDG_DATA_DIRS=$XDG_DATA_DIRS''${XDG_DATA_DIRS:+:}${pkgs.elementary.elementary-session-settings}/share
 
-          export XDG_CONFIG_DIRS=$XDG_CONFIG_DIRS''${XDG_CONFIG_DIRS:+:}${pkgs.elementary.elementary-default-settings}/etc
-
           export NIX_GSETTINGS_OVERRIDES_DIR=${nixos-gsettings-desktop-schemas}/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas
 
           ${pkgs.xdg-user-dirs}/bin/xdg-user-dirs-update
 
           ${pkgs.gnome3.gnome-session}/bin/gnome-session --session=pantheon ${optionalString cfg.debug "--debug"} &
+          ${pkgs.elementary.elementary-terminal}/bin/io.elementary.terminal &
           waitPID=$!
         '';
-        #desktops = "${pkgs.elementary.elementary-session-settings}";
       };
 
     services.xserver.updateDbusEnvironment = true;
 
+    services.xserver.desktopManager.elementary.extraGSettingsOverridePackages = [ pkgs.gtk3 ];
+
+    services.xserver.desktopManager.elementary.extraGSettingsOverrides = ''
+    [org.gnome.desktop.interface]
+    gtk-theme='elementary'
+    icon-theme='elementary'
+    font-name='Open Sans 9'
+
+    [org.gnome.desktop.wm.preferences]
+    button-layout='close:maximize'
+    '';
+
     environment.variables.GIO_EXTRA_MODULES = [ "${lib.getLib pkgs.gnome3.dconf}/lib/gio/modules"
                                                 "${pkgs.gnome3.glib-networking.out}/lib/gio/modules"
                                                 "${pkgs.gnome3.gvfs}/lib/gio/modules" ];
+
+    networking.networkmanager.basePackages =
+      { inherit (pkgs) networkmanager modemmanager wpa_supplicant;
+        inherit (pkgs.gnome3) networkmanager-openvpn networkmanager-vpnc
+                              networkmanager-openconnect networkmanager-fortisslvpn
+                              networkmanager-iodine networkmanager-l2tp; };
 
     environment.pathsToLink = [ "/share" ];
 
