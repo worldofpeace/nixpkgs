@@ -1,12 +1,12 @@
-{ mkElementary, pkgconfig, meson, ninja, glib, libgee, vala, gsettings-desktop-schemas, gobjectIntrospection }:
+{ mkElementary, pkgconfig, meson, ninja, glib, libgee, vala, gsettings-desktop-schemas, gobjectIntrospection, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "cerbere";
-  version = "0.2.3";
+  version = "23d15fdeca66b6a05f6dea3588897ef8bd5e93a7";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-07-18";
 
-  sha256 = "1na6cy79h5mkd92ia3kd66nwmhqb1jimhz52sv13hii5p0770chp";
+  sha256 = "0mlvc6qbr5hn32vfgqafsj638n0kc9mh4fhkkh2a1r060asiab17";
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -14,6 +14,7 @@ mkElementary rec {
     ninja
     pkgconfig
     vala
+    wrapGAppsHook
   ];
 
   buildInputs = [ glib gsettings-desktop-schemas libgee ];
