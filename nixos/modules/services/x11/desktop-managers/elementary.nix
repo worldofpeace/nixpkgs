@@ -14,12 +14,17 @@ let
      ${concatMapStrings (pkg: "cp -rf ${pkg}/share/gsettings-schemas/*/glib-2.0/schemas/*.xml $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas\n") cfg.extraGSettingsOverridePackages}
 
      chmod -R a+w $out/share/gsettings-schemas/nixos-gsettings-overrides
-     cat - > $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/nixos-defaults.gschema.override <<- EOF
-       [org.gnome.desktop.background]
-       picture-uri='${pkgs.nixos-artwork.wallpapers.gnome-dark}/share/artwork/gnome/Gnome_Dark.png'
+     cp ${pkgs.elementary.elementary-default-settings}/elementary-default-settings.gsettings-override \
+     $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/nixos-defaults.gschema.override
 
-       [org.gnome.desktop.screensaver]
+     chmod -R a+w $out/share/gsettings-schemas/nixos-gsettings-overrides
+
+     cat <<EOF >> $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/nixos-defaults.gschema.override
+       [org.gnome.desktop.background]
+       draw-background=true
+       picture-options='zoom'
        picture-uri='${pkgs.nixos-artwork.wallpapers.gnome-dark}/share/artwork/gnome/Gnome_Dark.png'
+       primary-color='#000000'
 
        ${cfg.extraGSettingsOverrides}
      EOF
@@ -114,41 +119,109 @@ in
 
           export GTK_PATH=${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0
 
+          export XDG_MENU_PREFIX=gnome-
+
           ${concatMapStrings (p: ''
             if [ -d "${p}/share/gsettings-schemas/${p.name}" ]; then
               export XDG_DATA_DIRS=$XDG_DATA_DIRS''${XDG_DATA_DIRS:+:}${p}/share/gsettings-schemas/${p.name}
             fi
           '') pkgs.elementary.wingpanelIndicators}
 
+          # So gnome-session can find the pantheon session
           export XDG_DATA_DIRS=$XDG_DATA_DIRS''${XDG_DATA_DIRS:+:}${pkgs.elementary.elementary-session-settings}/share
 
+          # Override gsettings-desktop-schema
           export NIX_GSETTINGS_OVERRIDES_DIR=${nixos-gsettings-desktop-schemas}/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas
 
           ${pkgs.xdg-user-dirs}/bin/xdg-user-dirs-update
 
           ${pkgs.gnome3.gnome-session}/bin/gnome-session --session=pantheon ${optionalString cfg.debug "--debug"} &
-          ${pkgs.elementary.elementary-terminal}/bin/io.elementary.terminal &
+
+          # TODO: This should be started by gnome-session?
+          ${pkgs.elementary.cerbere}/libexec/io.elementary.cerbere &
           waitPID=$!
         '';
       };
 
+    services.xserver.desktopManager.elementary.extraGSettingsOverridePackages = with pkgs; [
+      elementary.gala
+      epiphany
+      gnome3.gnome-settings-daemon
+      gnome3.mutter
+      gnome3.networkmanagerapplet
+      gtk3
+      plank
+      # TODO: There's ibus stuff too
+    ];
+
+    environment.systemPackages = with pkgs;
+      [
+        desktop-file-utils
+        glib
+        glib-networking
+        gtk3.out
+        gvfs
+        hicolor-icon-theme
+        lightlocker # TODO: This probably needs work
+        plank
+        shared-mime-info
+      ] ++ (with pkgs.elementary;
+      [
+        cerbere
+        defaultIconTheme
+        elementary-gtk-theme
+        elementary-shortcut-overlay
+        gala
+        switchboard
+        wingpanel
+      ]) ++ pkgs.elementary.wingpanelIndicators ++ pkgs.elementary.apps ++ pkgs.elementary.switchboardPlugs
+      ++ (with pkgs.gnome3;
+      [
+        dconf
+        epiphany
+        geary
+        gnome-bluetooth
+        gnome-menus
+        gnome-power-manager
+        gnome-settings-daemon
+      ]);
+
+    hardware.bluetooth.enable = mkDefault true;
+    hardware.pulseaudio.enable = mkDefault true;
+    networking.networkmanager.enable = mkDefault true;
+    security.polkit.enable = true;
+    services.accounts-daemon.enable = true;
+    services.bamf.enable = true;
+    services.colord.enable = mkDefault true;
+    services.dbus.packages =
+      mkIf config.services.printing.enable [ pkgs.system-config-printer ];
+    services.dleyna-renderer.enable = mkDefault true;
+    services.dleyna-server.enable = mkDefault true;
+    services.geoclue2.enable = mkDefault true;
+    services.gnome3.at-spi2-core.enable = true;
+    services.gnome3.evolution-data-server.enable = true;
+    services.gnome3.gnome-keyring.enable = true;
+    services.gnome3.gvfs.enable = true;
+    services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
+    services.udisks2.enable = true;
+    services.upower.enable = config.powerManagement.enable;
+    services.xserver.libinput.enable = mkDefault true;
     services.xserver.updateDbusEnvironment = true;
 
-    services.xserver.desktopManager.elementary.extraGSettingsOverridePackages = [ pkgs.gtk3 ];
+    fonts.fonts = with pkgs; [ opensans-ttf roboto-mono ];
+    fonts.fontconfig.defaultFonts = {
+        monospace = [ "Roboto Mono" ];
+        sansSerif = [ "Open Sans" ];
+      };
 
-    services.xserver.desktopManager.elementary.extraGSettingsOverrides = ''
-    [org.gnome.desktop.interface]
-    gtk-theme='elementary'
-    icon-theme='elementary'
-    font-name='Open Sans 9'
-
-    [org.gnome.desktop.wm.preferences]
-    button-layout='close:maximize'
-    '';
+    environment.pathsToLink = [ "/share" ];
 
     environment.variables.GIO_EXTRA_MODULES = [ "${lib.getLib pkgs.gnome3.dconf}/lib/gio/modules"
                                                 "${pkgs.gnome3.glib-networking.out}/lib/gio/modules"
                                                 "${pkgs.gnome3.gvfs}/lib/gio/modules" ];
+
+    # Enable GTK applications to load SVG icons
+    environment.variables.GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
 
     networking.networkmanager.basePackages =
       { inherit (pkgs) networkmanager modemmanager wpa_supplicant;
