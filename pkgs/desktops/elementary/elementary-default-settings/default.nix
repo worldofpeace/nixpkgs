@@ -1,4 +1,4 @@
-{ mkElementary }:
+{ mkElementary, elementary-wallpapers }:
 
 mkElementary rec {
   pname = "default-settings";
@@ -8,15 +8,16 @@ mkElementary rec {
 
   sha256 = "0gyv835qbr90001gda2pzngzzbbk5jf9grgfl25pqkm29s45rqq0";
 
+  patches = [ ./background.patch ];
+
   dontBuild = true;
 
   installPhase = ''
-    mkdir $out
-    cp -r ./* $out
-    rm -rf $out/debian $out/README.md
-    # Currently only need the settings.ini
+    # settings.ini
     mkdir -p $out/etc/gtk-3.0
-    mv $out/settings.ini $out/etc/gtk-3.0
+    cp -av settings.ini $out/etc/gtk-3.0
+
+    cp -av debian/elementary-default-settings.gsettings-override $out
   '';
 
   meta = {
