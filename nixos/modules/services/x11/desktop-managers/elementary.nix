@@ -44,6 +44,14 @@ in
         description = "Enable the elementary desktop manager";
       };
 
+      sessionPath = mkOption {
+        default = [];
+        example = literalExample "[ pkgs.gnome3.gpaste ]";
+        description = "Additional list of packages to be added to the session search path.
+                       Useful for gnome shell extensions or gsettings-conditionated autostart.";
+        apply = list: list;
+      };
+
       extraGSettingsOverrides = mkOption {
         default = "";
         type = types.lines;
@@ -125,7 +133,12 @@ in
             if [ -d "${p}/share/gsettings-schemas/${p.name}" ]; then
               export XDG_DATA_DIRS=$XDG_DATA_DIRS''${XDG_DATA_DIRS:+:}${p}/share/gsettings-schemas/${p.name}
             fi
-          '') pkgs.elementary.wingpanelIndicators}
+
+            if [ -d "${p}/lib/girepository-1.0" ]; then
+              export GI_TYPELIB_PATH=$GI_TYPELIB_PATH''${GI_TYPELIB_PATH:+:}${p}/lib/girepository-1.0
+              export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${p}/lib
+            fi
+          '') cfg.sessionPath}
 
           # So gnome-session can find the pantheon session
           export XDG_DATA_DIRS=$XDG_DATA_DIRS''${XDG_DATA_DIRS:+:}${pkgs.elementary.elementary-session-settings}/share
@@ -143,6 +156,8 @@ in
         '';
       };
 
+    services.xserver.desktopManager.elementary.sessionPath = pkgs.elementary.wingpanelIndicators ++ [ pkgs.gnome3.evolution-data-server ];
+    
     services.xserver.desktopManager.elementary.extraGSettingsOverridePackages = with pkgs; [
       elementary.gala
       epiphany
