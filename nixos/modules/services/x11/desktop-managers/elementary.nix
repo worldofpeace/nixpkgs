@@ -186,6 +186,7 @@ in
         defaultIconTheme
         elementary-gtk-theme
         elementary-shortcut-overlay
+        elementary-sound-theme
         gala
         switchboard
         wingpanel
