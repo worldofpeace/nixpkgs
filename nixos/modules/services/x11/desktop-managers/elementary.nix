@@ -146,18 +146,17 @@ in
           # Override gsettings-desktop-schema
           export NIX_GSETTINGS_OVERRIDES_DIR=${nixos-gsettings-desktop-schemas}/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas
 
+          export XDG_CURRENT_DESKTOP=Pantheon
+
           ${pkgs.xdg-user-dirs}/bin/xdg-user-dirs-update
 
           ${pkgs.gnome3.gnome-session}/bin/gnome-session --session=pantheon ${optionalString cfg.debug "--debug"} &
-
-          # TODO: This should be started by gnome-session?
-          ${pkgs.elementary.cerbere}/libexec/io.elementary.cerbere &
           waitPID=$!
         '';
       };
 
     services.xserver.desktopManager.elementary.sessionPath = pkgs.elementary.wingpanelIndicators ++ [ pkgs.gnome3.evolution-data-server ];
-    
+
     services.xserver.desktopManager.elementary.extraGSettingsOverridePackages = with pkgs; [
       elementary.gala
       epiphany
@@ -190,6 +189,7 @@ in
         gala
         switchboard
         wingpanel
+        elementary-session-settings
       ]) ++ pkgs.elementary.wingpanelIndicators ++ pkgs.elementary.apps ++ pkgs.elementary.switchboardPlugs
       ++ (with pkgs.gnome3;
       [
@@ -199,7 +199,6 @@ in
         gnome-bluetooth
         gnome-menus
         gnome-power-manager
-        gnome-settings-daemon
       ]);
 
     hardware.bluetooth.enable = mkDefault true;
