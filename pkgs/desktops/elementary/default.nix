@@ -77,7 +77,7 @@ lib.makeScope pkgs.newScope (self: with self; {
   };
 
   elementary-session-settings = callPackage ./elementary-session-settings {
-    inherit (gnome3) gnome-session;
+    inherit (gnome3) gnome-session gnome-settings-daemon gnome-keyring;
    };
 
   elementary-shortcut-overlay = callPackage ./elementary-shortcut-overlay { };

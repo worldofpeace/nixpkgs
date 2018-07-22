@@ -1,0 +1,389 @@
+diff --git a/autostart/gnome-keyring-gpg-pantheon.desktop b/autostart/gnome-keyring-gpg-pantheon.desktop
+deleted file mode 100644
+index 059704d..0000000
+--- a/autostart/gnome-keyring-gpg-pantheon.desktop
++++ /dev/null
+@@ -1,15 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=GPG Password Agent
+-Comment=GNOME Keyring: GPG Agent
+-Exec=/usr/bin/gnome-keyring-daemon --start --components=gpg
+-OnlyShowIn=Pantheon;
+-X-GNOME-Autostart-Phase=Initialization
+-X-GNOME-AutoRestart=false
+-X-GNOME-Autostart-Notify=true
+-X-GNOME-Bugzilla-Bugzilla=GNOME
+-X-GNOME-Bugzilla-Product=gnome-keyring
+-X-GNOME-Bugzilla-Component=general
+-X-GNOME-Bugzilla-Version=3.10.1
+-NoDisplay=true
+-X-Ubuntu-Gettext-Domain=gnome-keyring
+diff --git a/autostart/gnome-keyring-pkcs11-pantheon.desktop b/autostart/gnome-keyring-pkcs11-pantheon.desktop
+deleted file mode 100644
+index 824f855..0000000
+--- a/autostart/gnome-keyring-pkcs11-pantheon.desktop
++++ /dev/null
+@@ -1,15 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=Certificate and Key Storage
+-Comment=GNOME Keyring: PKCS#11 Component
+-Exec=/usr/bin/gnome-keyring-daemon --start --components=pkcs11
+-OnlyShowIn=Pantheon;
+-X-GNOME-Autostart-Phase=Initialization
+-X-GNOME-AutoRestart=false
+-X-GNOME-Autostart-Notify=true
+-X-GNOME-Bugzilla-Bugzilla=GNOME
+-X-GNOME-Bugzilla-Product=gnome-keyring
+-X-GNOME-Bugzilla-Component=general
+-X-GNOME-Bugzilla-Version=3.10.1
+-NoDisplay=true
+-X-Ubuntu-Gettext-Domain=gnome-keyring
+diff --git a/autostart/gnome-keyring-secrets-pantheon.desktop b/autostart/gnome-keyring-secrets-pantheon.desktop
+deleted file mode 100644
+index 63590ba..0000000
+--- a/autostart/gnome-keyring-secrets-pantheon.desktop
++++ /dev/null
+@@ -1,15 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=Secret Storage Service
+-Comment=GNOME Keyring: Secret Service
+-Exec=/usr/bin/gnome-keyring-daemon --start --components=secrets
+-OnlyShowIn=Pantheon;
+-X-GNOME-Autostart-Phase=Initialization
+-X-GNOME-AutoRestart=false
+-X-GNOME-Autostart-Notify=true
+-X-GNOME-Bugzilla-Bugzilla=GNOME
+-X-GNOME-Bugzilla-Product=gnome-keyring
+-X-GNOME-Bugzilla-Component=general
+-X-GNOME-Bugzilla-Version=3.10.1
+-NoDisplay=true
+-X-Ubuntu-Gettext-Domain=gnome-keyring
+diff --git a/autostart/gnome-keyring-ssh-pantheon.desktop b/autostart/gnome-keyring-ssh-pantheon.desktop
+deleted file mode 100644
+index 3fb9356..0000000
+--- a/autostart/gnome-keyring-ssh-pantheon.desktop
++++ /dev/null
+@@ -1,15 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=SSH Key Agent
+-Comment=GNOME Keyring: SSH Agent
+-Exec=/usr/bin/gnome-keyring-daemon --start --components=ssh
+-OnlyShowIn=Pantheon;
+-X-GNOME-Autostart-Phase=Initialization
+-X-GNOME-AutoRestart=false
+-X-GNOME-Autostart-Notify=true
+-X-GNOME-Bugzilla-Bugzilla=GNOME
+-X-GNOME-Bugzilla-Product=gnome-keyring
+-X-GNOME-Bugzilla-Component=general
+-X-GNOME-Bugzilla-Version=3.10.1
+-NoDisplay=true
+-X-Ubuntu-Gettext-Domain=gnome-keyring
+diff --git a/autostart/onboard-autostart-pantheon.desktop b/autostart/onboard-autostart-pantheon.desktop
+deleted file mode 100644
+index a797f55..0000000
+--- a/autostart/onboard-autostart-pantheon.desktop
++++ /dev/null
+@@ -1,9 +0,0 @@
+-[Desktop Entry]
+-Name=Onboard
+-Exec=onboard --not-show-in=GNOME
+-Type=Application
+-NoDisplay=true
+-X-Ubuntu-Gettext-Domain=onboard
+-AutostartCondition=GSettings org.gnome.desktop.a11y.applications screen-keyboard-enabled
+-X-GNOME-AutoRestart=true
+-OnlyShowIn=Pantheon;
+diff --git a/autostart/orca-autostart-pantheon.desktop b/autostart/orca-autostart-pantheon.desktop
+deleted file mode 100644
+index 3579138..0000000
+--- a/autostart/orca-autostart-pantheon.desktop
++++ /dev/null
+@@ -1,10 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=Orca screen reader
+-Exec=orca
+-NoDisplay=true
+-AutostartCondition=GSettings org.gnome.desktop.a11y.applications screen-reader-enabled
+-X-GNOME-AutoRestart=true
+-#X-GNOME-Autostart-Phase=Initialization
+-OnlyShowIn=Pantheon;
+-X-Ubuntu-Gettext-Domain=orca
+diff --git a/autostart/org.gnome.SettingsDaemon.A11ySettings-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.A11ySettings.desktop
+similarity index 79%
+rename from autostart/org.gnome.SettingsDaemon.A11ySettings-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.A11ySettings.desktop
+index 33204a3..d76166b 100644
+--- a/autostart/org.gnome.SettingsDaemon.A11ySettings-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.A11ySettings.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's a11y-settings plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-a11y-settings
++Exec=@settings@/gsd-a11y-settings
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Clipboard-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Clipboard.desktop
+similarity index 80%
+rename from autostart/org.gnome.SettingsDaemon.Clipboard-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Clipboard.desktop
+index 07a7797..7f8e286 100644
+--- a/autostart/org.gnome.SettingsDaemon.Clipboard-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Clipboard.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's clipboard plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-clipboard
++Exec=@settings@/gsd-clipboard
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Color-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Color.desktop
+similarity index 81%
+rename from autostart/org.gnome.SettingsDaemon.Color-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Color.desktop
+index b267495..485ed2e 100644
+--- a/autostart/org.gnome.SettingsDaemon.Color-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Color.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's color plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-color
++Exec=@settings@/gsd-color
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Datetime-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Datetime.desktop
+similarity index 80%
+rename from autostart/org.gnome.SettingsDaemon.Datetime-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Datetime.desktop
+index 16539b4..1756938 100644
+--- a/autostart/org.gnome.SettingsDaemon.Datetime-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Datetime.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's datetime plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-datetime
++Exec=@settings@/gsd-datetime
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Housekeeping-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Housekeeping.desktop
+similarity index 80%
+rename from autostart/org.gnome.SettingsDaemon.Housekeeping-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Housekeeping.desktop
+index 961c07e..4c954c0 100644
+--- a/autostart/org.gnome.SettingsDaemon.Housekeeping-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Housekeeping.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's housekeeping plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-housekeeping
++Exec=@settings@/gsd-housekeeping
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Keyboard-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Keyboard.desktop
+similarity index 80%
+rename from autostart/org.gnome.SettingsDaemon.Keyboard-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Keyboard.desktop
+index 04136e9..e2070e0 100644
+--- a/autostart/org.gnome.SettingsDaemon.Keyboard-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Keyboard.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's keyboard plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-keyboard
++Exec=@settings@/gsd-keyboard
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.MediaKeys-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.MediaKeys.desktop
+similarity index 80%
+rename from autostart/org.gnome.SettingsDaemon.MediaKeys-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.MediaKeys.desktop
+index 5a0b067..6fb4dfe 100644
+--- a/autostart/org.gnome.SettingsDaemon.MediaKeys-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.MediaKeys.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's media-keys plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-media-keys
++Exec=@settings@/gsd-media-keys
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Mouse-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Mouse.desktop
+similarity index 81%
+rename from autostart/org.gnome.SettingsDaemon.Mouse-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Mouse.desktop
+index f459ec4..18dd3db 100644
+--- a/autostart/org.gnome.SettingsDaemon.Mouse-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Mouse.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's mouse plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-mouse
++Exec=@settings@/gsd-mouse
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Power-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Power.desktop
+similarity index 81%
+rename from autostart/org.gnome.SettingsDaemon.Power-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Power.desktop
+index e7d5a9c..ab809d9 100644
+--- a/autostart/org.gnome.SettingsDaemon.Power-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Power.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's power plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-power
++Exec=@settings@/gsd-power
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.PrintNotifications-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.PrintNotifications.desktop
+similarity index 78%
+rename from autostart/org.gnome.SettingsDaemon.PrintNotifications-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.PrintNotifications.desktop
+index 57d3d05..c048a13 100644
+--- a/autostart/org.gnome.SettingsDaemon.PrintNotifications-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.PrintNotifications.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's print-notifications plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-print-notifications
++Exec=@settings@/gsd-print-notifications
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Rfkill-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Rfkill.desktop
+similarity index 81%
+rename from autostart/org.gnome.SettingsDaemon.Rfkill-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Rfkill.desktop
+index dbdcf3b..1e6a51f 100644
+--- a/autostart/org.gnome.SettingsDaemon.Rfkill-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Rfkill.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's rfkill plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-rfkill
++Exec=@settings@/gsd-rfkill
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Sharing-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Sharing.desktop
+similarity index 81%
+rename from autostart/org.gnome.SettingsDaemon.Sharing-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Sharing.desktop
+index 5a21ddf..ae7748c 100644
+--- a/autostart/org.gnome.SettingsDaemon.Sharing-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Sharing.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's sharing plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-sharing
++Exec=@settings@/gsd-sharing
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Smartcard-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
+similarity index 80%
+rename from autostart/org.gnome.SettingsDaemon.Smartcard-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Smartcard.desktop
+index 37197b1..8d906d3 100644
+--- a/autostart/org.gnome.SettingsDaemon.Smartcard-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's smartcard plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-smartcard
++Exec=@settings@/gsd-smartcard
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Sound-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Sound.desktop
+similarity index 81%
+rename from autostart/org.gnome.SettingsDaemon.Sound-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Sound.desktop
+index b8c4cf8..214d9b8 100644
+--- a/autostart/org.gnome.SettingsDaemon.Sound-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Sound.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's sound plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-sound
++Exec=@settings@/gsd-sound
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.Wacom-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.Wacom.desktop
+similarity index 81%
+rename from autostart/org.gnome.SettingsDaemon.Wacom-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.Wacom.desktop
+index c9d8496..49d0af9 100644
+--- a/autostart/org.gnome.SettingsDaemon.Wacom-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.Wacom.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's wacom plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-wacom
++Exec=@settings@/gsd-wacom
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/org.gnome.SettingsDaemon.XSettings-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.XSettings.desktop
+similarity index 80%
+rename from autostart/org.gnome.SettingsDaemon.XSettings-pantheon.desktop
+rename to autostart/org.gnome.SettingsDaemon.XSettings.desktop
+index 78acfce..5ee6cc2 100644
+--- a/autostart/org.gnome.SettingsDaemon.XSettings-pantheon.desktop
++++ b/autostart/org.gnome.SettingsDaemon.XSettings.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=GNOME Settings Daemon's xsettings plugin
+-Exec=/usr/lib/gnome-settings-daemon/gsd-xsettings
++Exec=@settings@/gsd-xsettings
+ OnlyShowIn=Pantheon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=Initialization
+diff --git a/autostart/user-dirs-update-gtk-pantheon.desktop b/autostart/user-dirs-update-gtk-pantheon.desktop
+deleted file mode 100644
+index eba3326..0000000
+--- a/autostart/user-dirs-update-gtk-pantheon.desktop
++++ /dev/null
+@@ -1,12 +0,0 @@
+-[Desktop Entry]
+-Encoding=UTF-8
+-Exec=xdg-user-dirs-gtk-update
+-Name=User folders update
+-Comment=Update common folders names to match current locale
+-Terminal=false
+-OnlyShowIn=Pantheon;
+-Type=Application
+-StartupNotify=false
+-X-KDE-autostart-after=panel
+-NoDisplay=true
+-X-Ubuntu-Gettext-Domain=xdg-user-dirs-gtk
