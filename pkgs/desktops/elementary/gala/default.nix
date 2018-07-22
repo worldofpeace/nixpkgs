@@ -44,6 +44,8 @@ mkElementary rec {
     mutter
   ];
 
+  patches = [ ./plugins-dir.patch ];
+
   postPatch = ''
     chmod +x ./build-aux/meson/post_install.py
     patchShebangs ./build-aux/meson/post_install.py
