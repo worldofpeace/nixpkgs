@@ -179,6 +179,7 @@ in
         lightlocker # TODO: This probably needs work
         plank
         shared-mime-info
+        xfce4-13.tumbler  
       ] ++ (with pkgs.elementary;
       [
         cerbere
@@ -209,8 +210,10 @@ in
     services.bamf.enable = true;
     services.elementary.contractor.enable = true;
     services.colord.enable = mkDefault true;
-    services.dbus.packages =
-      mkIf config.services.printing.enable [ pkgs.system-config-printer ];
+    services.dbus.packages = mkMerge [
+      ([pkgs.xfce4-13.tumbler])
+      (mkIf config.services.printing.enable  ([pkgs.system-config-printer]) )
+    ];
     services.dleyna-renderer.enable = mkDefault true;
     services.dleyna-server.enable = mkDefault true;
     services.geoclue2.enable = mkDefault true;
