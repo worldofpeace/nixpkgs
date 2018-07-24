@@ -232,6 +232,7 @@
   ./services/desktops/bamf.nix
   ./services/desktops/dleyna-renderer.nix
   ./services/desktops/dleyna-server.nix
+  ./services/desktops/elementary/contractor.nix
   ./services/desktops/flatpak.nix
   ./services/desktops/geoclue2.nix
   ./services/desktops/pipewire.nix
