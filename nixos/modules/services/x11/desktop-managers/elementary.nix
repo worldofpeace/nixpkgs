@@ -185,12 +185,13 @@ in
         cerbere
         defaultIconTheme
         elementary-gtk-theme
+        elementary-session-settings
         elementary-shortcut-overlay
         elementary-sound-theme
+        elementary-wallpapers
         gala
         switchboard
         wingpanel
-        elementary-session-settings
       ]) ++ pkgs.elementary.wingpanelIndicators ++ pkgs.elementary.apps ++ pkgs.elementary.switchboardPlugs
       ++ (with pkgs.gnome3;
       [
