@@ -207,6 +207,7 @@ in
     security.polkit.enable = true;
     services.accounts-daemon.enable = true;
     services.bamf.enable = true;
+    services.elementary.contractor.enable = true;
     services.colord.enable = mkDefault true;
     services.dbus.packages =
       mkIf config.services.printing.enable [ pkgs.system-config-printer ];
