@@ -2,11 +2,11 @@
 
 mkElementary rec {
   pname = "cerbere";
-  version = "23d15fdeca66b6a05f6dea3588897ef8bd5e93a7";
+  version = "0.2.4";
 
-  name = "${pname}-2018-07-18";
+  name = "${pname}-${version}";
 
-  sha256 = "0mlvc6qbr5hn32vfgqafsj638n0kc9mh4fhkkh2a1r060asiab17";
+  sha256 = "0f9jr6q5z6nir5b77f96wm9rx6r6s9i0sr1yrymg3n7jyjgrvdwp";
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -21,10 +21,11 @@ mkElementary rec {
 
   postPatch = ''
     chmod +x ./meson/post_install.py
-    patchShebangs ./meson/post_install.py    
+    patchShebangs ./meson/post_install.py
   '';
 
   meta = {
     description = "A simple service to ensure uptime of essential processes";
   };
+  
 }
