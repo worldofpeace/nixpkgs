@@ -179,7 +179,12 @@ in
         lightlocker # TODO: This probably needs work
         plank
         shared-mime-info
-        xfce4-13.tumbler  
+        xfce4-13.tumbler
+        (pkgs.runCommand "elementary-a11y-bus-autostart" {} ''
+        mkdir -p $out/etc/xdg/autostart
+        substitute ${pkgs.at-spi2-core}/etc/xdg/autostart/at-spi-dbus-bus.desktop $out/etc/xdg/autostart/at-spi-dbus-bus-pantheon.desktop \
+          --replace "OnlyShowIn=GNOME;Unity;" "OnlyShowIn=GNOME;Unity;Pantheon;"
+        '')
       ] ++ (with pkgs.elementary;
       [
         cerbere
