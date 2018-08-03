@@ -39,6 +39,12 @@ mkElementary rec {
     zeitgeist
   ];
 
+  patches = [ ./hardcode-gsettings.patch ];
+
+  postPatch = ''
+    substituteInPlace filechooser-module/FileChooserDialog.vala --subst-var-by ELEMENTARY_FILES_GSETTINGS_PATH $out/share/gsettings-schemas/${name}/glib-2.0/schemas
+  '';
+
   meta = {
     description = "File browser designed for elementary OS";
   };
