@@ -47,9 +47,13 @@ in
       sessionPath = mkOption {
         default = [];
         example = literalExample "[ pkgs.gnome3.gpaste ]";
-        description = "Additional list of packages to be added to the session search path.
-                       Useful for gnome shell extensions or gsettings-conditionated autostart.";
-        apply = list: list;
+        description = ''
+          Additional list of packages to be added to the session search path.
+          Useful for GSettings-conditional autostart.
+
+          Note that this should be a last resort; patching the package is preferred (see GPaste).
+        '';
+        apply = list: list ++ pkgs.elementary.wingpanelIndicators ++ [ pkgs.gnome3.evolution-data-server ];
       };
 
       extraGSettingsOverrides = mkOption {
@@ -73,64 +77,10 @@ in
 
   config = mkIf cfg.enable {
 
-    services.bamf.enable = true;
-    security.polkit.enable = true;
-    services.udisks2.enable = true;
-    services.accounts-daemon.enable = true;
-    services.geoclue2.enable = mkDefault true;
-    services.dleyna-renderer.enable = mkDefault true;
-    services.dleyna-server.enable = mkDefault true;
-    services.gnome3.at-spi2-core.enable = true;
-    services.gnome3.evolution-data-server.enable = true;
-    services.gnome3.gnome-keyring.enable = true;
-    services.gnome3.gvfs.enable = true;
-    hardware.pulseaudio.enable = mkDefault true;
-    networking.networkmanager.enable = mkDefault true;
-    services.upower.enable = config.powerManagement.enable;
-    services.colord.enable = mkDefault true;
-    hardware.bluetooth.enable = mkDefault true;
-    services.xserver.libinput.enable = mkDefault true; # for controlling touchpad settings via gnome control center
-    services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
+    services.xserver.displayManager.extraSessionFilePackages = [ pkgs.elementary.elementary-session-settings ];
 
-    environment.systemPackages = pkgs.elementary.wingpanelIndicators ++ pkgs.elementary.apps ++ pkgs.elementary.switchboardPlugs ++ [
-      pkgs.elementary.cerbere
-      pkgs.elementary.elementary-gtk-theme
-      pkgs.elementary.defaultIconTheme
-      pkgs.elementary.gala
-      pkgs.elementary.switchboard
-      pkgs.elementary.wingpanel
-      pkgs.gnome3.geary
-      pkgs.plank
-
-      pkgs.gnome3.dconf
-      pkgs.gnome3.epiphany
-      pkgs.gnome3.evolution-data-server
-      pkgs.desktop-file-utils
-      pkgs.shared-mime-info
-      pkgs.glib
-      pkgs.gtk3.out
-      pkgs.glib-networking
-      pkgs.gvfs
-      pkgs.gnome3.gnome-menus
-      pkgs.gnome3.gnome-settings-daemon
-      pkgs.hicolor-icon-theme
-      pkgs.gnome3.gnome-desktop
-    ];
-
-    fonts.fonts = [ pkgs.opensans-ttf ];
-
-    services.xserver.desktopManager.session = singleton
-      { name = "elementary";
-        bgSupport = true;
-        start = ''
-          export GTK_DATA_PREFIX=${config.system.path}
-
-          export GTK_PATH=${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0
-
-          export GTK_MODULES=pantheon-filechooser-module
-
-          export XDG_MENU_PREFIX=gnome-
-
+    services.xserver.displayManager.sessionCommands = ''
+      if test "$XDG_CURRENT_DESKTOP" = "Pantheon"; then
           ${concatMapStrings (p: ''
             if [ -d "${p}/share/gsettings-schemas/${p.name}" ]; then
               export XDG_DATA_DIRS=$XDG_DATA_DIRS''${XDG_DATA_DIRS:+:}${p}/share/gsettings-schemas/${p.name}
@@ -141,23 +91,15 @@ in
               export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${p}/lib
             fi
           '') cfg.sessionPath}
+      fi
+    '';
 
-          # So gnome-session can find the pantheon session
-          export XDG_DATA_DIRS=$XDG_DATA_DIRS''${XDG_DATA_DIRS:+:}${pkgs.elementary.elementary-session-settings}/share
+    # Override GSettings schemas
+    environment.variables.NIX_GSETTINGS_OVERRIDES_DIR = "${nixos-gsettings-desktop-schemas}/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas";
 
-          # Override gsettings-desktop-schema
-          export NIX_GSETTINGS_OVERRIDES_DIR=${nixos-gsettings-desktop-schemas}/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas
+    environment.variables.XDG_DATA_DIRS = [ "${pkgs.elementary.elementary-session-settings}/share" ];
 
-          export XDG_CURRENT_DESKTOP=Pantheon
-
-          ${pkgs.xdg-user-dirs}/bin/xdg-user-dirs-update
-
-          ${pkgs.gnome3.gnome-session}/bin/gnome-session --session=pantheon ${optionalString cfg.debug "--debug"} &
-          waitPID=$!
-        '';
-      };
-
-    services.xserver.desktopManager.elementary.sessionPath = pkgs.elementary.wingpanelIndicators ++ [ pkgs.gnome3.evolution-data-server ];
+    environment.variables.GNOME_SESSION_DEBUG = optionalString cfg.debug "1";
 
     services.xserver.desktopManager.elementary.extraGSettingsOverridePackages = with pkgs; [
       elementary.gala
@@ -240,8 +182,6 @@ in
         monospace = [ "Roboto Mono" ];
         sansSerif = [ "Open Sans" ];
       };
-
-    environment.pathsToLink = [ "/share" ];
 
     environment.variables.GIO_EXTRA_MODULES = [ "${lib.getLib pkgs.gnome3.dconf}/lib/gio/modules"
                                                 "${pkgs.gnome3.glib-networking.out}/lib/gio/modules"
