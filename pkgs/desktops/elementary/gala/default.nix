@@ -1,7 +1,7 @@
 { mkElementary, pkgconfig, meson, ninja, vala
 , desktop-file-utils, gettext, libxml2, glib, gtk3
 , granite, libgee, bamf, gnome-settings-daemon
-, libcanberra, libcanberra-gtk3, gnome-desktop, mutter
+, libcanberra, libcanberra-gtk3, gnome-desktop, mutter, clutter
 , plank, gsettings-desktop-schemas, gobjectIntrospection, gdk_pixbuf
 , defaultIconTheme, appstream, appstream-glib, wrapGAppsHook }:
 
@@ -29,7 +29,9 @@ mkElementary rec {
 
   buildInputs = [
     bamf
+    clutter
     defaultIconTheme
+    gdk_pixbuf
     glib
     gnome-desktop
     gnome-settings-daemon
@@ -39,9 +41,8 @@ mkElementary rec {
     libcanberra
     libcanberra-gtk3
     libgee
-    plank
-    gdk_pixbuf
     mutter
+    plank
   ];
 
   patches = [ ./plugins-dir.patch ];
