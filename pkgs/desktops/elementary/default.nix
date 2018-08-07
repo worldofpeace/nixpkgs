@@ -100,6 +100,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   contractor = callPackage ./contractor { };
 
+  pantheon-agent-polkit = callPackage ./pantheon-agent-polkit { };
+
   #### WINGPANEL INDICATORS
 
   wingpanel-indicator-a11y = callPackage ./wingpanel-indicators/a11y { };
