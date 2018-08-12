@@ -139,6 +139,7 @@ in
         elementary-sound-theme
         elementary-wallpapers
         gala
+        pantheon-agent-polkit
         switchboard
         wingpanel
       ]) ++ pkgs.elementary.wingpanelIndicators ++ pkgs.elementary.apps ++ pkgs.elementary.switchboardPlugs
