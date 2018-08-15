@@ -155,6 +155,7 @@ in
     security.polkit.enable = true;
     services.accounts-daemon.enable = true;
     services.bamf.enable = true;
+    services.zeitgeist.enable = true;
     services.elementary.contractor.enable = true;
     services.colord.enable = mkDefault true;
     services.dbus.packages = mkMerge [
