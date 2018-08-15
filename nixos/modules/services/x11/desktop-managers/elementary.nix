@@ -63,7 +63,14 @@ in
       };
 
       extraGSettingsOverridePackages = mkOption {
-        default = [];
+        default = with pkgs; [
+          elementary.gala
+          epiphany
+          gnome3.gnome-settings-daemon
+          gnome3.mutter
+          gtk3
+          plank
+        ];
         type = types.listOf types.path;
         description = "List of packages for which gsettings are overridden.";
       };
@@ -100,17 +107,6 @@ in
     environment.variables.XDG_DATA_DIRS = [ "${pkgs.elementary.elementary-session-settings}/share" ];
 
     environment.variables.GNOME_SESSION_DEBUG = optionalString cfg.debug "1";
-
-    services.xserver.desktopManager.elementary.extraGSettingsOverridePackages = with pkgs; [
-      elementary.gala
-      epiphany
-      gnome3.gnome-settings-daemon
-      gnome3.mutter
-      gnome3.networkmanagerapplet
-      gtk3
-      plank
-      # TODO: There's ibus stuff too
-    ];
 
     environment.systemPackages = with pkgs;
       [
