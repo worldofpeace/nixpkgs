@@ -2,15 +2,15 @@
 , desktop-file-utils, gettext, libxml2, glib, gtk3, granite, libgee, gnome-settings-daemon
 , gnome-desktop, mutter, gobjectIntrospection, gdk_pixbuf, defaultIconTheme, wingpanel
 , elementary-gtk-theme, elementary-wallpapers, elementary-default-settings, lightdm
-, numlockx, clutter-gtk, libglvnd, wrapGAppsHook }:
+, numlockx, clutter-gtk, libglvnd, dbus, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "greeter";
-  version = "0563aa573b2b5dfadd1db4cff5954f7e746112b2";
+  version = "23ef62e9571b70991b527498a83fedd9e6db1a12";
 
-  name = "elementary-${pname}-2018-06-01";
+  name = "elementary-${pname}-2018-08-13";
 
-  sha256 = "18z7hj9nwfn4s8kvl9i1ai46v4c30ymhyf7ca1llw8kmfbaj7chf";
+  sha256 = "0hwh0f0zjklfwc3gi0c8jj2kf9kldxnfqb8v7w9q6yiy60y399ln";
 
   nativeBuildInputs = [
     desktop-file-utils
@@ -52,6 +52,8 @@ mkElementary rec {
     })
     ./01-sbin-bin.patch
     ./01-sysconfdir-install.patch
+    ./hardcode-compositor-exec.patch
+    ./hardcode-wingpanel-exec.patch
   ];
 
   # This constant is baked into the program
@@ -68,7 +70,14 @@ mkElementary rec {
     # So It gets the default gtk and icon themes
     gappsWrapperArgs+=(
       --prefix XDG_CONFIG_DIRS : "${elementary-default-settings}/etc"
+      --prefix PATH : "${dbus}/bin"
     )
+  '';
+
+  postPatch = ''
+    substituteInPlace src/PantheonGreeter.vala \
+      --subst-var-by WINGPANEL_GREETER_EXEC "${wingpanel}/bin/wingpanel -g" \
+      --subst-var-by GREETER_COMPOSITOR_EXEC $out/bin/io.elementary.greeter-compositor
   '';
 
   postFixup = ''

@@ -1,0 +1,13 @@
+diff --git a/src/PantheonGreeter.vala b/src/PantheonGreeter.vala
+index 5cc8546..94591fe 100644
+--- a/src/PantheonGreeter.vala
++++ b/src/PantheonGreeter.vala
+@@ -86,7 +86,7 @@ public class PantheonGreeter : Gtk.Window {
+             settings_daemon.start ();
+ 
+             try {
+-                var panel = AppInfo.create_from_commandline ("wingpanel -g", null, GLib.AppInfoCreateFlags.NONE);
++                var panel = AppInfo.create_from_commandline ("@WINGPANEL_GREETER_EXEC@", null, GLib.AppInfoCreateFlags.NONE);
+                 panel.launch (null, null);
+             } catch (Error e) {
+                 warning ("Failed to start panel: %s", e.message);

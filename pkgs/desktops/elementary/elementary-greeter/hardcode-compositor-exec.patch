@@ -1,0 +1,13 @@
+diff --git a/src/PantheonGreeter.vala b/src/PantheonGreeter.vala
+index 5cc8546..84a8891 100644
+--- a/src/PantheonGreeter.vala
++++ b/src/PantheonGreeter.vala
+@@ -447,7 +447,7 @@ public class PantheonGreeter : Gtk.Window {
+ }
+ 
+ public static int main (string [] args) {
+-    var compositor = new Greeter.ComponentWatcher ("io.elementary.greeter-compositor");
++    var compositor = new Greeter.ComponentWatcher ("@GREETER_COMPOSITOR_EXEC@");
+ 
+     /* Protect memory from being paged to disk, as we deal with passwords */
+     Posix.mlockall (Posix.MCL_CURRENT | Posix.MCL_FUTURE);
