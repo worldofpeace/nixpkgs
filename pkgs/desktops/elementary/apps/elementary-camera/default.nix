@@ -1,16 +1,14 @@
-{ mkElementary, pkgconfig, meson, ninja, vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3
-, granite, libgee, libcanberra, clutter-gtk, clutter-gst
-, gsettings-desktop-schemas, gobjectIntrospection
-, defaultIconTheme, appstream, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, ninja, vala, desktop-file-utils, gettext, libxml2
+, glib, gtk3, granite, libgee, libcanberra, clutter-gtk, clutter-gst, gsettings-desktop-schemas
+, gobjectIntrospection, defaultIconTheme, appstream, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "camera";
-  version = "1.0";
+  version = "1.0.1";
 
   name = "elementary-${pname}-${version}";
-  
-  sha256 = "0nzgw354zq38ksz2fzj6b4l43sdg9wwqsk4lr3wcqh2h26dyxkv1";
+
+  sha256 = "1gxwz5f8d6q5p9nah21pjh4a0m1ficypzj4g4xmprwhfxdnq4yia";
 
   nativeBuildInputs = [
     appstream
