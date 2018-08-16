@@ -5,11 +5,11 @@
 
 mkElementary rec {
   pname = "terminal";
-  version = "0.5";
+  version = "0.5.1";
 
   name = "elementary-${pname}-${version}";
 
-  sha256 = "1r06kqghylnlw8hl8h4ffsak8il7gg99daic3j15byf322lms508";
+  sha256 = "05iki20y2swlpjrvccfsn1sag6yl95wrfb3rafd0p2gix39il8la";
 
   nativeBuildInputs = [
     appstream
@@ -33,14 +33,6 @@ mkElementary rec {
     libgee
     libnotify
     vte
-  ];
-
-  patches = [
-    # Fix API breaks with VTE > 2.91
-    (fetchpatch {
-      url = https://github.com/elementary/terminal/commit/8a87b497f6d64c7a7c1ce2bcec176d467976faf6.patch;
-      sha256 = "13ac6qyg35v4sc0dlc243n6rrck4bqnysfg65lzrq93m4j2j1pdv";
-    })
   ];
 
   postPatch = ''
