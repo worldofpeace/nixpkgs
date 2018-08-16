@@ -167,6 +167,8 @@ in
     services.geoclue2.enable = mkDefault true;
     services.gnome3.at-spi2-core.enable = true;
     services.gnome3.evolution-data-server.enable = true;
+    # TODO: The xdg autostarts will still be in the environment (from elementary-session-settings)
+    # if someone disabled this forcefully
     services.gnome3.gnome-keyring.enable = true;
     services.gnome3.gvfs.enable = true;
     services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
