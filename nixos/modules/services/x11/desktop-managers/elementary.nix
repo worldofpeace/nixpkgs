@@ -6,6 +6,14 @@ let
 
   cfg = config.services.xserver.desktopManager.elementary;
 
+  # Remove packages of ys from xs, based on their names
+  removePackagesByName = xs: ys:
+    let
+      pkgName = drv: (builtins.parseDrvName drv.name).name;
+      ysNames = map pkgName ys;
+    in
+      filter (x: !(builtins.elem (pkgName x) ysNames)) xs;
+
   nixos-gsettings-desktop-schemas = pkgs.runCommand "nixos-gsettings-desktop-schemas" {}
     ''
      mkdir -p $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas
@@ -79,6 +87,13 @@ in
 
     };
 
+    environment.elementary.excludePackages = mkOption {
+      default = [];
+      example = literalExample "[ pkgs.elementary.elementary-camera ]";
+      type = types.listOf types.package;
+      description = "Which packages elementary should exclude from the default environment";
+    };
+
   };
 
 
@@ -139,8 +154,8 @@ in
         pantheon-agent-polkit
         switchboard
         wingpanel
-      ]) ++ pkgs.elementary.wingpanelIndicators ++ pkgs.elementary.apps ++ pkgs.elementary.switchboardPlugs
-      ++ (with pkgs.gnome3;
+      ]) ++ (removePackagesByName pkgs.elementary.apps config.environment.elementary.excludePackages)
+      ++ pkgs.elementary.wingpanelIndicators ++ pkgs.elementary.switchboardPlugs ++ (with pkgs.gnome3;
       [
         dconf
         epiphany
