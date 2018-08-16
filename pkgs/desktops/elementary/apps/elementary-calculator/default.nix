@@ -5,11 +5,11 @@
 
 mkElementary rec {
   pname = "calculator";
-  version = "0.1.4";
+  version = "382cc2a4fe8e5c957e2a39b17cfa290fb8b2a9e9";
 
-  name = "elementary-${pname}-${version}";
-  
-  sha256 = "1zk5w4zdgglqlmz8gsaz3j452s5zy1f1a10549qhywkcvn7xylcf";
+  name = "elementary-${pname}-2018-08-12";
+
+  sha256 = "0crkcaiwhj0gnq3vvjx0cjypjikk38mpclsaxgl3jm393lpsdkxd";
 
   nativeBuildInputs = [
     appstream
@@ -35,7 +35,7 @@ mkElementary rec {
 
   postPatch = ''
     chmod +x ./meson/post_install.py
-    patchShebangs ./meson/post_install.py    
+    patchShebangs ./meson/post_install.py
   '';
 
   meta = {
