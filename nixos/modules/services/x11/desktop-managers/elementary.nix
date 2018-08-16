@@ -158,6 +158,7 @@ in
       ++ pkgs.elementary.wingpanelIndicators ++ pkgs.elementary.switchboardPlugs ++ (with pkgs.gnome3;
       [
         dconf
+        adwaita-icon-theme
         epiphany
         geary
         gnome-bluetooth
