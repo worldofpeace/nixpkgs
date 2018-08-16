@@ -71,7 +71,7 @@ lib.makeScope pkgs.newScope (self: with self; {
   #### DESKTOP
 
   elementary-default-settings = callPackage ./elementary-default-settings { };
-  
+
   elementary-greeter = callPackage ./elementary-greeter {
     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
   };
@@ -99,6 +99,8 @@ lib.makeScope pkgs.newScope (self: with self; {
   cerbere = callPackage ./cerbere { };
 
   contractor = callPackage ./contractor { };
+
+  pantheon-agent-geoclue2 = callPackage ./pantheon-agent-geoclue2 { };
 
   pantheon-agent-polkit = callPackage ./pantheon-agent-polkit { };
 
