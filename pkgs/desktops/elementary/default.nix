@@ -42,6 +42,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   cerbere = callPackage ./desktop/cerbere { };
 
+  contractor = callPackage ./desktop/contractor { };
+
   elementary-gtk-theme = callPackage ./desktop/elementary-gtk-theme { };
 
   elementary-icon-theme = callPackage ./desktop/elementary-icon-theme { };
