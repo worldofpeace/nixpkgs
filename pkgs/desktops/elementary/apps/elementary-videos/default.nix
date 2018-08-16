@@ -1,16 +1,15 @@
-{ mkElementary, pkgconfig, meson, ninja , vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3
-, granite, libgee, intltool, clutter-gst, clutter-gtk
-, gst_all_1, gsettings-desktop-schemas, gobjectIntrospection
-, defaultIconTheme, wrapGAppsHook,  gst-ffmpeg }:
+{ mkElementary, pkgconfig, meson, ninja , vala, desktop-file-utils, gettext
+, libxml2, glib, gtk3, granite, libgee, intltool, clutter-gst, clutter-gtk
+, gst_all_1, gsettings-desktop-schemas, gobjectIntrospection, defaultIconTheme
+, wrapGAppsHook,  gst-ffmpeg }:
 
 mkElementary rec {
   pname = "videos";
-  version = "0.2.6";
+  version = "2.6.1";
 
   name = "elementary-${pname}-${version}";
 
-  sha256 = "0fwk8w3gswzbihsn11j74wwhfyyd0z3frx4smg7i41nl8wiiigvc";
+  sha256 = "1q4lw2n4a4diiwfpdlpvvkghmsv4yvhzz27mrv2pv9l678f325bw";
 
   nativeBuildInputs = [
     desktop-file-utils
