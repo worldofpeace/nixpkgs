@@ -5,11 +5,11 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   wingpanelIndicators = [
     wingpanel-applications-menu wingpanel-indicator-a11y
-    wingpanel-indicator-ayatana wingpanel-indicator-bluetooth
-    wingpanel-indicator-datetime wingpanel-indicator-keyboard
-    wingpanel-indicator-network wingpanel-indicator-nightlight
-    wingpanel-indicator-notifications wingpanel-indicator-power
-    wingpanel-indicator-session wingpanel-indicator-sound
+    wingpanel-indicator-bluetooth wingpanel-indicator-datetime
+    wingpanel-indicator-keyboard wingpanel-indicator-network
+    wingpanel-indicator-nightlight wingpanel-indicator-notifications
+    wingpanel-indicator-power wingpanel-indicator-session
+    wingpanel-indicator-sound
   ];
 
   switchboardPlugs = [
@@ -107,8 +107,6 @@ lib.makeScope pkgs.newScope (self: with self; {
   #### WINGPANEL INDICATORS
 
   wingpanel-indicator-a11y = callPackage ./wingpanel-indicators/a11y { };
-
-  wingpanel-indicator-ayatana = callPackage ./wingpanel-indicators/ayatana { };
 
   wingpanel-indicator-bluetooth = callPackage ./wingpanel-indicators/bluetooth { };
 
