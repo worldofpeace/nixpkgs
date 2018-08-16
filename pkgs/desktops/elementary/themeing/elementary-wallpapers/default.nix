@@ -2,11 +2,11 @@
 
 mkElementary rec {
   pname = "wallpapers";
-  version = "5.2";
+  version = "337bd28558fd0c716b581925bfbde0620b8df994";
 
-  name = "elementary-${pname}-${version}";
+  name = "elementary-${pname}-2018-08-15";
 
-  sha256 = "10cmw1258ir646c8kzsmvr1gim6xfhj1srzi8zqvlqshn8gp1140";
+  sha256 = "1kh63ixcw697fac8rplj7dckpmiakipkqb13pa53br73c8y6zbxf";
 
   dontBuild = true;
 
