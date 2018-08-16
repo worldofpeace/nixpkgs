@@ -2,6 +2,23 @@
 
 
 lib.makeScope pkgs.newScope (self: with self; {
+
+  wingpanelIndicators = [
+    wingpanel-indicator-a11y wingpanel-indicator-ayatana
+    wingpanel-indicator-bluetooth wingpanel-indicator-datetime
+    wingpanel-indicator-keyboard wingpanel-indicator-network
+    wingpanel-indicator-nightlight wingpanel-indicator-notifications
+    wingpanel-indicator-power wingpanel-indicator-power
+    wingpanel-indicator-session wingpanel-indicator-sound
+  ];
+
+  apps = [
+    elementary-calculator elementary-calendar
+    elementary-camera elementary-code elementary-files
+    elementary-music elementary-photos elementary-screenshot-tool
+    elementary-terminal elementary-videos
+  ];
+
   vala = pkgs.vala_0_40;
   libgee = pkgs.gnome3.libgee;
   libgda = pkgs.gnome3.libgda;
@@ -69,7 +86,7 @@ lib.makeScope pkgs.newScope (self: with self; {
    wingpanel-indicator-bluetooth = callPackage ./desktop/indicators/bluetooth { };
    wingpanel-indicator-datetime = callPackage ./desktop/indicators/datetime { };
    wingpanel-indicator-keyboard = callPackage ./desktop/indicators/keyboard { };
-   wingpanel-indicator-network = callPackage ./desktop/indicators/network { 
+   wingpanel-indicator-network = callPackage ./desktop/indicators/network {
      inherit (gnome3) networkmanagerapplet;
    };
    wingpanel-indicator-nightlight = callPackage ./desktop/indicators/nightlight { };
@@ -77,5 +94,5 @@ lib.makeScope pkgs.newScope (self: with self; {
    wingpanel-indicator-power = callPackage ./desktop/indicators/power { };
    wingpanel-indicator-session = callPackage ./desktop/indicators/session { };
    wingpanel-indicator-sound = callPackage ./desktop/indicators/sound { };
-   
+
 })
