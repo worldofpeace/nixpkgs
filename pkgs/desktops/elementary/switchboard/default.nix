@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "switchboard";
-  version = "cd4124ea327ee5109e26b3f7556073edacb0f94f";
+  version = "0fc05c5422c934aab5c83307396a93b6f4cdd77c";
 
-  name = "${pname}-2018-07-27";
+  name = "${pname}-2018-08-14";
 
-  sha256 = "0whhbsqvfzkb3m3kbci2vc6kw3yzlhzdg1yiblh0i97hfvn1h1cy";
+  sha256 = "0nvnbycd9iiy9zb89847nwbrlwb8s9ycir33n1fyb9hpqnamym2v";
 
   nativeBuildInputs = [
     gettext
