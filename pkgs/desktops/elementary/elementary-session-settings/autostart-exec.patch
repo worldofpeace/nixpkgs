@@ -559,21 +559,23 @@ index a797f55..0000000
 -X-GNOME-AutoRestart=true
 -OnlyShowIn=Pantheon;
 diff --git a/autostart/orca-autostart-pantheon.desktop b/autostart/orca-autostart-pantheon.desktop
-deleted file mode 100644
-index 3579138..0000000
+index 3579138..06912f3 100644
 --- a/autostart/orca-autostart-pantheon.desktop
-+++ /dev/null
-@@ -1,10 +0,0 @@
--[Desktop Entry]
--Type=Application
--Name=Orca screen reader
++++ b/autostart/orca-autostart-pantheon.desktop
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+ Type=Application
+ Name=Orca screen reader
 -Exec=orca
--NoDisplay=true
--AutostartCondition=GSettings org.gnome.desktop.a11y.applications screen-reader-enabled
--X-GNOME-AutoRestart=true
--#X-GNOME-Autostart-Phase=Initialization
++Exec=@orcaexec@/orca
+ NoDisplay=true
+ AutostartCondition=GSettings org.gnome.desktop.a11y.applications screen-reader-enabled
+ X-GNOME-AutoRestart=true
+ #X-GNOME-Autostart-Phase=Initialization
 -OnlyShowIn=Pantheon;
 -X-Ubuntu-Gettext-Domain=orca
++OnlyShowIn=Pantheon;
+\ No newline at end of file
 diff --git a/autostart/org.gnome.SettingsDaemon.A11ySettings-pantheon.desktop b/autostart/org.gnome.SettingsDaemon.A11ySettings.desktop
 similarity index 79%
 rename from autostart/org.gnome.SettingsDaemon.A11ySettings-pantheon.desktop

@@ -1,4 +1,4 @@
-{ mkElementary, substituteAll, gnome-settings-daemon, gnome-keyring, onboard, orca, xdg-user-dirs, gnome-session, wingpanel }:
+{ mkElementary, substituteAll, gnome-settings-daemon, gnome-keyring, orca, xdg-user-dirs, gnome-session, wingpanel }:
 
 mkElementary rec {
   pname = "session-settings";
@@ -15,6 +15,7 @@ mkElementary rec {
       src = ./autostart-exec.patch;
       settings = "${gnome-settings-daemon}/libexec";
       keyring = "${gnome-keyring}/bin";
+      orcaexec = "${orca}/bin";
       dirs = "${xdg-user-dirs}/bin/";
     })
   ];
