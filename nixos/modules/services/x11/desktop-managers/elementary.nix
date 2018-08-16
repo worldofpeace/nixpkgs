@@ -163,8 +163,6 @@ in
       ([pkgs.xfce4-13.tumbler])
       (mkIf config.services.printing.enable  ([pkgs.system-config-printer]) )
     ];
-    services.dleyna-renderer.enable = mkDefault true;
-    services.dleyna-server.enable = mkDefault true;
     # elementary has pantheon-agent-geoclue2
     services.geoclue2.enableDemoAgent = false;
     services.geoclue2.enable = mkDefault true;
