@@ -1,0 +1,16 @@
+diff --git a/src/Views/LockPanel.vala b/src/Views/LockPanel.vala
+index 081cf10..42f6118 100644
+--- a/src/Views/LockPanel.vala
++++ b/src/Views/LockPanel.vala
+@@ -30,7 +30,10 @@ public class SecurityPrivacy.LockPanel : Granite.SimpleSettingsPage {
+     }
+ 
+     construct {
+-        locker = new Settings ("apps.light-locker");
++        SettingsSchemaSource sss = new SettingsSchemaSource.from_directory ("@LIGHTLOCKER_GSETTINGS_PATH@", SettingsSchemaSource.get_default (), true);
++        SettingsSchema locker_schema = sss.lookup ("apps.light-locker", false);
++
++        locker = new Settings.full (locker_schema, null, null);
+ 
+         var lock_suspend_label = new Gtk.Label (_("Lock on sleep:"));
+         var lock_suspend_switch = new Gtk.Switch ();
