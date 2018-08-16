@@ -135,6 +135,7 @@ in
         elementary-sound-theme
         elementary-wallpapers
         gala
+        pantheon-agent-geoclue2
         pantheon-agent-polkit
         switchboard
         wingpanel
