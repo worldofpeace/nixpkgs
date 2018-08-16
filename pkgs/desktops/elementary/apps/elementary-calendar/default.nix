@@ -6,11 +6,11 @@
 
 mkElementary rec {
   pname = "calendar";
-  version = "d621fb1494698c20b142f01e9d79abeea6217d8e";
+  version = "a1ac3bb2ea35bec4186ab5990fa810489dc9bccf";
 
-  name = "elementary-${pname}-2018-07-11";
-  
-  sha256 = "1w3d5biisjkp0dg1gvawbzvcv1nxwh2d9y3zzsg8cfa1d2zwcfk1";
+  name = "elementary-${pname}-2018-08-13";
+
+  sha256 = "0y3zc6i2zxwqb2ax2ckq4876np4xynk91rfcb3wyna34il8kgawa";
 
   nativeBuildInputs = [
     appstream-glib
@@ -41,9 +41,9 @@ mkElementary rec {
     libnotify
   ];
 
-  # This should be provided by a post_install.py script
-  postInstall = ''
-    ${glib.dev}/bin/glib-compile-schemas $out/share/glib-2.0/schemas
+  postPatch = ''
+    chmod +x ./meson/post_install.py
+    patchShebangs ./meson/post_install.py
   '';
 
   meta = {
