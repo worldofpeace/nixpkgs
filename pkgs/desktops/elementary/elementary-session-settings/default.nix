@@ -14,9 +14,7 @@ mkElementary rec {
     (substituteAll {
       src = ./autostart-exec.patch;
       settings = "${gnome-settings-daemon}/libexec";
-      gnome-keyring = "${gnome-keyring}";
-      onboard = "${onboard}/bin/";
-      orca = "${orca}/bin/";
+      keyring = "${gnome-keyring}/bin";
       dirs = "${xdg-user-dirs}/bin/";
     })
   ];
