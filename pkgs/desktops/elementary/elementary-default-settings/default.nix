@@ -2,11 +2,11 @@
 
 mkElementary rec {
   pname = "default-settings";
-  version = "5.0";
+  version = "a2ca00130c16e805179fb5abd7b624a873dff2da";
 
-  name = "elementary-${pname}-${version}";
+  name = "elementary-${pname}-2018-08-02";
 
-  sha256 = "0gyv835qbr90001gda2pzngzzbbk5jf9grgfl25pqkm29s45rqq0";
+  sha256 = "13gcp342vz9w0pr9w268b4k6506z0wm7mrbb7q39zqrpl1x26xs7";
 
   patches = [ ./background.patch ];
 
