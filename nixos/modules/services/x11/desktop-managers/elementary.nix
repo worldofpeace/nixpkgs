@@ -165,6 +165,8 @@ in
     ];
     services.dleyna-renderer.enable = mkDefault true;
     services.dleyna-server.enable = mkDefault true;
+    # elementary has pantheon-agent-geoclue2
+    services.geoclue2.enableDemoAgent = false;
     services.geoclue2.enable = mkDefault true;
     services.gnome3.at-spi2-core.enable = true;
     services.gnome3.evolution-data-server.enable = true;
