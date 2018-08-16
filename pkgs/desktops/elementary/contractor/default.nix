@@ -2,11 +2,11 @@
 
 mkElementary rec {
   pname = "contractor";
-  version = "fe6f23e1d24ba1b63c76e504af8e16bb31012c97";
+  version = "0.3.4";
 
-  name = "${pname}-2018-05-24";
+  name = "${pname}-${version}";
 
-  sha256 = "0cb7gh0z51fwkrv1d21sir6nv8par8f1yjmad5x3ahs10d9x7ql5";
+  sha256 = "1jzqv7pglhhyrkj1pfk1l624zn1822wyl5dp6gvwn4sk3iqxwwhl";
 
   nativeBuildInputs = [
     gobjectIntrospection
