@@ -1,7 +1,7 @@
-{ mkElementary, pkgconfig, cmake, vala, libcanberra, dbus-glib
-, gtk3, libgee, glib, granite, libnotify, pango, plank, sqlite
-, libdbusmenu-gtk3, zeitgeist, gettext, glib-networking, intltool
-, gsettings-desktop-schemas, defaultIconTheme, wrapGAppsHook, gobjectIntrospection }:
+{ mkElementary, pkgconfig, cmake, vala, intltool, libcanberra, dbus-glib
+, gtk3, libgee, glib, granite, libnotify, libunity, pango, plank, bamf, sqlite
+, libdbusmenu-gtk3, zeitgeist, gettext, glib-networking, gsettings-desktop-schemas
+, defaultIconTheme, wrapGAppsHook, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "files";
@@ -23,6 +23,7 @@ mkElementary rec {
   ];
 
   buildInputs = [
+    bamf
     dbus-glib
     defaultIconTheme
     glib
@@ -33,6 +34,7 @@ mkElementary rec {
     libdbusmenu-gtk3
     libgee
     libnotify
+    libunity
     pango
     plank
     sqlite
