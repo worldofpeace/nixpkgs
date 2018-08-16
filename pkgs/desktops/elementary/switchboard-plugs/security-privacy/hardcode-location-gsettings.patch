@@ -1,0 +1,34 @@
+diff --git a/src/Views/LocationPanel.vala b/src/Views/LocationPanel.vala
+index a1de86a..8fd8cd3 100644
+--- a/src/Views/LocationPanel.vala
++++ b/src/Views/LocationPanel.vala
+@@ -1,7 +1,7 @@
+ // -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
+ /*-
+  * Copyright (c) 2017-2018 elementary LLC. (https://elementary.io)
+- * Copyright (C) 2017 David Hewitt <davidmhewitt@gmail.com>   
++ * Copyright (C) 2017 David Hewitt <davidmhewitt@gmail.com>
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU Lesser General Public License as published by
+@@ -12,7 +12,7 @@
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU Lesser General Public License for more details.
+- * 
++ *
+  * You should have received a copy of the GNU Lesser General Public License
+  * along with this program; if not, write to the Free Software Foundation,
+  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+@@ -47,7 +47,10 @@ public class SecurityPrivacy.LocationPanel : Granite.SimpleSettingsPage {
+     }
+ 
+     construct {
+-        location_settings = new GLib.Settings (LOCATION_AGENT_ID);
++        SettingsSchemaSource sss = new SettingsSchemaSource.from_directory ("@PANTHEON_AGENT_GEOCLUE2_GSETTINGS_PATH@", SettingsSchemaSource.get_default (), true);
++        SettingsSchema geoclue_schema = sss.lookup (LOCATION_AGENT_ID, false);
++
++        location_settings = new GLib.Settings.full (geoclue_schema, null, null);
+ 
+         var placeholder = new Granite.Widgets.AlertView (
+             _("No Apps Are Using Location Services"),

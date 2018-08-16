@@ -1,5 +1,6 @@
 { mkElementary, meson, ninja, pkgconfig, vala, libgee, granite
-, glib, gtk3, polkit, zeitgeist, gsettings-desktop-schemas, switchboard, lightlocker, gobjectIntrospection }:
+, glib, gtk3, polkit, zeitgeist, gsettings-desktop-schemas, switchboard, lightlocker
+, pantheon-agent-geoclue2, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-security-privacy";
@@ -33,6 +34,7 @@ mkElementary rec {
   patches = [
     ./hardcode-gsettings.patch
     ./hardcode-lightlocker-gsettings.patch
+    ./hardcode-location-gsettings.patch
   ];
 
   postPatch = ''
@@ -40,6 +42,7 @@ mkElementary rec {
     patchShebangs ./meson/post_install.py
 
     substituteInPlace src/Views/LockPanel.vala --subst-var-by LIGHTLOCKER_GSETTINGS_PATH ${lightlocker}/share/gsettings-schemas/${lightlocker.name}/glib-2.0/schemas
+    substituteInPlace src/Views/LocationPanel.vala --subst-var-by PANTHEON_AGENT_GEOCLUE2_GSETTINGS_PATH ${pantheon-agent-geoclue2}/share/gsettings-schemas/${pantheon-agent-geoclue2.name}/glib-2.0/schemas
     substituteInPlace src/Views/FirewallPanel.vala --subst-var-by SWITCHBOARD_SEC_PRIV_GSETTINGS_PATH $out/share/gsettings-schemas/${name}/glib-2.0/schemas
   '';
 
