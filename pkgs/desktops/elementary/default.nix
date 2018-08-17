@@ -18,9 +18,10 @@ lib.makeScope pkgs.newScope (self: with self; {
     switchboard-plug-datetime switchboard-plug-display
     switchboard-plug-keyboard switchboard-plug-mouse-touchpad
     switchboard-plug-network switchboard-plug-notifications
-    switchboard-plug-pantheon-shell switchboard-plug-power
-    switchboard-plug-printers switchboard-plug-security-privacy
-    switchboard-plug-sharing switchboard-plug-sound
+    switchboard-plug-onlineaccounts switchboard-plug-pantheon-shell
+    switchboard-plug-power switchboard-plug-printers
+    switchboard-plug-security-privacy switchboard-plug-sharing
+    switchboard-plug-sound
   ];
 
   apps = [
@@ -159,6 +160,10 @@ lib.makeScope pkgs.newScope (self: with self; {
   };
 
   switchboard-plug-notifications = callPackage ./switchboard-plugs/notifications { };
+
+  switchboard-plug-onlineaccounts = callPackage ./switchboard-plugs/onlineaccounts {
+    inherit (gnome3) rest;
+  };
 
   switchboard-plug-pantheon-shell = callPackage ./switchboard-plugs/pantheon-shell {
     inherit (gnome3)  gnome-settings-daemon gnome-desktop gexiv2;
