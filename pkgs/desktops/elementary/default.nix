@@ -90,6 +90,10 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) mutter;
   };
 
+  wingpanel-with-indicators = callPackage ./wingpanel/wrapper.nix {
+    indicators = null;
+  };
+
   wingpanel-applications-menu = callPackage ./wingpanel-applications-menu {
      inherit (gnome3) gnome-menus;
   };

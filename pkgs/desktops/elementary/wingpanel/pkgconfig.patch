@@ -1,0 +1,14 @@
+diff --git a/lib/wingpanel.pc.cmake b/lib/wingpanel.pc.cmake
+index 1c19b30..4cd88fa 100644
+--- a/lib/wingpanel.pc.cmake
++++ b/lib/wingpanel.pc.cmake
+@@ -1,7 +1,7 @@
+ prefix=@PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_LIBDIR@
++includedir=@CMAKE_INSTALL_INCLUDEDIR@
+ indicatorsdir=${libdir}/wingpanel
+  
+ Name: Wingpanel

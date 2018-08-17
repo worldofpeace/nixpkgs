@@ -35,7 +35,7 @@ mkElementary rec {
     mutter
   ];
 
-  patches = [ ./indicators-dir.patch ];
+  patches = [ ./indicators.patch ./pkgconfig.patch ];
 
   meta = {
     description = "The extensible top panel for Pantheon";
