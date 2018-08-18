@@ -1,0 +1,98 @@
+diff --git a/debian/elementary-default-settings.gsettings-override b/debian/elementary-default-settings.gsettings-override
+index 6452c30..f26b97f 100644
+--- a/debian/elementary-default-settings.gsettings-override
++++ b/debian/elementary-default-settings.gsettings-override
+@@ -1,5 +1,5 @@
+ [net.launchpad.plank.dock.settings]
+-dock-items=['gala-multitaskingview.dockitem','org.gnome.Epiphany.dockitem','org.pantheon.mail.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','io.elementary.switchboard.dockitem','io.elementary.appcenter.dockitem']
++dock-items=['gala-multitaskingview.dockitem','org.gnome.Epiphany.dockitem','org.gnome.Geary.dockitem','io.elementary.calendar.dockitem','io.elementary.music.dockitem','io.elementary.videos.dockitem','io.elementary.photos.dockitem','io.elementary.switchboard.dockitem']
+ hide-delay=250
+ hide-mode='window-dodge'
+ show-dock-item=false
+diff --git a/plank/dock1/launchers/gala-multitaskingview.dockitem b/plank/dock1/launchers/gala-multitaskingview.dockitem
+index c5bc9e9..7c484b8 100644
+--- a/plank/dock1/launchers/gala-multitaskingview.dockitem
++++ b/plank/dock1/launchers/gala-multitaskingview.dockitem
+@@ -1,2 +1,2 @@
+ [PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/gala-multitaskingview.desktop
++Launcher=file://@gala@/share/applications/gala-multitaskingview.desktop
+diff --git a/plank/dock1/launchers/io.elementary.appcenter.dockitem b/plank/dock1/launchers/io.elementary.appcenter.dockitem
+deleted file mode 100644
+index c9e2372..0000000
+--- a/plank/dock1/launchers/io.elementary.appcenter.dockitem
++++ /dev/null
+@@ -1,4 +0,0 @@
+-[PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/io.elementary.appcenter.desktop
+-
+-
+diff --git a/plank/dock1/launchers/io.elementary.calendar.dockitem b/plank/dock1/launchers/io.elementary.calendar.dockitem
+index f7360c8..faec881 100644
+--- a/plank/dock1/launchers/io.elementary.calendar.dockitem
++++ b/plank/dock1/launchers/io.elementary.calendar.dockitem
+@@ -1,4 +1,4 @@
+ [PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/io.elementary.calendar.desktop
++Launcher=file://@elementary_calendar@/share/applications/io.elementary.calendar.desktop
+ 
+ 
+diff --git a/plank/dock1/launchers/io.elementary.music.dockitem b/plank/dock1/launchers/io.elementary.music.dockitem
+index ba0eb23..02f5953 100644
+--- a/plank/dock1/launchers/io.elementary.music.dockitem
++++ b/plank/dock1/launchers/io.elementary.music.dockitem
+@@ -1,2 +1,2 @@
+ [PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/io.elementary.music.desktop
++Launcher=file://@elementary_music@/share/applications/io.elementary.music.desktop
+diff --git a/plank/dock1/launchers/io.elementary.photos.dockitem b/plank/dock1/launchers/io.elementary.photos.dockitem
+index 33ead76..f16202e 100644
+--- a/plank/dock1/launchers/io.elementary.photos.dockitem
++++ b/plank/dock1/launchers/io.elementary.photos.dockitem
+@@ -1,3 +1,3 @@
+ [PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/io.elementary.photos.desktop
++Launcher=file://@elementary_photos@/share/applications/io.elementary.photos.desktop
+ 
+diff --git a/plank/dock1/launchers/io.elementary.switchboard.dockitem b/plank/dock1/launchers/io.elementary.switchboard.dockitem
+index 9507f72..00eee68 100644
+--- a/plank/dock1/launchers/io.elementary.switchboard.dockitem
++++ b/plank/dock1/launchers/io.elementary.switchboard.dockitem
+@@ -1,3 +1,3 @@
+ [PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/io.elementary.switchboard.desktop
++Launcher=file://@switchboard_settings@/share/applications/io.elementary.switchboard.desktop
+ 
+diff --git a/plank/dock1/launchers/io.elementary.videos.dockitem b/plank/dock1/launchers/io.elementary.videos.dockitem
+index 1dd0f34..9d5ce4f 100644
+--- a/plank/dock1/launchers/io.elementary.videos.dockitem
++++ b/plank/dock1/launchers/io.elementary.videos.dockitem
+@@ -1,3 +1,3 @@
+ [PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/io.elementary.videos.desktop
++Launcher=file://@elementary_videos@/share/applications/io.elementary.videos.desktop
+ 
+diff --git a/plank/dock1/launchers/org.gnome.Epiphany.dockitem b/plank/dock1/launchers/org.gnome.Epiphany.dockitem
+index 08c4b72..877710c 100644
+--- a/plank/dock1/launchers/org.gnome.Epiphany.dockitem
++++ b/plank/dock1/launchers/org.gnome.Epiphany.dockitem
+@@ -1,2 +1,2 @@
+ [PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/org.gnome.Epiphany.desktop
++Launcher=file://@epiphany@/share/applications/org.gnome.Epiphany.desktop
+diff --git a/plank/dock1/launchers/org.gnome.Geary.dockitem b/plank/dock1/launchers/org.gnome.Geary.dockitem
+new file mode 100644
+index 0000000..5177965
+--- /dev/null
++++ b/plank/dock1/launchers/org.gnome.Geary.dockitem
+@@ -0,0 +1,2 @@
++[PlankDockItemPreferences]
++Launcher=file://@geary@/share/applications/org.gnome.Geary.desktop
+diff --git a/plank/dock1/launchers/org.pantheon.mail.dockitem b/plank/dock1/launchers/org.pantheon.mail.dockitem
+deleted file mode 100644
+index dc50887..0000000
+--- a/plank/dock1/launchers/org.pantheon.mail.dockitem
++++ /dev/null
+@@ -1,2 +0,0 @@
+-[PlankDockItemPreferences]
+-Launcher=file:///usr/share/applications/org.pantheon.mail.desktop

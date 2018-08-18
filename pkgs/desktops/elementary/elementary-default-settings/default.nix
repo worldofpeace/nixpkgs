@@ -1,4 +1,5 @@
-{ mkElementary, elementary-wallpapers }:
+{ mkElementary, substituteAll, gala, elementary-calendar, elementary-music
+, elementary-photos, switchboard, elementary-videos, epiphany, geary, elementary-wallpapers }:
 
 mkElementary rec {
   pname = "default-settings";
@@ -8,20 +9,34 @@ mkElementary rec {
 
   sha256 = "13gcp342vz9w0pr9w268b4k6506z0wm7mrbb7q39zqrpl1x26xs7";
 
-  patches = [ ./background.patch ];
+  patches = [
+    (substituteAll {
+      src = ./plank.patch;
+      gala = "${gala}";
+      elementary_calendar = "${elementary-calendar}";
+      elementary_music = "${elementary-music}";
+      elementary_photos = "${elementary-photos}";
+      switchboard_settings = "${switchboard}";
+      elementary_videos = "${elementary-videos}";
+      epiphany = "${epiphany}";
+      geary = "${geary}";
+    })
+    ./background.patch
+  ];
 
   dontBuild = true;
 
   installPhase = ''
-    # settings.ini
     mkdir -p $out/etc/gtk-3.0
     cp -av settings.ini $out/etc/gtk-3.0
 
     cp -av debian/elementary-default-settings.gsettings-override $out
+
+    mkdir -p $out/share
+    cp -avr plank/ $out/share/plank/
   '';
 
   meta = {
     description = "Default settings and configuration files for elementary";
   };
 }
-
