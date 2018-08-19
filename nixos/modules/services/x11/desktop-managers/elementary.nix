@@ -153,9 +153,9 @@ in
         pantheon-agent-geoclue2
         pantheon-agent-polkit
         switchboard
-        wingpanel
+        wingpanel-with-indicators
       ]) ++ (removePackagesByName pkgs.elementary.apps config.environment.elementary.excludePackages)
-      ++ pkgs.elementary.wingpanelIndicators ++ pkgs.elementary.switchboardPlugs ++ (with pkgs.gnome3;
+      ++ pkgs.elementary.switchboardPlugs ++ (with pkgs.gnome3;
       [
         dconf
         adwaita-icon-theme
