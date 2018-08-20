@@ -20758,6 +20758,8 @@ with pkgs;
 
   mate = recurseIntoAttrs (callPackage ../desktops/mate { });
 
+  elementary = recurseIntoAttrs (callPackage ../desktops/elementary { });
+
   maxx = callPackage ../desktops/maxx { };
 
   plasma-applet-volumewin7mixer = libsForQt5.callPackage ../applications/misc/plasma-applet-volumewin7mixer { };
