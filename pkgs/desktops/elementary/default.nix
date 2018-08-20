@@ -139,6 +139,10 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   switchboard = callPackage ./switchboard { };
 
+  switchboard-with-plugs = callPackage ./switchboard/wrapper.nix {
+    plugs = null;
+  };
+
   switchboard-plug-a11y = callPackage ./switchboard-plugs/a11y { };
 
   switchboard-plug-about = callPackage ./switchboard-plugs/about { };
