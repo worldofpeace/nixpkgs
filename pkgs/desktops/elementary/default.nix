@@ -6,4 +6,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   mkElementary = callPackage ./mkElementary.nix {};
 
+  elementary-terminal = callPackage ./apps/elementary-terminal {
+    inherit (gnome3) vte libgee;
+  };
+
 })
