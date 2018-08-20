@@ -22,6 +22,7 @@ mkElementary rec {
       geary = "${geary}";
     })
     ./background.patch
+    ./wingpanel-overrides.patch
   ];
 
   dontBuild = true;
@@ -34,6 +35,8 @@ mkElementary rec {
 
     mkdir -p $out/share
     cp -avr plank/ $out/share/plank/
+
+    cp -avr wingpanel.d/ $out/etc/
   '';
 
   meta = {

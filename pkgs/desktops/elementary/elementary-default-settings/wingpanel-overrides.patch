@@ -1,0 +1,12 @@
+diff --git a/wingpanel.d/io.elementary.greeter.whitelist b/wingpanel.d/io.elementary.greeter.whitelist
+new file mode 100644
+index 0000000..0cff31f
+--- /dev/null
++++ b/wingpanel.d/io.elementary.greeter.whitelist
+@@ -0,0 +1,6 @@
++liba11y.so
++libbluetooth.so
++libkeyboard.so
++libnetwork.so
++libpower.so
++libsession.so
