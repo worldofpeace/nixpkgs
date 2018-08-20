@@ -41,6 +41,8 @@ in
     };
 
     environment.etc."lightdm/io.elementary.greeter.conf".source = "${pkgs.elementary.elementary-greeter}/etc/lightdm/io.elementary.greeter.conf";
+    environment.etc."wingpanel.d/ayatana.blacklist".source =  "${pkgs.elementary.elementary-default-settings}/etc/wingpanel.d/ayatana.blacklist";
+    environment.etc."wingpanel.d/io.elementary.greeter.whitelist".source = "${pkgs.elementary.elementary-default-settings}/etc/wingpanel.d/io.elementary.greeter.whitelist";
 
   };
 }
