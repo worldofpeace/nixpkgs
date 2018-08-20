@@ -14,4 +14,9 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) libgee;
   };
 
+  elementary-screenshot-tool = callPackage ./apps/elementary-screenshot-tool {
+    inherit (gnome3) libgee;
+  };
+
+
 })
