@@ -40,4 +40,5 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   elementary-icon-theme = callPackage ./elementary-icon-theme { };
 
+  elementary-shortcut-overlay = callPackage ./desktop/elementary-shortcut-overlay { };
 })
