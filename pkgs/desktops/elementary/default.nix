@@ -26,5 +26,7 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) libgee;
   };
 
+  elementary-gtk-theme = callPackage ./elementary-gtk-theme { };
+
 
 })
