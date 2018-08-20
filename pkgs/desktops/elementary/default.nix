@@ -55,4 +55,8 @@ lib.makeScope pkgs.newScope (self: with self; {
   gala = callPackage ./desktop/gala {
     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
    };
+
+   wingpanel = callPackage ./desktop/wingpanel {
+     inherit (gnome3) mutter;
+    };
 })
