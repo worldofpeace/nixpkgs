@@ -6,6 +6,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   mkElementary = callPackage ./mkElementary.nix {};
 
+  defaultIconTheme = elementary-icon-theme;
+
   elementary-terminal = callPackage ./apps/elementary-terminal {
     inherit (gnome3) vte libgee;
   };
@@ -28,5 +30,6 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   elementary-gtk-theme = callPackage ./elementary-gtk-theme { };
 
+  elementary-icon-theme = callPackage ./elementary-icon-theme { };
 
 })
