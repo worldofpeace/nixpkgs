@@ -18,5 +18,9 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) libgee;
   };
 
+  elementary-music = callPackage ./apps/elementary-music {
+    inherit (gnome3) libgee libgda libpeas;
+  };
+
 
 })
