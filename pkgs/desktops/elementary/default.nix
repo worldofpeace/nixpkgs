@@ -10,4 +10,8 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) vte libgee;
   };
 
+  elementary-calculator = callPackage ./apps/elementary-calculator {
+    inherit (gnome3) libgee;
+  };
+
 })
