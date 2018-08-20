@@ -22,5 +22,9 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) libgee libgda libpeas;
   };
 
+  elementary-videos = callPackage ./apps/elementary-videos {
+    inherit (gnome3) libgee;
+  };
+
 
 })
