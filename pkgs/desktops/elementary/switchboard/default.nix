@@ -32,7 +32,7 @@ mkElementary rec {
     libunity
   ];
 
-  patches = [ ./plugs-dir.patch ];
+  patches = [ ./plugs-path-env.patch ];
 
   postPatch = ''
     chmod +x ./meson/post_install.py

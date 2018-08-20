@@ -1,0 +1,77 @@
+diff --git a/lib/PlugsManager.vala b/lib/PlugsManager.vala
+index 75d0eaf..c3995ba 100644
+--- a/lib/PlugsManager.vala
++++ b/lib/PlugsManager.vala
+@@ -19,25 +19,33 @@
+  */
+ 
+ public class Switchboard.PlugsManager : GLib.Object {
+-    
++
+     private static Switchboard.PlugsManager? plugs_manager = null;
+-    
++
+     public static PlugsManager get_default () {
+         if (plugs_manager == null)
+             plugs_manager = new PlugsManager ();
+         return plugs_manager;
+     }
+-    
++
+     [CCode (has_target = false)]
+     private delegate Switchboard.Plug RegisterPluginFunction (Module module);
+-    
++
+     private Gee.LinkedList<Switchboard.Plug> plugs;
+-    
++
+     public signal void plug_added (Switchboard.Plug plug);
+-    
++
+     private PlugsManager () {
+         plugs = new Gee.LinkedList<Switchboard.Plug> ();
+-        var base_folder = File.new_for_path (Build.PLUGS_DIR);
++
++        var plugs_path = Environment.get_variable("SWITCHBOARD_PLUGS_PATH");
++        if (plugs_path != null) {
++            debug ("SWITCHBOARD_PLUGS_PATH set to %s", plugs_path);
++        } else {
++            critical ("SWITCHBOARD_PLUGS_PATH not set");
++        }
++
++        var base_folder = File.new_for_path (plugs_path);
+         find_plugins (base_folder);
+     }
+ 
+@@ -68,7 +76,7 @@ public class Switchboard.PlugsManager : GLib.Object {
+         module.make_resident ();
+         register_plug (plug);
+     }
+-    
++
+     private void find_plugins (File base_folder) {
+         FileInfo file_info = null;
+         try {
+@@ -89,7 +97,7 @@ public class Switchboard.PlugsManager : GLib.Object {
+             warning("Unable to scan plugs folder %s: %s\n", base_folder.get_path (), err.message);
+         }
+     }
+-    
++
+     private void register_plug (Switchboard.Plug plug) {
+         debug("%s registered", plug.code_name);
+         if (plugs.contains (plug))
+@@ -97,11 +105,11 @@ public class Switchboard.PlugsManager : GLib.Object {
+         plugs.add (plug);
+         plug_added (plug);
+     }
+-    
++
+     public bool has_plugs () {
+         return !plugs.is_empty;
+     }
+-    
++
+     public Gee.Collection<Switchboard.Plug> get_plugs () {
+         return plugs.read_only_view;
+     }
