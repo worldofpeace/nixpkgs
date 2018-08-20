@@ -12,6 +12,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   mkElementary = callPackage ./mkElementary.nix { };
 
+  ### Apps
+
   elementary-calculator = callPackage ./apps/elementary-calculator { };
 
   elementary-calendar = callPackage ./apps/elementary-calendar {
@@ -24,10 +26,6 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) libgit2-glib;
   };
 
-  elementary-gtk-theme = callPackage ./elementary-gtk-theme { };
-
-  elementary-icon-theme = callPackage ./elementary-icon-theme { };
-
   elementary-music = callPackage ./apps/elementary-music { };
 
   elementary-screenshot-tool = callPackage ./apps/elementary-screenshot-tool { };
@@ -35,4 +33,11 @@ lib.makeScope pkgs.newScope (self: with self; {
   elementary-terminal = callPackage ./apps/elementary-terminal { };
 
   elementary-videos = callPackage ./apps/elementary-videos { };
+
+  ### Desktop Components
+
+  elementary-gtk-theme = callPackage ./elementary-gtk-theme { };
+
+  elementary-icon-theme = callPackage ./elementary-icon-theme { };
+
 })
