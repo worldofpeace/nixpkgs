@@ -211,6 +211,9 @@ in
     # Enable GTK applications to load SVG icons
     environment.variables.GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
 
+    # Sets default dockitems in plank
+    environment.etc."skel/.config/plank/dock1/launchers".source = "${pkgs.elementary.elementary-default-settings}/etc/skel/.config/plank/dock1/launchers";
+
     networking.networkmanager.basePackages =
       { inherit (pkgs) networkmanager modemmanager wpa_supplicant;
         inherit (pkgs.gnome3) networkmanager-openvpn networkmanager-vpnc
