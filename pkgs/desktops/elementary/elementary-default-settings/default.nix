@@ -33,8 +33,8 @@ mkElementary rec {
 
     cp -av debian/elementary-default-settings.gsettings-override $out
 
-    mkdir -p $out/share
-    cp -avr plank/ $out/share/plank/
+    mkdir -p $out/etc/skel/.config/plank
+    cp -avr plank/dock1 $out/etc/skel/.config/plank
 
     cp -avr wingpanel.d/ $out/etc/
   '';
