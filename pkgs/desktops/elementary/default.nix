@@ -4,4 +4,6 @@
 lib.makeScope pkgs.newScope (self: with self; {
   vala = pkgs.vala_0_40;
 
+  mkElementary = callPackage ./mkElementary.nix {};
+
 })
