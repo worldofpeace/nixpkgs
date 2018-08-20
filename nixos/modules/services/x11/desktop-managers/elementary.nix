@@ -193,6 +193,10 @@ in
     services.upower.enable = config.powerManagement.enable;
     services.xserver.libinput.enable = mkDefault true;
     services.xserver.updateDbusEnvironment = true;
+    services.gsignond = {
+      enable = true;
+      withPlugins = with pkgs.gsignondPlugins; [ lastfm mail oauth sasl ];
+    };
 
     fonts.fonts = with pkgs; [ opensans-ttf roboto-mono ];
     fonts.fontconfig.defaultFonts = {
