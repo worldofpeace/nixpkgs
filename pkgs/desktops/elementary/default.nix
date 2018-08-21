@@ -81,9 +81,9 @@ lib.makeScope pkgs.newScope (self: with self; {
     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
    };
 
-   elementary-greeter = callPackage ./desktop/greeter {
-     inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
-   };
+  elementary-greeter = callPackage ./desktop/greeter {
+    inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
+  };
 
   wingpanel = callPackage ./desktop/wingpanel {
     inherit (gnome3) mutter;
@@ -93,32 +93,32 @@ lib.makeScope pkgs.newScope (self: with self; {
      inherit (gnome3) gnome-menus;
   };
 
-   wingpanel-indicator-a11y = callPackage ./desktop/indicators/a11y { };
-   wingpanel-indicator-ayatana = callPackage ./desktop/indicators/ayatana { };
-   wingpanel-indicator-bluetooth = callPackage ./desktop/indicators/bluetooth { };
-   wingpanel-indicator-datetime = callPackage ./desktop/indicators/datetime { };
-   wingpanel-indicator-keyboard = callPackage ./desktop/indicators/keyboard { };
-   wingpanel-indicator-network = callPackage ./desktop/indicators/network {
-     inherit (gnome3) networkmanagerapplet;
-   };
-   wingpanel-indicator-nightlight = callPackage ./desktop/indicators/nightlight { };
-   wingpanel-indicator-notifications = callPackage ./desktop/indicators/notifications { };
-   wingpanel-indicator-power = callPackage ./desktop/indicators/power { };
-   wingpanel-indicator-session = callPackage ./desktop/indicators/session { };
-   wingpanel-indicator-sound = callPackage ./desktop/indicators/sound { };
+  wingpanel-indicator-a11y = callPackage ./desktop/indicators/a11y { };
+  wingpanel-indicator-ayatana = callPackage ./desktop/indicators/ayatana { };
+  wingpanel-indicator-bluetooth = callPackage ./desktop/indicators/bluetooth { };
+  wingpanel-indicator-datetime = callPackage ./desktop/indicators/datetime { };
+  wingpanel-indicator-keyboard = callPackage ./desktop/indicators/keyboard { };
+  wingpanel-indicator-network = callPackage ./desktop/indicators/network {
+    inherit (gnome3) networkmanagerapplet;
+  };
+  wingpanel-indicator-nightlight = callPackage ./desktop/indicators/nightlight { };
+  wingpanel-indicator-notifications = callPackage ./desktop/indicators/notifications { };
+  wingpanel-indicator-power = callPackage ./desktop/indicators/power { };
+  wingpanel-indicator-session = callPackage ./desktop/indicators/session { };
+  wingpanel-indicator-sound = callPackage ./desktop/indicators/sound { };
 
-   ### SWITCHBOARD
+  ### SWITCHBOARD
 
-   switchboard = callPackage ./desktop/switchboard { };
+  switchboard = callPackage ./desktop/switchboard { };
 
-   switchboard-plug-sound = callPackage ./desktop/switchboard-plugs/sound { };
+  switchboard-plug-sound = callPackage ./desktop/switchboard-plugs/sound { };
 
-   switchboard-plug-pantheon-shell = callPackage ./desktop/switchboard-plugs/pantheon-shell { 
-     inherit (gnome3)  gnome-settings-daemon gnome-desktop gexiv2;
-    };
+  switchboard-plug-pantheon-shell = callPackage ./desktop/switchboard-plugs/pantheon-shell {
+    inherit (gnome3)  gnome-settings-daemon gnome-desktop gexiv2;
+  };
 
   switchboard-plug-keyboard = callPackage ./desktop/switchboard-plugs/keyboard {
     inherit (gnome3) libgnomekbd;
   };
-  
+
 })
