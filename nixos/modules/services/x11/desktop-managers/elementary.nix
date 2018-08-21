@@ -134,6 +134,7 @@ in
         lightlocker # TODO: This probably needs work
         plank
         shared-mime-info
+        xdg-user-dirs
         xfce4-13.tumbler
         (pkgs.runCommand "elementary-a11y-bus-autostart" {} ''
         mkdir -p $out/etc/xdg/autostart
@@ -157,11 +158,14 @@ in
       ]) ++ (removePackagesByName pkgs.elementary.apps config.environment.elementary.excludePackages)
       ++ (with pkgs.gnome3;
       [
-        dconf
         adwaita-icon-theme
+        dconf
         epiphany
+        evince
+        file-roller
         geary
         gnome-bluetooth
+        gnome-font-viewer
         gnome-menus
         gnome-power-manager
       ]);
