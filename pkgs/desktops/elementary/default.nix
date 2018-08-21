@@ -14,6 +14,10 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   elementary-calculator = callPackage ./apps/elementary-calculator { };
 
+  elementary-calendar = callPackage ./apps/elementary-calendar {
+    inherit (gnome3) folks geocode-glib;
+   };
+
   elementary-camera = callPackage ./apps/elementary-camera { };
 
   elementary-code = callPackage ./apps/elementary-code {
