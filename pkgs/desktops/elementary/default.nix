@@ -41,6 +41,10 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   mkElementary = callPackage ./mkElementary.nix { };
 
+  extra-elementary-contracts = callPackage ./extra-elementary-contracts {
+    inherit (gnome3) file-roller gnome-bluetooth;
+  };
+
   #### APPS
 
   elementary-calculator = callPackage ./apps/elementary-calculator { };
