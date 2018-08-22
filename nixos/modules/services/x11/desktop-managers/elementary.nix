@@ -146,6 +146,7 @@ in
         cerbere
         defaultIconTheme
         elementary-gtk-theme
+        elementary-print-shim
         elementary-session-settings
         elementary-shortcut-overlay
         elementary-sound-theme
