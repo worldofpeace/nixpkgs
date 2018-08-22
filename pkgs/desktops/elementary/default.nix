@@ -199,4 +199,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   elementary-wallpapers = callPackage ./themeing/elementary-wallpapers { };
 
+  ### MISC
+
+  elementary-print-shim = callPackage ./elementary-print-shim { };
+
 })
