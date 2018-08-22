@@ -29,7 +29,10 @@ with lib;
 
   config = mkIf config.services.elementary.contractor.enable {
 
-    environment.systemPackages = [ pkgs.elementary.contractor ];
+    environment.systemPackages = with  pkgs.elementary; [
+      contractor
+      extra-elementary-contracts
+    ];
 
     services.dbus.packages = [ pkgs.elementary.contractor ];
 
