@@ -1,4 +1,4 @@
-{ mkElementary, meson, ninja, pkgconfig, vala, libgee, granite
+{ mkElementary, fetchpatch, meson, ninja, pkgconfig, vala, libgee, granite
 , glib, gtk3, switchboard, gobjectIntrospection }:
 
 mkElementary rec {
@@ -23,6 +23,14 @@ mkElementary rec {
     gtk3
     libgee
     switchboard
+  ];
+
+  # Fixes https://github.com/elementary/switchboard-plug-mouse-touchpad/issues/36
+  patches = [
+    (fetchpatch {
+      url = "https://github.com/elementary/switchboard-plug-mouse-touchpad/commit/c54e7468cf65dba4d0e31cb8bcf182063d9d924e.patch";
+      sha256 = "1izm3c69ibgn65f55irlf6jkrzym61yzhr75z5nqi9hw5jbcyncy";
+    })
   ];
 
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
