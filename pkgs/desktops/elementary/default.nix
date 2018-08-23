@@ -3,13 +3,31 @@
 
 lib.makeScope pkgs.newScope (self: with self; {
 
-  wingpanelIndicators = [
-    wingpanel-applications-menu wingpanel-indicator-a11y
-    wingpanel-indicator-bluetooth wingpanel-indicator-datetime
-    wingpanel-indicator-keyboard wingpanel-indicator-network
-    wingpanel-indicator-nightlight wingpanel-indicator-notifications
-    wingpanel-indicator-power wingpanel-indicator-session
-    wingpanel-indicator-sound
+  apps = [
+    elementary-calculator elementary-calendar
+    elementary-camera elementary-code elementary-files
+    elementary-music elementary-photos elementary-screenshot-tool
+    elementary-terminal elementary-videos switchboard-with-plugs
+  ];
+
+  artwork = [
+    elementary-gtk-theme
+    elementary-icon-theme
+    elementary-sound-theme
+    elementary-wallpapers
+  ];
+
+  desktop = [
+    elementary-session-settings
+    elementary-shortcut-overlay
+    gala
+    wingpanel-with-indicators
+  ];
+
+  services = [
+    cerbere
+    pantheon-agent-geoclue2
+    pantheon-agent-polkit
   ];
 
   switchboardPlugs = [
@@ -24,11 +42,13 @@ lib.makeScope pkgs.newScope (self: with self; {
     switchboard-plug-sound
   ];
 
-  apps = [
-    elementary-calculator elementary-calendar
-    elementary-camera elementary-code elementary-files
-    elementary-music elementary-photos elementary-screenshot-tool
-    elementary-terminal elementary-videos
+  wingpanelIndicators = [
+    wingpanel-applications-menu wingpanel-indicator-a11y
+    wingpanel-indicator-bluetooth wingpanel-indicator-datetime
+    wingpanel-indicator-keyboard wingpanel-indicator-network
+    wingpanel-indicator-nightlight wingpanel-indicator-notifications
+    wingpanel-indicator-power wingpanel-indicator-session
+    wingpanel-indicator-sound
   ];
 
   libgda = pkgs.gnome3.libgda;
