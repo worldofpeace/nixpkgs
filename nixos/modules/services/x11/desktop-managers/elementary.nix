@@ -123,40 +123,8 @@ in
 
     environment.variables.GNOME_SESSION_DEBUG = optionalString cfg.debug "1";
 
-    environment.systemPackages = with pkgs;
-      [
-        desktop-file-utils
-        glib
-        glib-networking
-        gtk3.out
-        gvfs
-        hicolor-icon-theme
-        lightlocker # TODO: This probably needs work
-        plank
-        shared-mime-info
-        xdg-user-dirs
-        xfce4-13.tumbler
-        (pkgs.runCommand "elementary-a11y-bus-autostart" {} ''
-        mkdir -p $out/etc/xdg/autostart
-        substitute ${pkgs.at-spi2-core}/etc/xdg/autostart/at-spi-dbus-bus.desktop $out/etc/xdg/autostart/at-spi-dbus-bus-pantheon.desktop \
-          --replace "OnlyShowIn=GNOME;Unity;" "OnlyShowIn=GNOME;Unity;Pantheon;"
-        '')
-      ] ++ (with pkgs.elementary;
-      [
-        cerbere
-        defaultIconTheme
-        elementary-gtk-theme
-        elementary-print-shim
-        elementary-session-settings
-        elementary-shortcut-overlay
-        elementary-sound-theme
-        elementary-wallpapers
-        gala
-        pantheon-agent-geoclue2
-        pantheon-agent-polkit
-        switchboard-with-plugs
-        wingpanel-with-indicators
-      ]) ++ (removePackagesByName pkgs.elementary.apps config.environment.elementary.excludePackages)
+    environment.systemPackages = pkgs.elementary.artwork ++ pkgs.elementary.desktop ++ pkgs.elementary.services
+      ++ (removePackagesByName pkgs.elementary.apps config.environment.elementary.excludePackages)
       ++ (with pkgs.gnome3;
       [
         adwaita-icon-theme
@@ -169,6 +137,25 @@ in
         gnome-font-viewer
         gnome-menus
         gnome-power-manager
+      ])
+      ++ (with pkgs;
+      [
+        desktop-file-utils
+        glib
+        glib-networking
+        gtk3.out
+        gvfs
+        hicolor-icon-theme
+        lightlocker # TODO: This probably needs work
+        plank
+        shared-mime-info
+        xdg-user-dirs
+        xfce4-13.tumbler
+        (runCommand "elementary-a11y-bus-autostart" {} ''
+        mkdir -p $out/etc/xdg/autostart
+        substitute ${at-spi2-core}/etc/xdg/autostart/at-spi-dbus-bus.desktop $out/etc/xdg/autostart/at-spi-dbus-bus-pantheon.desktop \
+          --replace "OnlyShowIn=GNOME;Unity;" "OnlyShowIn=GNOME;Unity;Pantheon;"
+        '')
       ]);
 
     hardware.bluetooth.enable = mkDefault true;
