@@ -35,6 +35,11 @@ mkElementary rec {
     substituteInPlace src/Agent.vala --subst-var-by PANTHEON_AGENT_GEOCLUE2_GSETTINGS_PATH $out/share/gsettings-schemas/${name}/glib-2.0/schemas
   '';
 
+  # This should be provided by a post_install.py script
+  postInstall = ''
+    ${glib.dev}/bin/glib-compile-schemas $out/share/glib-2.0/schemas
+  '';
+
   meta = {
     description = "Pantheon Geoclue2 Agent";
   };
