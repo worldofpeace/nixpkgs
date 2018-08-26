@@ -168,7 +168,7 @@ in
     services.elementary.contractor.enable = true;
     services.colord.enable = mkDefault true;
     services.dbus.packages = mkMerge [
-      ([pkgs.xfce4-13.tumbler])
+      ([ pkgs.xfce4-13.tumbler pkgs.elementary.switchboard-plug-power ])
       (mkIf config.services.printing.enable  ([pkgs.system-config-printer]) )
     ];
     # elementary has pantheon-agent-geoclue2
