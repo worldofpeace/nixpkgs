@@ -35,6 +35,9 @@ mkElementary rec {
     vte
   ];
 
+  # See https://github.com/elementary/terminal/commit/914d4b0e2d0a137f12276d748ae07072b95eff80
+  mesonFlags = "-Dubuntu-bionic-patched-vte=false";
+
   postPatch = ''
     chmod +x ./meson/post_install.py
     patchShebangs ./meson/post_install.py
