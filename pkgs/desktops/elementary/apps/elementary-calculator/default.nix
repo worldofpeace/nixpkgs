@@ -1,6 +1,6 @@
 { mkElementary, pkgconfig, meson, ninja, vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3
-, granite, libgee, gsettings-desktop-schemas, gobjectIntrospection
+, desktop-file-utils, libxml2, gtk3
+, granite, libgee, gobjectIntrospection
 , defaultIconTheme, appstream, wrapGAppsHook }:
 
 mkElementary rec {
@@ -14,7 +14,6 @@ mkElementary rec {
   nativeBuildInputs = [
     appstream
     desktop-file-utils
-    gettext
     gobjectIntrospection
     libxml2
     meson
@@ -26,9 +25,7 @@ mkElementary rec {
 
   buildInputs = [
     defaultIconTheme
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libgee
   ];
