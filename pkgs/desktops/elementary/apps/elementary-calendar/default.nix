@@ -1,8 +1,8 @@
 { mkElementary, pkgconfig, meson, ninja, vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3
-, granite, libgee, gsettings-desktop-schemas, gobjectIntrospection
-, defaultIconTheme, intltool, libchamplain, clutter, folks
-, geocode-glib, libnotify, libical, evolution-data-server, appstream-glib, wrapGAppsHook }:
+, desktop-file-utils, gtk3, granite, libgee, intltool
+, libchamplain, clutter, folks, geocode-glib
+, libnotify, libical, evolution-data-server, appstream-glib
+, defaultIconTheme, gobjectIntrospection, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "calendar";
@@ -15,9 +15,7 @@ mkElementary rec {
   nativeBuildInputs = [
     appstream-glib
     desktop-file-utils
-    gettext
     gobjectIntrospection
-    libxml2
     meson
     ninja
     pkgconfig
@@ -31,9 +29,7 @@ mkElementary rec {
     evolution-data-server
     folks
     geocode-glib
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libchamplain
     libgee
