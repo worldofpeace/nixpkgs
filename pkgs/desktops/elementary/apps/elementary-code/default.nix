@@ -1,8 +1,7 @@
 { mkElementary, lib, pkgconfig, meson, ninja, vala, substituteAll
-, desktop-file-utils, gettext, libxml2, glib, gtk3, granite, libgee
-, gsettings-desktop-schemas, gobjectIntrospection, defaultIconTheme
-, appstream, editorconfig-core-c, gtksourceview3, gtkspell3, libpeas
-, libsoup, vte, webkitgtk, zeitgeist, ctags, libgit2-glib, intltool, wrapGAppsHook }:
+, desktop-file-utils, gtk3, granite, libgee, defaultIconTheme, appstream
+, libpeas, editorconfig-core-c, gtksourceview3, gtkspell3, libsoup, vte
+, webkitgtk, zeitgeist, ctags, libgit2-glib, intltool, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "code";
@@ -15,9 +14,6 @@ mkElementary rec {
   nativeBuildInputs = [
     appstream
     desktop-file-utils
-    gettext
-    gobjectIntrospection
-    libxml2
     meson
     ninja
     pkgconfig
@@ -29,9 +25,7 @@ mkElementary rec {
     ctags
     defaultIconTheme
     editorconfig-core-c
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     gtksourceview3
     gtkspell3
@@ -51,7 +45,6 @@ mkElementary rec {
       ctags = "${ctags}/bin/ctags";
     })
   ];
-
 
   LIBRARY_PATH = lib.makeLibraryPath [ editorconfig-core-c ];
 
