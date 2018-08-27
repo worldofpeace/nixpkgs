@@ -26,6 +26,7 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   services = [
     cerbere
+    elementary-capnet-assist
     pantheon-agent-geoclue2
     pantheon-agent-polkit
   ];
@@ -130,6 +131,10 @@ lib.makeScope pkgs.newScope (self: with self; {
   cerbere = callPackage ./cerbere { };
 
   contractor = callPackage ./contractor { };
+
+  elementary-capnet-assist = callPackage ./elementary-capnet-assist {
+    inherit (gnome3) gcr;
+  };
 
   pantheon-agent-geoclue2 = callPackage ./pantheon-agent-geoclue2 { };
 
