@@ -3,11 +3,11 @@
 
 mkElementary rec {
   pname = "switchboard-plug-sound";
-  version = "0.1";
+  version = "0.1.1";
 
   name = "${pname}-${version}";
 
-  sha256 = "0vcc6ksp5gmlplvlxqb54nw23g0x7zn9fyarba3r44zb4rnlv9fk";
+  sha256 = "117wfmxmz6l9fvinbv3ymlj0lh9kwcfspw17brgkin5i9vws8qqr";
 
   nativeBuildInputs = [
     gobjectIntrospection
