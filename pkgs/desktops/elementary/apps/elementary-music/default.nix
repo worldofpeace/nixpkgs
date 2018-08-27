@@ -52,7 +52,9 @@ mkElementary rec {
     zeitgeist
   ];
 
-  # TODO: We need gsignond libgsignon-glib
+  mesonFlags = [
+    "-Dplugins=lastfm,audioplayer,cdrom,ipod"
+  ];
 
   postPatch = ''
     chmod +x ./meson/post_install.py
