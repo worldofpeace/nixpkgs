@@ -1,7 +1,6 @@
 { mkElementary, pkgconfig, cmake, vala, intltool, libcanberra, dbus-glib
-, gtk3, libgee, glib, granite, libnotify, libunity, pango, plank, bamf, sqlite
-, libdbusmenu-gtk3, zeitgeist, gettext, glib-networking, gsettings-desktop-schemas
-, defaultIconTheme, wrapGAppsHook, gobjectIntrospection }:
+, gtk3, libgee, granite, libnotify, libunity, pango, plank, bamf, sqlite
+, libdbusmenu-gtk3, zeitgeist, glib-networking, defaultIconTheme, gobjectIntrospection, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "files";
@@ -13,7 +12,6 @@ mkElementary rec {
 
   nativeBuildInputs = [
     cmake
-    gettext
     glib-networking
     gobjectIntrospection
     intltool
@@ -26,9 +24,7 @@ mkElementary rec {
     bamf
     dbus-glib
     defaultIconTheme
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libcanberra
     libdbusmenu-gtk3
