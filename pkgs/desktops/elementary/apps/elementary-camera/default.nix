@@ -1,6 +1,6 @@
-{ mkElementary, pkgconfig, meson, ninja, vala, desktop-file-utils, gettext, libxml2
-, glib, gtk3, granite, libgee, libcanberra, clutter-gtk, clutter-gst, gsettings-desktop-schemas
-, gobjectIntrospection, defaultIconTheme, appstream, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, ninja, vala, desktop-file-utils
+, gettext, libxml2, gtk3, granite, libgee, libcanberra, clutter-gtk
+, clutter-gst, defaultIconTheme, appstream, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "camera";
@@ -14,7 +14,6 @@ mkElementary rec {
     appstream
     desktop-file-utils
     gettext
-    gobjectIntrospection
     libxml2
     meson
     ninja
@@ -27,9 +26,7 @@ mkElementary rec {
     clutter-gst
     clutter-gtk
     defaultIconTheme
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libcanberra
     libgee
