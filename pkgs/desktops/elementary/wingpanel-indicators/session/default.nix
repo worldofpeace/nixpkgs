@@ -1,14 +1,13 @@
 { mkElementary, pkgconfig, meson, ninja, vala
-, glib, gtk3, granite, wingpanel, accountsservice
-, libgee, gsettings-desktop-schemas, gobjectIntrospection
-, defaultIconTheme, wrapGAppsHook }:
+, gtk3, granite, wingpanel, accountsservice, libgee
+, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "wingpanel-indicator-session";
   version = "2.1.0";
 
   name = "${pname}-${version}";
-  
+
   sha256 = "16yf8ahz7ways50iabxxlbqgnp635m5nirh30yg6z94b0cbgpni3";
 
   nativeBuildInputs = [
@@ -23,7 +22,6 @@ mkElementary rec {
   buildInputs = [
     accountsservice
     defaultIconTheme
-    glib
     granite
     gtk3
     libgee

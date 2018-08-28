@@ -1,13 +1,13 @@
-{ mkElementary, pkgconfig, meson, ninja, vala
-, glib, gtk3, granite, networkmanager, networkmanagerapplet
-, wingpanel, libgee, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, ninja, vala, gtk3
+, granite, networkmanager, networkmanagerapplet, wingpanel
+, libgee, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "wingpanel-indicator-network";
   version = "2.2.0";
 
   name = "${pname}-${version}";
-  
+
   sha256 = "1yr743y3zk79jbsxvrlmqczp0agx50jbmjij0f25k7cwmjsv78jw";
 
   nativeBuildInputs = [
@@ -21,7 +21,6 @@ mkElementary rec {
 
   buildInputs = [
     defaultIconTheme
-    glib
     granite
     gtk3
     libgee

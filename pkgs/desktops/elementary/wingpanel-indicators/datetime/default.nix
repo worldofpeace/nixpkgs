@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, cmake, substituteAll, vala, glib, gtk3
+{ mkElementary, pkgconfig, cmake, substituteAll, vala, gtk3
 , granite, wingpanel, evolution-data-server, libical
 , libgee, libxml2, libsoup, gobjectIntrospection
 , elementary-calendar, defaultIconTheme, wrapGAppsHook }:
@@ -8,7 +8,7 @@ mkElementary rec {
   version = "2.1.0";
 
   name = "${pname}-${version}";
-  
+
   sha256 = "174n59dyh1g3ma12xarffqiz9mskfcd63scq46ylk0rmakmfnxg4";
 
   nativeBuildInputs = [
@@ -23,7 +23,6 @@ mkElementary rec {
   buildInputs = [
     defaultIconTheme
     evolution-data-server
-    glib
     granite
     gtk3
     libgee

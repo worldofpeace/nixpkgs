@@ -1,14 +1,13 @@
 { mkElementary, pkgconfig, meson, ninja, vala
-, glib, gtk3, granite, wingpanel, libgee, dbus-glib
-, gdk_pixbuf, libwnck3, gobjectIntrospection
-, defaultIconTheme, wrapGAppsHook }:
+, gtk3, granite, wingpanel, libgee, dbus-glib
+, libwnck3, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "wingpanel-indicator-notifications";
   version = "2.1.0";
 
   name = "${pname}-${version}";
-  
+
   sha256 = "1dyv984is41fa32fxwjdqksz9cdki2mv20gwznfbzssf8ly13k6l";
 
   nativeBuildInputs = [
@@ -23,8 +22,6 @@ mkElementary rec {
   buildInputs = [
     dbus-glib
     defaultIconTheme
-    gdk_pixbuf
-    glib
     granite
     gtk3
     libgee

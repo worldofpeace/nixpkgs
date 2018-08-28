@@ -1,5 +1,5 @@
 { mkElementary, cmake, pkgconfig, vala, granite, libgee, gettext
-, gtk3, glib, appstream, gnome-menus, json-glib, plank, bamf
+, gtk3, appstream, gnome-menus, json-glib, plank, bamf
 , switchboard, libunity, libsoup, wingpanel, libwnck3, zeitgeist
 , gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
@@ -11,7 +11,7 @@ mkElementary rec {
 
   sha256 = "05n7qn64a4a2fmikhvg3pqvfdav0qnnnmvpzvz6ihfd2ifqg432k";
 
-  nativeBuildInputs = [ 
+  nativeBuildInputs = [
     appstream
     cmake
     gettext
@@ -24,7 +24,6 @@ mkElementary rec {
   buildInputs = [
     bamf
     defaultIconTheme
-    glib
     gnome-menus
     granite
     gtk3

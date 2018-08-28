@@ -1,5 +1,5 @@
 { mkElementary, pkgconfig, meson, ninja, substituteAll, vala
-, glib, gtk3, granite, libxml2, wingpanel, libgee, xlibs
+,  gtk3, granite, libxml2, wingpanel, libgee, xlibs
 , gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
 mkElementary rec {
@@ -7,7 +7,7 @@ mkElementary rec {
   version = "2.1.0";
 
   name = "${pname}-${version}";
-  
+
   sha256 = "0l5axkn8zirpdn4j7a8k5728pjmgi716hwmp4fwmb6vavbi42v6z";
 
   nativeBuildInputs = [
@@ -22,7 +22,6 @@ mkElementary rec {
 
   buildInputs = [
     defaultIconTheme
-    glib
     granite
     gtk3
     libgee

@@ -1,18 +1,18 @@
 { mkElementary, pkgconfig, meson, ninja, vala
-, glib, gtk3, granite, libnotify, wingpanel
-, libgee, gsettings-desktop-schemas, gobjectIntrospection
-, defaultIconTheme, wrapGAppsHook }:
+, gtk3, granite, libnotify, wingpanel, libgee, libxml2
+, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "wingpanel-indicator-bluetooth";
   version = "2.1.0";
 
   name = "${pname}-${version}";
-  
+
   sha256 = "0zqw18wm72s8zz44irk8p7mksfvrdxf9gbhpd8hyyjv3j9byidzf";
 
   nativeBuildInputs = [
     gobjectIntrospection
+    libxml2
     meson
     ninja
     pkgconfig
@@ -22,9 +22,7 @@ mkElementary rec {
 
   buildInputs = [
     defaultIconTheme
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libgee
     libnotify
@@ -35,7 +33,7 @@ mkElementary rec {
 
   postPatch = ''
     chmod +x ./meson/post_install.py
-    patchShebangs ./meson/post_install.py    
+    patchShebangs ./meson/post_install.py
   '';
 
   meta = {
