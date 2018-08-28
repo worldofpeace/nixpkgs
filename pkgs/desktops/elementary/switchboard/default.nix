@@ -1,6 +1,6 @@
-{ mkElementary, pkgconfig, meson, ninja, vala, gtk3, libgee
-, glib, granite, gettext, clutter-gtk, libunity, gsettings-desktop-schemas
-, intltool, defaultIconTheme, wrapGAppsHook, gobjectIntrospection }:
+{ mkElementary, pkgconfig, meson, ninja, vala, gtk3
+, libgee, granite, gettext, clutter-gtk, libunity, intltool
+, defaultIconTheme, wrapGAppsHook, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard";
@@ -24,9 +24,7 @@ mkElementary rec {
   buildInputs = [
     clutter-gtk
     defaultIconTheme
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libgee
     libunity
