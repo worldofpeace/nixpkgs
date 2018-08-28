@@ -1,7 +1,6 @@
-{ mkElementary, pkgconfig, cmake, vala, gala, gtk3, libgee
-, glib, granite, gettext, appstream-glib, gsettings-desktop-schemas
-, defaultIconTheme, wrapGAppsHook, gobjectIntrospection, appstream
-, glib-networking, gdk_pixbuf, mutter, json-glib }:
+{ mkElementary,  wrapGAppsHook, pkgconfig, cmake, vala, gala, gtk3
+, libgee, granite, gettext, appstream-glib, glib-networking, mutter
+, json-glib, appstream, defaultIconTheme, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "wingpanel";
@@ -25,10 +24,7 @@ mkElementary rec {
 
   buildInputs = [
     gala
-    gdk_pixbuf
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     json-glib
     libgee
