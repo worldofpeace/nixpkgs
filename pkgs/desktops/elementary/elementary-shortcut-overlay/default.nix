@@ -1,7 +1,5 @@
-{ mkElementary, pkgconfig, meson, ninja, vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3
-, granite, libgee, gsettings-desktop-schemas, gobjectIntrospection
-, defaultIconTheme, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, ninja, vala, libxml2, desktop-file-utils
+, gtk3, glib, granite, libgee, defaultIconTheme, gobjectIntrospection, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "shortcut-overlay";
@@ -13,7 +11,6 @@ mkElementary rec {
 
   nativeBuildInputs = [
     desktop-file-utils
-    gettext
     gobjectIntrospection
     libxml2
     meson
@@ -27,7 +24,6 @@ mkElementary rec {
     defaultIconTheme
     glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libgee
   ];
