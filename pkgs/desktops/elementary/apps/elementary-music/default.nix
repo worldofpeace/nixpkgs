@@ -1,9 +1,9 @@
-{ mkElementary, pkgconfig, meson, ninja , vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3
-, granite, libgee, gsettings-desktop-schemas, gobjectIntrospection
-, clutter-gtk, libdbusmenu-glib, libaccounts-glib, json-glib, libgda
-, libgpod, libnotify, libpeas, libsoup, zeitgeist, gst_all_1
-, defaultIconTheme, taglib, gsignond, libgsignon-glib, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, ninja, vala
+, desktop-file-utils, libxml2, gtk3, granite
+, libgee, clutter-gtk, json-glib, libgda, libdbusmenu-glib
+, libaccounts-glib, libgpod, libnotify, libpeas, libsoup
+, zeitgeist, gst_all_1, defaultIconTheme, taglib, gsignond
+, libgsignon-glib, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "music";
@@ -15,9 +15,6 @@ mkElementary rec {
 
   nativeBuildInputs = [
     desktop-file-utils
-    gettext
-    gobjectIntrospection
-    libxml2
     meson
     ninja
     pkgconfig
@@ -28,9 +25,7 @@ mkElementary rec {
   buildInputs = with gst_all_1; [
     clutter-gtk
     defaultIconTheme
-    glib
     granite
-    gsettings-desktop-schemas
     gsignond
     gst-plugins-bad
     gst-plugins-base
