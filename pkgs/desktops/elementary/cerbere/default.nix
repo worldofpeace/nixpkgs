@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, meson, ninja, glib, libgee, vala, gsettings-desktop-schemas, gobjectIntrospection, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, ninja, glib, libgee, vala, gobjectIntrospection, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "cerbere";
@@ -17,7 +17,7 @@ mkElementary rec {
     wrapGAppsHook
   ];
 
-  buildInputs = [ glib gsettings-desktop-schemas libgee ];
+  buildInputs = [ glib libgee ];
 
   postPatch = ''
     chmod +x ./meson/post_install.py
@@ -27,5 +27,5 @@ mkElementary rec {
   meta = {
     description = "A simple service to ensure uptime of essential processes";
   };
-  
+
 }
