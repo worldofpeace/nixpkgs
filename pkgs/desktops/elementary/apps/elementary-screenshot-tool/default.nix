@@ -1,7 +1,6 @@
 { mkElementary, pkgconfig, meson, ninja, vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3
-, granite, libgee, gsettings-desktop-schemas, gobjectIntrospection
-, libcanberra, gdk_pixbuf, defaultIconTheme, wrapGAppsHook }:
+, desktop-file-utils, gtk3, granite, libgee, libcanberra
+, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "screenshot-tool";
@@ -13,9 +12,7 @@ mkElementary rec {
 
   nativeBuildInputs = [
     desktop-file-utils
-    gettext
     gobjectIntrospection
-    libxml2
     meson
     ninja
     pkgconfig
@@ -25,15 +22,11 @@ mkElementary rec {
 
   buildInputs = [
     defaultIconTheme
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libcanberra
     libgee
   ];
-
-  propagatedBuildInputs = [ gdk_pixbuf ];
 
   postPatch = ''
     chmod +x ./meson/post_install.py
