@@ -1,7 +1,6 @@
 { mkElementary, pkgconfig, fetchpatch, meson, ninja
-, vala, desktop-file-utils, gettext, libxml2, glib, gtk3
-, granite, libnotify, vte, libgee, gsettings-desktop-schemas
-, gobjectIntrospection, defaultIconTheme, appstream, wrapGAppsHook }:
+, vala, desktop-file-utils, gtk3, libxml2, granite, libnotify, vte
+, libgee, defaultIconTheme, appstream, gobjectIntrospection, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "terminal";
@@ -14,7 +13,6 @@ mkElementary rec {
   nativeBuildInputs = [
     appstream
     desktop-file-utils
-    gettext
     gobjectIntrospection
     libxml2
     meson
@@ -26,9 +24,7 @@ mkElementary rec {
 
   buildInputs = [
     defaultIconTheme
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libgee
     libnotify
