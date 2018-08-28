@@ -1,8 +1,7 @@
-{ mkElementary, meson, ninja, pkgconfig, vala, desktop-file-utils, intltool, libaccounts-glib
-, libexif, libgee, geocode-glib, gexiv2, glib, libgphoto2, granite, gst_all_1
-, gtk3, libgudev, json-glib, libraw, rest, libgsignon-glib, libsoup, sqlite, scour
-, webkitgtk, libwebp, libxml2, gettext, appstream, libunity, gsettings-desktop-schemas
-, gobjectIntrospection, wrapGAppsHook, defaultIconTheme }:
+{ mkElementary, meson, ninja, pkgconfig, vala, desktop-file-utils, intltool, gtk3, glib
+, libaccounts-glib, libexif, libgee, geocode-glib, gexiv2,libgphoto2, granite, gst_all_1
+, libgudev, json-glib, libraw, rest, libgsignon-glib, libsoup, sqlite, scour, webkitgtk
+, libwebp, appstream, libunity, wrapGAppsHook, gobjectIntrospection, defaultIconTheme }:
 
 mkElementary rec {
   pname = "photos";
@@ -15,10 +14,8 @@ mkElementary rec {
   nativeBuildInputs = [
     appstream
     desktop-file-utils
-    gettext
     gobjectIntrospection
     intltool
-    libxml2
     meson
     ninja
     pkgconfig
@@ -31,7 +28,6 @@ mkElementary rec {
     geocode-glib
     gexiv2
     granite
-    gsettings-desktop-schemas
     gst-plugins-bad
     gst-plugins-base
     gst-plugins-good
