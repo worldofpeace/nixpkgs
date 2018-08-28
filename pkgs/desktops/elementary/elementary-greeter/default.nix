@@ -1,8 +1,8 @@
-{ mkElementary, pkgconfig, fetchpatch, substituteAll, makeWrapper, meson, ninja, vala
-, desktop-file-utils, gettext, libxml2, glib, gtk3, granite, libgee, gnome-settings-daemon
-, gnome-desktop, mutter, gobjectIntrospection, gdk_pixbuf, defaultIconTheme, wingpanel
-, elementary-gtk-theme, elementary-wallpapers, elementary-default-settings, lightdm
-, numlockx, clutter-gtk, libglvnd, dbus, wrapGAppsHook }:
+{ mkElementary, pkgconfig, fetchpatch, substituteAll, makeWrapper, meson
+, ninja, vala, desktop-file-utils, gtk3, granite, libgee, gnome-settings-daemon
+, gnome-desktop, mutter, gobjectIntrospection, defaultIconTheme, wingpanel
+, elementary-gtk-theme, elementary-wallpapers, elementary-default-settings
+, lightdm, numlockx, clutter-gtk, libglvnd, dbus, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "greeter";
@@ -14,9 +14,7 @@ mkElementary rec {
 
   nativeBuildInputs = [
     desktop-file-utils
-    gettext
     gobjectIntrospection
-    libxml2
     meson
     ninja
     pkgconfig
@@ -28,8 +26,6 @@ mkElementary rec {
     clutter-gtk
     defaultIconTheme
     elementary-gtk-theme
-    gdk_pixbuf
-    glib
     gnome-desktop
     gnome-settings-daemon
     granite
