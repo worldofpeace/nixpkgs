@@ -1,5 +1,5 @@
-{ mkElementary, pkgconfig, meson, ninja, vala, gettext, glib
-, gtk3, libgee, polkit, gobjectIntrospection, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, ninja, vala, gtk3
+, libgee, polkit, gobjectIntrospection, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "pantheon-agent-polkit";
@@ -19,7 +19,6 @@ mkElementary rec {
   ];
 
   buildInputs = [
-    glib
     gtk3
     libgee
     polkit
