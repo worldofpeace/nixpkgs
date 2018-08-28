@@ -1,6 +1,6 @@
 { mkElementary, meson, ninja, pkgconfig, vala, libgee, granite
-, glib, gtk3, polkit, zeitgeist, gsettings-desktop-schemas, switchboard, lightlocker
-, pantheon-agent-geoclue2, gobjectIntrospection }:
+, gtk3, polkit, zeitgeist, switchboard
+, lightlocker, pantheon-agent-geoclue2, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-security-privacy";
@@ -19,9 +19,7 @@ mkElementary rec {
   ];
 
   buildInputs = [
-    glib
     granite
-    gsettings-desktop-schemas
     gtk3
     libgee
     polkit

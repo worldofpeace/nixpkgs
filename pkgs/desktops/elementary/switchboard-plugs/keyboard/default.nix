@@ -1,5 +1,5 @@
 { mkElementary, lib, substituteAll, meson, ninja, pkgconfig, vala, libgee, granite
-, glib, gtk3, libxml2, libgnomekbd, libxklavier, xlibs, switchboard, gobjectIntrospection }:
+, gtk3, libxml2, libgnomekbd, libxklavier, xlibs, switchboard, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-keyboard";
@@ -19,7 +19,6 @@ mkElementary rec {
   ];
 
   buildInputs = [
-    glib
     granite
     gtk3
     libgee

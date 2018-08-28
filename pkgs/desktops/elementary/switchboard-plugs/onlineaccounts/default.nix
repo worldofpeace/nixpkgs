@@ -1,6 +1,6 @@
-{ mkElementary, cmake, pkgconfig, vala, libgee, granite, glib, gtk3
-, libaccounts-glib, libgsignon-glib, gsignond, json-glib, rest, webkitgtk
-, libsoup, switchboard, gobjectIntrospection }:
+{ mkElementary, cmake, pkgconfig, vala, libgee, granite
+, gtk3, libaccounts-glib, libgsignon-glib, gsignond, json-glib
+, rest, webkitgtk, libsoup, switchboard, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-onlineaccounts";
@@ -18,7 +18,6 @@ mkElementary rec {
   ];
 
   buildInputs = [
-    glib
     granite
     gsignond
     gtk3

@@ -1,5 +1,5 @@
 { mkElementary, meson, ninja, pkgconfig, substituteAll, vala, libgee, granite
-, glib, gtk3, networkmanager, networkmanagerapplet, switchboard, gobjectIntrospection }:
+, gtk3, networkmanager, networkmanagerapplet, switchboard, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-network";
@@ -18,7 +18,6 @@ mkElementary rec {
   ];
 
   buildInputs = [
-    glib
     granite
     gtk3
     libgee

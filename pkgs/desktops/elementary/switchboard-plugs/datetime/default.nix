@@ -1,5 +1,5 @@
-{ mkElementary, meson, ninja, substituteAll, pkgconfig, vala, libgee, granite
-, glib, gtk3, libxml2, switchboard, tzdata, gobjectIntrospection }:
+{ mkElementary, meson, ninja, substituteAll, pkgconfig, vala, libgee
+, granite, gtk3, libxml2, switchboard, tzdata, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-datetime";
@@ -19,7 +19,6 @@ mkElementary rec {
   ];
 
   buildInputs = [
-    glib
     granite
     gtk3
     libgee

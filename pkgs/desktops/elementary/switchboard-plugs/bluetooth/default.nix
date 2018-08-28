@@ -1,5 +1,5 @@
-{ mkElementary, meson, ninja, pkgconfig, vala, libgee, granite
-, glib, gtk3, bluez, switchboard, gobjectIntrospection }:
+{ mkElementary, meson, ninja, pkgconfig, vala, libgee
+, granite, gtk3, bluez, switchboard, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-bluetooth";
@@ -19,7 +19,6 @@ mkElementary rec {
 
   buildInputs = [
     bluez
-    glib
     granite
     gtk3
     libgee

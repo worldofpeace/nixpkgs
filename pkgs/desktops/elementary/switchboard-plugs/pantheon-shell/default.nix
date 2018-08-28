@@ -1,6 +1,6 @@
-{ mkElementary, meson, ninja, pkgconfig, vala, libgee, granite, gexiv2
-, gnome-settings-daemon, glib, gtk3, gnome-desktop, plank, switchboard
-, appstream-glib, gettext, gobjectIntrospection, bamf }:
+{ mkElementary, meson, ninja, pkgconfig, vala, libgee, granite
+, gexiv2, gnome-settings-daemon, gtk3, gnome-desktop, plank
+, switchboard, appstream-glib, gettext, gobjectIntrospection, bamf }:
 
 mkElementary rec {
   pname = "switchboard-plug-pantheon-shell";
@@ -23,7 +23,6 @@ mkElementary rec {
   buildInputs = [
     bamf
     gexiv2
-    glib
     gnome-desktop
     gnome-settings-daemon
     granite

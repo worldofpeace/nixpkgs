@@ -1,5 +1,5 @@
-{ mkElementary, meson, ninja, pkgconfig, vala, libgee, granite
-, glib, gtk3, cups, switchboard, gobjectIntrospection }:
+{ mkElementary, meson, ninja, pkgconfig, vala, libgee
+, granite, gtk3, cups, switchboard, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-printers";
@@ -19,7 +19,6 @@ mkElementary rec {
 
   buildInputs = [
     cups
-    glib
     granite
     gtk3
     libgee

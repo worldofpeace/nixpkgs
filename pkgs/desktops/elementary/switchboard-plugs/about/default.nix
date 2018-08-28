@@ -1,5 +1,5 @@
-{ mkElementary, substituteAll, meson, ninja, pkgconfig, vala, libgee, granite
-, glib, gtk3, switchboard, pciutils, gobjectIntrospection }:
+{ mkElementary, substituteAll, meson, ninja, pkgconfig, vala, libgee
+, granite, gtk3, switchboard, pciutils, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-about";
@@ -18,7 +18,6 @@ mkElementary rec {
   ];
 
   buildInputs = [
-    glib
     granite
     gtk3
     libgee
