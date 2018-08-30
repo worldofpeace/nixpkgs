@@ -212,7 +212,14 @@ in
                               networkmanager-openconnect networkmanager-fortisslvpn
                               networkmanager-iodine networkmanager-l2tp; };
 
-    environment.pathsToLink = [ "/share" ];
+    environment.pathsToLink = [
+      "/share/sounds"
+      "/share/backgrounds"
+      "/share/plank"
+      "/share/accounts" # FIXME: Not sure if this is needed
+      "/share/metainfo"
+      "/share/appdata"
+    ];
 
   };
 
