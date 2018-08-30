@@ -36,6 +36,10 @@ with lib;
 
     services.dbus.packages = [ pkgs.elementary.contractor ];
 
+    environment.pathsToLink = [
+      "/share/contractor"
+    ];
+
   };
 
 }
