@@ -1,6 +1,6 @@
 { mkElementary, pkgconfig, fetchpatch, substituteAll, makeWrapper, meson
 , ninja, vala, desktop-file-utils, gtk3, granite, libgee, gnome-settings-daemon
-, gnome-desktop, mutter, gobjectIntrospection, defaultIconTheme, wingpanel
+, gnome-desktop, mutter, gobjectIntrospection, defaultIconTheme, wingpanel-with-indicators
 , elementary-gtk-theme, elementary-wallpapers, elementary-default-settings
 , lightdm, numlockx, clutter-gtk, libglvnd, dbus, wrapGAppsHook }:
 
@@ -34,7 +34,7 @@ mkElementary rec {
     libglvnd
     lightdm
     mutter
-    wingpanel
+    wingpanel-with-indicators
   ];
 
   patches = [
@@ -72,8 +72,8 @@ mkElementary rec {
 
   postPatch = ''
     substituteInPlace src/PantheonGreeter.vala \
-      --subst-var-by WINGPANEL_GREETER_EXEC "${wingpanel}/bin/wingpanel -g" \
-      --subst-var-by GREETER_COMPOSITOR_EXEC $out/bin/io.elementary.greeter-compositor
+      --subst-var-by WINGPANEL_GREETER_EXEC "${wingpanel-with-indicators}/bin/wingpanel -g" \
+      --subst-var-by GREETER_COMPOSITOR_EXEC "$out/bin/io.elementary.greeter-compositor"
   '';
 
   postFixup = ''
