@@ -6,11 +6,11 @@
 
 mkElementary rec {
   pname = "calendar";
-  version = "a1ac3bb2ea35bec4186ab5990fa810489dc9bccf";
+  version = "8a81a8d15cd7eacebb0502ff5af928603b8f3787";
 
-  name = "elementary-${pname}-2018-08-13";
+  name = "elementary-${pname}-2018-09-05";
 
-  sha256 = "0y3zc6i2zxwqb2ax2ckq4876np4xynk91rfcb3wyna34il8kgawa";
+  sha256 = "0azm7f3xs2gngw5m422a5vp5y494bhsld243anzvw1bx5r7bmj1q";
 
   nativeBuildInputs = [
     appstream-glib
