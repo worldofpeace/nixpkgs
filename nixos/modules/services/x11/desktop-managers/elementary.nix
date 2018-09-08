@@ -28,13 +28,13 @@ let
      chmod -R a+w $out/share/gsettings-schemas/nixos-gsettings-overrides
 
      cat <<EOF >> $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/nixos-defaults.gschema.override
-       [org.gnome.desktop.background]
-       draw-background=true
-       picture-options='zoom'
-       picture-uri='${pkgs.nixos-artwork.wallpapers.gnome-dark}/share/artwork/gnome/Gnome_Dark.png'
-       primary-color='#000000'
+     [org.gnome.desktop.background]
+     draw-background=true
+     picture-options='zoom'
+     picture-uri='${pkgs.nixos-artwork.wallpapers.simple-dark-gray}/share/artwork/gnome/nix-wallpaper-simple-dark-gray.png'
+     primary-color='#000000'
 
-       ${cfg.extraGSettingsOverrides}
+     ${cfg.extraGSettingsOverrides}
      EOF
 
      ${pkgs.glib.dev}/bin/glib-compile-schemas $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/
