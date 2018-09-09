@@ -180,6 +180,7 @@ in
     # if someone disabled this forcefully
     services.gnome3.gnome-keyring.enable = true;
     services.gnome3.gvfs.enable = true;
+    services.gnome3.rygel.enable = true;
     services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
     services.udisks2.enable = true;
     services.upower.enable = config.powerManagement.enable;
