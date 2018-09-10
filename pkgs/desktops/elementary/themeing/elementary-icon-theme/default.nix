@@ -2,11 +2,11 @@
 
 mkElementary rec {
   pname = "icons";
-  version = "ee6a3fc5862dfea7ab4c91049a4f6ede82ea8954";
+  version = "95571d659b82d354bcebe9b7e229c8a2f2eb7ac5";
 
-  name = "elementary-icon-theme-2018-08-16";
+  name = "elementary-icon-theme-2018-09-08";
 
-  sha256 = "1xysvnwlkmapnvcacfl4ncbxvil6drrn3pjqs5p1rjg2mfcbbzgh";
+  sha256 = "1rzqawcrk5p42xcwj1k9cx7dxnb33knm8mw0q11wnzv56s2hmcqj";
 
   nativeBuildInputs = [
     meson
