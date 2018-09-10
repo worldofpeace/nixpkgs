@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "wingpanel";
-  version = "6e7163ba09d5247d6759fc96037441a4afcb2c97";
+  version = "628412171cd502e06cc416607b8d614bed3d0577";
 
-  name = "${pname}-2018-07-24";
+  name = "${pname}-2018-09-10";
 
-  sha256 = "1jnx55gnly4q8ihlwq4q9zspan5isvxdl8cpqrspqwg6xhap5slh";
+  sha256 = "1z3wgi9jvcsv869sx87rn84mw8s7b57pzsq7aaji42gk11vbm7lm";
 
   nativeBuildInputs = [
     appstream
