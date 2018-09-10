@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "wingpanel-indicator-session";
-  version = "2.1.0";
+  version = "69748b4342f526b7cdbe79b4168cbe35a3e7bdc6";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-08-09";
 
-  sha256 = "16yf8ahz7ways50iabxxlbqgnp635m5nirh30yg6z94b0cbgpni3";
+  sha256 = "1qjdi3qsz6vw4wmgjbha3jzzsic83za5znjbjclkqm6cwgzznmw7";
 
   nativeBuildInputs = [
     gobjectIntrospection
