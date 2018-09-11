@@ -1,20 +1,21 @@
-{ mkElementary, pkgconfig, cmake, substituteAll, vala, gtk3
-, granite, wingpanel, evolution-data-server, libical
-, libgee, libxml2, libsoup, gobjectIntrospection
+{ mkElementary, pkgconfig, meson, ninja, substituteAll
+, vala, gtk3, granite, wingpanel, evolution-data-server
+, libical, libgee, libxml2, libsoup, gobjectIntrospection
 , elementary-calendar, defaultIconTheme, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "wingpanel-indicator-datetime";
-  version = "2.1.0";
+  version = "27afe7a5d369361b5c985726a0c636476f219d7d";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-08-09";
 
-  sha256 = "174n59dyh1g3ma12xarffqiz9mskfcd63scq46ylk0rmakmfnxg4";
+  sha256 = "1zf8pzww7xyv6mhpm2kdxa0s3a1najmwrdc90svdmpfvvjqqsfv5";
 
   nativeBuildInputs = [
-    cmake
     gobjectIntrospection
     libxml2
+    meson
+    ninja
     pkgconfig
     vala
     wrapGAppsHook
@@ -39,6 +40,11 @@ mkElementary rec {
   ];
 
   PKG_CONFIG_WINGPANEL_2_0_INDICATORSDIR = "lib/wingpanel";
+
+  postPatch = ''
+    chmod +x meson/post_install.py
+    patchShebangs meson/post_install.py
+  '';
 
   meta = {
     description = "Date & Time Indicator for Wingpanel";
