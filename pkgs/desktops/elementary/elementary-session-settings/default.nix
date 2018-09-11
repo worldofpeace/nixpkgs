@@ -2,11 +2,11 @@
 
 mkElementary rec {
   pname = "session-settings";
-  version = "5.0.2";
+  version = "8fb8e993cd2cab3418e7144b36e7a097759f447c";
 
-  name = "elementary-${pname}-${version}";
+  name = "elementary-${pname}-2018-09-11";
 
-  sha256 = "0qvs4am8vwzxjd1pnyy7vyvl5g5pj1b7x1ay6b4w499lvj7g8i9p";
+  sha256 = "1d0kdmc9nw9nh3bn8q33lkxjsqp5lsj1il2c5hh48m3br288wrvl";
 
   dontBuild = true;
 
