@@ -6,11 +6,11 @@
 
 mkElementary rec {
   pname = "greeter";
-  version = "23ef62e9571b70991b527498a83fedd9e6db1a12";
+  version = "19c0730fded4e9ddec5a491f0e78f83c7c04eb59";
 
-  name = "elementary-${pname}-2018-08-13";
+  name = "elementary-${pname}-2018-09-10";
 
-  sha256 = "0hwh0f0zjklfwc3gi0c8jj2kf9kldxnfqb8v7w9q6yiy60y399ln";
+  sha256 = "1r25ddnwa3fvqszw9v97n4h1hlaqmzcrsmacchskbrfybqnwwwxr";
 
   nativeBuildInputs = [
     desktop-file-utils
