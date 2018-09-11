@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "camera";
-  version = "1.0.1";
+  version = "19c14b73a24d8d5d7273d24c0a3676c4f5ec44d8";
 
-  name = "elementary-${pname}-${version}";
+  name = "elementary-${pname}-2018-09-07";
 
-  sha256 = "1gxwz5f8d6q5p9nah21pjh4a0m1ficypzj4g4xmprwhfxdnq4yia";
+  sha256 = "130diipcxdw5dajxjjbqcjal7g8zvq2yfz90x27dl284gdw504lc";
 
   nativeBuildInputs = [
     appstream
