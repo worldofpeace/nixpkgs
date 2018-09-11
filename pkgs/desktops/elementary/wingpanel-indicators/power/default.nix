@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "wingpanel-indicator-power";
-  version = "2.1.2";
+  version = "4b81a0c0c3d923bae4eac0af7eb2e21e03835cf2";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-09-06";
 
-  sha256 = "19isgzv68y7w897xakd1jhqasqgp7pyrzrpkw9v0jx8fh7632qy4";
+  sha256 = "1r0hm3pg6b96dkvz67f5kgbwa8s7rh13yyydfya8f68yqsygyjmj";
 
   nativeBuildInputs = [
     gobjectIntrospection
