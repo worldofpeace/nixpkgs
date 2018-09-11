@@ -3,11 +3,11 @@
 
 mkElementary rec {
   pname = "shortcut-overlay";
-  version = "1.0";
+  version = "f2e9cdd1d6073cc0265b3c8e574cbea65163308c";
 
-  name = "elementary-${pname}-${version}";
+  name = "elementary-${pname}-2018-08-21";
 
-  sha256 = "0hh5fw25hbl3cdvjx4dxbhhfvf4fl3hiczlsjg7919ib6nylis1h";
+  sha256 = "07a9lc6zx7vsjryqbrqdlj0qnxclad6fs4rb7q122laxnsy0sjzg";
 
   nativeBuildInputs = [
     desktop-file-utils
