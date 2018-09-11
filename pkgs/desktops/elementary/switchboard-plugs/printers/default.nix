@@ -3,11 +3,11 @@
 
 mkElementary rec {
   pname = "switchboard-plug-printers";
-  version = "0.1.3";
+  version = "dcefa0d3a04a72750cea912706701e5b28322e1d";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-09-07";
 
-  sha256 = "1425x0pi162w6pswi62h4jg715smhhy246ikr0249ijs9k5f88m0";
+  sha256 = "11pfrg8dz1riz4nj64kn074qhbjna1dy72jhmq64l5qg0n2p52n0";
 
   nativeBuildInputs = [
     gobjectIntrospection
