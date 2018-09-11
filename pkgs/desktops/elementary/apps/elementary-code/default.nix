@@ -5,11 +5,11 @@
 
 mkElementary rec {
   pname = "code";
-  version = "959b5715b1e5c08fc3ab61d8ba7d65bf991052b2";
+  version = "74e42c3a280314f03652b43673be11c299152f3f";
 
-  name = "elementary-${pname}-2018-08-12";
+  name = "elementary-${pname}-2018-09-06";
 
-  sha256 = "1jdaqvsg6v5wvnkbxfa6nva97k0ajxx5nrvkb9fli17zsb9g0g6w";
+  sha256 = "0g9va1f7p8fq7kkfg096yzmm4pjxxf4b2dsy1wblahk8svb4x3bx";
 
   nativeBuildInputs = [
     appstream
