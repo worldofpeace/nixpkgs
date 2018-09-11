@@ -3,11 +3,11 @@
 
 mkElementary rec {
   pname = "switchboard-plug-keyboard";
-  version = "0.3.3";
+  version = "1757ad53a6bffde64a5443202fa2634019a68faa";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-09-07";
 
-  sha256 = "1rp6k2pp31c5nhqn7nkhp37ndsic9ihqgjn79h7r8hj5ckm67hzs";
+  sha256 = "0xvp44f29jg45ihwmgnyxzzz4sk6whrqmzqhkv5g91zj44bv0mc7";
 
   nativeBuildInputs = [
     gobjectIntrospection
