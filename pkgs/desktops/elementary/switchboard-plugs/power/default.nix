@@ -3,11 +3,11 @@
 
 mkElementary rec {
   pname = "switchboard-plug-power";
-  version = "beb9a285f3dc576de887ab622521f4916375775a";
+  version = "da754e6181536723c2f781b6216440d41ded572d";
 
-  name = "${pname}-2018-08-09";
+  name = "${pname}-2018-09-10";
 
-  sha256 = "09a62apd53n426mv6jps61wmanwckg41r0zg8z2v9pp5rrsk4gph";
+  sha256 = "1sppnh0vnln975vi3v1lijkcjy0apma48asfsa1ga2fxwbbkv31s";
 
   nativeBuildInputs = [
     gobjectIntrospection
