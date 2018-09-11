@@ -3,11 +3,11 @@
 
 mkElementary rec {
   pname = "switchboard-plug-bluetooth";
-  version = "0.1.1";
+  version = "d427ae172ae0ccc1973950b265fc24e302e5e754";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-08-30";
 
-  sha256 = "1vrkcissavim41ga08cfkcmy9dcjz2zildhawllndp2xlqvxbaz4";
+  sha256 = "1v88qhfm7l6vh6n6rpf1lwn1mdz433dp29c85yfxshjjbdmsilyv";
 
   nativeBuildInputs = [
     gobjectIntrospection
