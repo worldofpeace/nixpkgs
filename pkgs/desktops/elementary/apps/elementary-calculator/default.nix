@@ -5,11 +5,11 @@
 
 mkElementary rec {
   pname = "calculator";
-  version = "382cc2a4fe8e5c957e2a39b17cfa290fb8b2a9e9";
+  version = "0.1.5";
 
-  name = "elementary-${pname}-2018-08-12";
+  name = "elementary-${pname}-${version}";
 
-  sha256 = "0crkcaiwhj0gnq3vvjx0cjypjikk38mpclsaxgl3jm393lpsdkxd";
+  sha256 = "1hw7dfarinvi741ifvymfm7ys46bv9w5s5nqy6gpx64mnldcqizk";
 
   nativeBuildInputs = [
     appstream
