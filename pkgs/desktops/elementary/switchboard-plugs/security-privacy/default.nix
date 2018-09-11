@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "switchboard-plug-security-privacy";
-  version = "0.1.3";
+  version = "51421379d2b0739c74d6b7233627e4dbe4c55f9b";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-06-25";
 
-  sha256 = "0zzllcgw18z0w2h82mxqihbbdrshxmq7zsp38n5gl3b818ikfkpl";
+  sha256 = "1jwrriqwxfv4z8rfw6m85sgc3wfcmfy5g8khc8w1af9r0l2cm79w";
 
   nativeBuildInputs = [
     gobjectIntrospection
