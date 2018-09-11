@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "switchboard-plug-pantheon-shell";
-  version = "0.2.7";
+  version = "bbdcdb7112ed549aa073a7f26a9afff98325c8e0";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-09-08";
 
-  sha256 = "1lbc15da18z5qvqf22ghzrrs9mchmhb5mj0cmhxmwl5g651b6fk3";
+  sha256 = "1m3lvdmvi9qblf6ryafn8pkw8labixii2am0v87na49ssmwch8va";
 
   nativeBuildInputs = [
     appstream-glib
