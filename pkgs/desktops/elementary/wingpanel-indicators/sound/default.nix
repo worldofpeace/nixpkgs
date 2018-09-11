@@ -5,11 +5,11 @@
 
 mkElementary rec {
   pname = "wingpanel-indicator-sound";
-  version = "2.1.0";
+  version = "c74ff97fc2b30a09e0dbe53f22372672c9d838e1";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-08-08";
 
-  sha256 = "12i0wls5zfkwc4hakqapa5jqk0574kivch83r1zccmm13bcadg5y";
+  sha256 = "0vvhjsg10yznh7gpqmg39hlrylrjqj3g93nn3bv5ihxl17dg124y";
 
   nativeBuildInputs = [
     gobjectIntrospection
