@@ -1,5 +1,5 @@
-{ mkElementary, cmake, pkgconfig, vala, granite, libgee, gettext
-, gtk3, appstream, gnome-menus, json-glib, plank, bamf
+{ mkElementary, cmake, ninja, pkgconfig, vala, granite, libgee
+, gettext, gtk3, appstream, gnome-menus, json-glib, plank, bamf
 , switchboard, libunity, libsoup, wingpanel, libwnck3, zeitgeist
 , gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
@@ -14,6 +14,7 @@ mkElementary rec {
   nativeBuildInputs = [
     appstream
     cmake
+    ninja
     gettext
     gobjectIntrospection
     pkgconfig
