@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, cmake, vala, gtk3
+{ mkElementary, pkgconfig, cmake, ninja, vala, gtk3
 , granite, wingpanel, libgee, gobjectIntrospection
 , libxml2, defaultIconTheme, wrapGAppsHook }:
 
@@ -14,6 +14,7 @@ mkElementary rec {
     cmake
     gobjectIntrospection
     libxml2
+    ninja
     pkgconfig
     vala
     wrapGAppsHook
