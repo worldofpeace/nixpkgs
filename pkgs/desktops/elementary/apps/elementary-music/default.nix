@@ -1,5 +1,5 @@
 { mkElementary, pkgconfig, meson, ninja, vala
-, desktop-file-utils, libxml2, gtk3, granite
+, desktop-file-utils, libxml2, gtk3, granite, python3
 , libgee, clutter-gtk, json-glib, libgda, libdbusmenu-glib
 , libaccounts-glib, libgpod, libnotify, libpeas, libsoup
 , zeitgeist, gst_all_1, defaultIconTheme, taglib, gsignond
@@ -18,6 +18,7 @@ mkElementary rec {
     meson
     ninja
     pkgconfig
+    python3
     vala
     wrapGAppsHook
   ];
@@ -52,8 +53,8 @@ mkElementary rec {
   ];
 
   postPatch = ''
-    chmod +x ./meson/post_install.py
-    patchShebangs ./meson/post_install.py
+    chmod +x meson/post_install.py
+    patchShebangs meson/post_install.py
   '';
 
   meta = {
