@@ -22,7 +22,7 @@ let
      ${concatMapStrings (pkg: "cp -rf ${pkg}/share/gsettings-schemas/*/glib-2.0/schemas/*.xml $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas\n") cfg.extraGSettingsOverridePackages}
 
      chmod -R a+w $out/share/gsettings-schemas/nixos-gsettings-overrides
-     cp ${pkgs.elementary.elementary-default-settings}/elementary-default-settings.gsettings-override \
+     cp ${pkgs.elementary.elementary-default-settings}/20-io.elementary.desktop.gschema.override \
      $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/nixos-defaults.gschema.override
 
      chmod -R a+w $out/share/gsettings-schemas/nixos-gsettings-overrides
