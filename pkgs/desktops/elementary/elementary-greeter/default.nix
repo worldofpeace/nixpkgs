@@ -48,8 +48,6 @@ mkElementary rec {
     })
     ./01-sbin-bin.patch
     ./01-sysconfdir-install.patch
-    ./hardcode-compositor-exec.patch
-    ./hardcode-wingpanel-exec.patch
   ];
 
   # This constant is baked into the program
@@ -63,17 +61,20 @@ mkElementary rec {
   '';
 
   preFixup = ''
-    # So It gets the default gtk and icon themes
     gappsWrapperArgs+=(
+      # GTK+ reads default settings (such as icons and themes) from elementary's settings.ini here
       --prefix XDG_CONFIG_DIRS : "${elementary-default-settings}/etc"
-      --prefix PATH : "${dbus}/bin"
-    )
-  '';
 
-  postPatch = ''
-    substituteInPlace src/PantheonGreeter.vala \
-      --subst-var-by WINGPANEL_GREETER_EXEC "${wingpanel-with-indicators}/bin/wingpanel -g" \
-      --subst-var-by GREETER_COMPOSITOR_EXEC "$out/bin/io.elementary.greeter-compositor"
+      # dbus-launch needed in path
+      --prefix PATH : "${dbus}/bin"
+
+      # for `wingpanel -g`
+      --prefix PATH : "${wingpanel-with-indicators}/bin"
+
+      # TODO: they should be using meson for this
+      # See: https://github.com/elementary/greeter/blob/19c0730fded4e9ddec5a491f0e78f83c7c04eb59/src/PantheonGreeter.vala#L451
+      --prefix PATH : "$out/bin"
+    )
   '';
 
   postFixup = ''
