@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, meson, ninja, glib, libgee, vala, gobjectIntrospection, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, python3, ninja, glib, libgee, vala, gobjectIntrospection, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "cerbere";
@@ -13,11 +13,15 @@ mkElementary rec {
     meson
     ninja
     pkgconfig
+    python3
     vala
     wrapGAppsHook
   ];
 
-  buildInputs = [ glib libgee ];
+  buildInputs = [
+    glib
+    libgee
+  ];
 
   postPatch = ''
     chmod +x ./meson/post_install.py
