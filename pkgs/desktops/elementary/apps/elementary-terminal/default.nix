@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, fetchpatch, meson, ninja
+{ mkElementary, pkgconfig, fetchpatch, meson, ninja, python3
 , vala, desktop-file-utils, gtk3, libxml2, granite, libnotify, vte
 , libgee, defaultIconTheme, appstream, gobjectIntrospection, wrapGAppsHook }:
 
@@ -18,6 +18,7 @@ mkElementary rec {
     meson
     ninja
     pkgconfig
+    python3
     vala
     wrapGAppsHook
   ];
@@ -35,8 +36,8 @@ mkElementary rec {
   mesonFlags = "-Dubuntu-bionic-patched-vte=false";
 
   postPatch = ''
-    chmod +x ./meson/post_install.py
-    patchShebangs ./meson/post_install.py
+    chmod +x meson/post_install.py
+    patchShebangs meson/post_install.py
   '';
 
   meta = {
