@@ -1,4 +1,4 @@
-{ mkElementary, cmake, pkgconfig, vala, libgee, granite
+{ mkElementary, cmake, ninja, pkgconfig, vala, libgee, granite
 , gtk3, libaccounts-glib, libgsignon-glib, gsignond, json-glib
 , rest, webkitgtk, libsoup, switchboard, gobjectIntrospection }:
 
@@ -13,6 +13,7 @@ mkElementary rec {
   nativeBuildInputs = [
     cmake
     gobjectIntrospection
+    ninja
     pkgconfig
     vala
   ];
