@@ -1,7 +1,7 @@
 { mkElementary, pkgconfig, fetchpatch, substituteAll, makeWrapper, meson
 , ninja, vala, desktop-file-utils, gtk3, granite, libgee, gnome-settings-daemon
 , gnome-desktop, mutter, gobjectIntrospection, defaultIconTheme, wingpanel-with-indicators
-, elementary-gtk-theme, elementary-wallpapers, elementary-default-settings
+, elementary-gtk-theme, nixos-artwork, elementary-default-settings
 , lightdm, numlockx, clutter-gtk, libglvnd, dbus, wrapGAppsHook }:
 
 mkElementary rec {
@@ -82,7 +82,7 @@ mkElementary rec {
       --replace  "Exec=io.elementary.greeter" "Exec=$out/bin/io.elementary.greeter"
 
     substituteInPlace $out/etc/lightdm/io.elementary.greeter.conf \
-      --replace "#default-wallpaper=/usr/share/backgrounds/elementaryos-default" "default-wallpaper=${elementary-wallpapers}/share/backgrounds/elementary/Pablo Garcia Saldana.jpg"
+      --replace "#default-wallpaper=/usr/share/backgrounds/elementaryos-default" "default-wallpaper=${nixos-artwork.wallpapers.simple-dark-gray}/share/artwork/gnome/nix-wallpaper-simple-dark-gray.png"
   '';
 
   meta = {
