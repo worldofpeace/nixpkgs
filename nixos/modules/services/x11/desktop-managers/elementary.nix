@@ -23,11 +23,9 @@ let
 
      chmod -R a+w $out/share/gsettings-schemas/nixos-gsettings-overrides
      cp ${pkgs.elementary.elementary-default-settings}/20-io.elementary.desktop.gschema.override \
-     $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/nixos-defaults.gschema.override
+     $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas
 
-     chmod -R a+w $out/share/gsettings-schemas/nixos-gsettings-overrides
-
-     cat <<EOF >> $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/nixos-defaults.gschema.override
+     cat - > $out/share/gsettings-schemas/nixos-gsettings-overrides/glib-2.0/schemas/nixos-defaults.gschema.override <<- EOF
      [org.gnome.desktop.background]
      draw-background=true
      picture-options='zoom'
