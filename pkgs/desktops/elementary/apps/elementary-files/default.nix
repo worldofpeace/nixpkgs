@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, cmake, vala, intltool, libcanberra, dbus-glib
+{ mkElementary, pkgconfig, cmake, ninja, vala, intltool, libcanberra, dbus-glib
 , gtk3, libgee, granite, libnotify, libunity, pango, plank, bamf, sqlite
 , libdbusmenu-gtk3, zeitgeist, glib-networking, defaultIconTheme, gobjectIntrospection, wrapGAppsHook }:
 
@@ -15,6 +15,7 @@ mkElementary rec {
     glib-networking
     gobjectIntrospection
     intltool
+    ninja
     pkgconfig
     vala
     wrapGAppsHook
