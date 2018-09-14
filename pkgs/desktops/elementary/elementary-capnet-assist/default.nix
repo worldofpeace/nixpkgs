@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, meson, ninja, vala, desktop-file-utils, gtk3, granite, libgee, gcr, webkitgtk, gobjectIntrospection, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, python3, ninja, vala, desktop-file-utils, gtk3, granite, libgee, gcr, webkitgtk, gobjectIntrospection, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "capnet-assist";
@@ -14,6 +14,7 @@ mkElementary rec {
     meson
     ninja
     pkgconfig
+    python3
     vala
     wrapGAppsHook
   ];
@@ -30,8 +31,8 @@ mkElementary rec {
   patches = [ ./capnet-test.patch ];
 
   postPatch = ''
-    chmod +x ./meson/post_install.py
-    patchShebangs ./meson/post_install.py
+    chmod +x meson/post_install.py
+    patchShebangs meson/post_install.py
   '';
 
   meta = {
