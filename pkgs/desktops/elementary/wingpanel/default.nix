@@ -1,6 +1,6 @@
-{ mkElementary,  wrapGAppsHook, pkgconfig, cmake, vala, gala, gtk3
-, libgee, granite, gettext, appstream-glib, glib-networking, mutter
-, json-glib, appstream, defaultIconTheme, gobjectIntrospection }:
+{ mkElementary,  wrapGAppsHook, pkgconfig, cmake, ninja, vala, gala
+, gtk3, libgee, granite, gettext, appstream-glib, glib-networking
+, mutter, json-glib, appstream, defaultIconTheme, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "wingpanel";
@@ -17,6 +17,7 @@ mkElementary rec {
     gettext
     glib-networking
     gobjectIntrospection
+    ninja
     pkgconfig
     vala
     wrapGAppsHook
