@@ -20,7 +20,7 @@ mkElementary rec {
     mkdir -p $out/etc/gtk-3.0
     cp -av settings.ini $out/etc/gtk-3.0
 
-    cp -av debian/elementary-default-settings.gsettings-override $out
+    cp -av debian/elementary-default-settings.gsettings-override $out/20-io.elementary.desktop.gschema.override
 
     cp -avr wingpanel.d/ $out/etc/
   '';
