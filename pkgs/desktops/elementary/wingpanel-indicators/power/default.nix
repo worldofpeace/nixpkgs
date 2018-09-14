@@ -1,6 +1,6 @@
-{ mkElementary, pkgconfig, meson, ninja, vala
-, gtk3, granite, bamf, libgtop, libudev, wingpanel
-, libgee, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
+{ mkElementary, pkgconfig, meson, python3, ninja, vala
+, gtk3, granite, bamf, libgtop, libudev, wingpanel, libgee
+, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "wingpanel-indicator-power";
@@ -15,6 +15,7 @@ mkElementary rec {
     meson
     ninja
     pkgconfig
+    python3
     vala
     wrapGAppsHook
   ];
@@ -33,8 +34,8 @@ mkElementary rec {
   PKG_CONFIG_WINGPANEL_2_0_INDICATORSDIR = "lib/wingpanel";
 
   postPatch = ''
-    chmod +x ./meson/post_install.py
-    patchShebangs ./meson/post_install.py
+    chmod +x meson/post_install.py
+    patchShebangs meson/post_install.py
   '';
 
   meta = {
