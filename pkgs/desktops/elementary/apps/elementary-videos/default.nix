@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, meson, ninja , vala, desktop-file-utils
+{ mkElementary, pkgconfig, meson, ninja , vala, desktop-file-utils, python3
 , gtk3, granite, libgee, intltool, clutter-gst, clutter-gtk, gst_all_1
 , gobjectIntrospection, defaultIconTheme, wrapGAppsHook,  gst-ffmpeg }:
 
@@ -17,6 +17,7 @@ mkElementary rec {
     meson
     ninja
     pkgconfig
+    python3
     vala
     wrapGAppsHook
   ];
@@ -38,8 +39,8 @@ mkElementary rec {
   ];
 
   postPatch = ''
-    chmod +x ./meson/post_install.py
-    patchShebangs ./meson/post_install.py
+    chmod +x meson/post_install.py
+    patchShebangs meson/post_install.py
   '';
 
   meta = {
