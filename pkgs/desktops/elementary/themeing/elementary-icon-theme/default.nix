@@ -19,8 +19,8 @@ mkElementary rec {
   propagatedBuildInputs = [ hicolor-icon-theme ];
 
   mesonFlags = [
-    "-D volume_icons=false"
-    "-D palettes=false"
+    "-Dvolume_icons=false"
+    "-Dpalettes=false"
   ];
 
   postPatch = ''
