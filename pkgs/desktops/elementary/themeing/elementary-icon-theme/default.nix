@@ -1,4 +1,4 @@
-{ mkElementary, meson, ninja, hicolor-icon-theme, gtk3 }:
+{ mkElementary, meson, python3,ninja, hicolor-icon-theme, gtk3 }:
 
 mkElementary rec {
   pname = "icons";
@@ -11,6 +11,7 @@ mkElementary rec {
   nativeBuildInputs = [
     meson
     ninja
+    python3
   ];
 
   buildInputs = [ gtk3 ];
@@ -23,8 +24,8 @@ mkElementary rec {
   ];
 
   postPatch = ''
-    chmod +x ./meson/symlink.py
-    patchShebangs ./meson/symlink.py
+    chmod +x meson/symlink.py
+    patchShebangs meson/symlink.py
   '';
 
   postFixup = "gtk-update-icon-cache $out/share/icons/elementary";
