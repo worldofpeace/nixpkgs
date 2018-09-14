@@ -1,4 +1,4 @@
- { mkElementary, meson, ninja, pkgconfig, vala, glib, libgee, dbus, glib-networking, gobjectIntrospection }:
+ { mkElementary, meson, python3, ninja, pkgconfig, vala, glib, libgee, dbus, glib-networking, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "contractor";
@@ -14,6 +14,7 @@ mkElementary rec {
     ninja
     pkgconfig
     libgee
+    python3
     dbus
     vala
   ];
