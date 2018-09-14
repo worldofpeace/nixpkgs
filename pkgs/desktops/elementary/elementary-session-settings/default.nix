@@ -1,4 +1,4 @@
-{ mkElementary, gnome-settings-daemon, gnome-keyring, gnome-session, wingpanel, orca }:
+{ mkElementary, gnome-settings-daemon, gnome-keyring, gnome-session, wingpanel, orca, at-spi2-core }:
 
 mkElementary rec {
   pname = "session-settings";
@@ -18,6 +18,7 @@ mkElementary rec {
     cp -av ${gnome-settings-daemon}/etc/xdg/autostart/* $out/etc/xdg/autostart
     cp -av ${gnome-keyring}/etc/xdg/autostart/* $out/etc/xdg/autostart
     cp -av ${orca}/etc/xdg/autostart/* $out/etc/xdg/autostart
+    cp -av ${at-spi2-core}/etc/xdg/autostart/* $out/etc/xdg/autostart
 
     mkdir -p $out/share/gnome-session/sessions
     cp -av gnome-session/pantheon.session $out/share/gnome-session/sessions

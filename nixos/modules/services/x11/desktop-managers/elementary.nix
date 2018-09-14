@@ -149,11 +149,6 @@ in
         shared-mime-info
         xdg-user-dirs
         xfce4-13.tumbler
-        (runCommand "elementary-a11y-bus-autostart" {} ''
-        mkdir -p $out/etc/xdg/autostart
-        substitute ${at-spi2-core}/etc/xdg/autostart/at-spi-dbus-bus.desktop $out/etc/xdg/autostart/at-spi-dbus-bus-pantheon.desktop \
-          --replace "OnlyShowIn=GNOME;Unity;" "OnlyShowIn=GNOME;Unity;Pantheon;"
-        '')
       ]);
 
     hardware.bluetooth.enable = mkDefault true;
