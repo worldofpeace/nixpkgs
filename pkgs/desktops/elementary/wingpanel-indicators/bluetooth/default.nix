@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, meson, ninja, vala
+{ mkElementary, pkgconfig, meson, python3, ninja, vala
 , gtk3, granite, libnotify, wingpanel, libgee, libxml2
 , gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
@@ -16,6 +16,7 @@ mkElementary rec {
     meson
     ninja
     pkgconfig
+    python3
     vala
     wrapGAppsHook
   ];
@@ -32,8 +33,8 @@ mkElementary rec {
   PKG_CONFIG_WINGPANEL_2_0_INDICATORSDIR = "lib/wingpanel";
 
   postPatch = ''
-    chmod +x ./meson/post_install.py
-    patchShebangs ./meson/post_install.py
+    chmod +x meson/post_install.py
+    patchShebangs meson/post_install.py
   '';
 
   meta = {
