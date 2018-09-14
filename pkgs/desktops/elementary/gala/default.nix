@@ -1,4 +1,4 @@
-{ mkElementary, pkgconfig, meson, ninja, vala, desktop-file-utils, gettext
+{ mkElementary, pkgconfig, meson, python3, ninja, vala, desktop-file-utils, gettext
 , libxml2, gtk3, granite, libgee, bamf, gnome-settings-daemon, libcanberra
 , libcanberra-gtk3, gnome-desktop, mutter, clutter, plank, gobjectIntrospection
 , defaultIconTheme, appstream, appstream-glib, wrapGAppsHook }:
@@ -17,12 +17,13 @@ mkElementary rec {
     desktop-file-utils
     gettext
     gobjectIntrospection
+    libxml2
     meson
     ninja
     pkgconfig
+    python3
     vala
     wrapGAppsHook
-    libxml2
   ];
 
   buildInputs = [
@@ -43,8 +44,8 @@ mkElementary rec {
   patches = [ ./plugins-dir.patch ];
 
   postPatch = ''
-    chmod +x ./build-aux/meson/post_install.py
-    patchShebangs ./build-aux/meson/post_install.py
+    chmod +x build-aux/meson/post_install.py
+    patchShebangs build-aux/meson/post_install.py
   '';
 
   meta = {
