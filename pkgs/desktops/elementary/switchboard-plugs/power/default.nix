@@ -1,5 +1,5 @@
-{ mkElementary, meson, ninja, pkgconfig, vala, libgee
-, granite, gtk3, dbus, polkit, switchboard, gobjectIntrospection }:
+{ mkElementary, substituteAll, meson, ninja, pkgconfig, vala, libgee, elementary-dpms-helper
+, makeWrapper, granite, gtk3, dbus, polkit, switchboard, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-power";
@@ -26,13 +26,17 @@ mkElementary rec {
     switchboard
   ];
 
+  patches = [
+    (substituteAll {
+      src = ./dpms-helper-exec.patch;
+      exec = "${elementary-dpms-helper}";
+    })
+  ];
+
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
   PKG_CONFIG_DBUS_1_SYSTEM_BUS_SERVICES_DIR = "etc/dbus-1/system-services";
   PKG_CONFIG_DBUS_1_SYSCONFDIR = "etc";
   PKG_CONFIG_POLKIT_GOBJECT_1_POLICYDIR = "share/polkit-1/actions";
-
-  # depends on one of the downstream patches to gnome-settings-daemon from ubuntu
-  patches = [ ./no-e-dpms-helper.patch ];
 
   meta = {
     description = "Switchboard Power Plug";
