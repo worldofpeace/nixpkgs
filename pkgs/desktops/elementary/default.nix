@@ -28,6 +28,7 @@ lib.makeScope pkgs.newScope (self: with self; {
     cerbere
     elementary-capnet-assist
     elementary-settings-daemon
+    elementary-dpms-helper
     pantheon-agent-geoclue2
     pantheon-agent-polkit
   ];
@@ -66,6 +67,8 @@ lib.makeScope pkgs.newScope (self: with self; {
   extra-elementary-contracts = callPackage ./extra-elementary-contracts {
     inherit (gnome3) file-roller gnome-bluetooth;
   };
+
+  elementary-dpms-helper = callPackage ./elementary-dpms-helper { };
 
   #### APPS
 
