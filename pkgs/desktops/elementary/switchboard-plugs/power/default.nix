@@ -1,6 +1,5 @@
-{ mkElementary, substituteAll, meson, ninja, pkgconfig, vala, libgee
-, elementary-settings-daemon,  elementary-dpms-helper, granite, gtk3
-, dbus, polkit, switchboard, gobjectIntrospection }:
+{ mkElementary, substituteAll, meson, ninja, pkgconfig, vala, libgee, elementary-dpms-helper
+, makeWrapper, granite, gtk3, dbus, polkit, switchboard, gobjectIntrospection }:
 
 mkElementary rec {
   pname = "switchboard-plug-power";
@@ -32,13 +31,7 @@ mkElementary rec {
       src = ./dpms-helper-exec.patch;
       exec = "${elementary-dpms-helper}";
     })
-    ./hardcode-gsettings.patch
   ];
-
-  postPatch = ''
-    substituteInPlace src/MainView.vala --subst-var-by DPMS_HELPER_GSETTINGS_PATH ${elementary-dpms-helper}/share/gsettings-schemas/${elementary-dpms-helper.name}/glib-2.0/schemas
-    substituteInPlace src/MainView.vala --subst-var-by GSD_GSETTINGS_PATH ${elementary-settings-daemon}/share/gsettings-schemas/${elementary-settings-daemon.name}/glib-2.0/schemas
-  '';
 
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
   PKG_CONFIG_DBUS_1_SYSTEM_BUS_SERVICES_DIR = "share/dbus-1/system-services";
