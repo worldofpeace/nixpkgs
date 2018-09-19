@@ -27,6 +27,7 @@ lib.makeScope pkgs.newScope (self: with self; {
   services = [
     cerbere
     elementary-capnet-assist
+    elementary-settings-daemon
     pantheon-agent-geoclue2
     pantheon-agent-polkit
   ];
@@ -135,6 +136,11 @@ lib.makeScope pkgs.newScope (self: with self; {
   elementary-capnet-assist = callPackage ./elementary-capnet-assist {
     inherit (gnome3) gcr;
   };
+
+  # We're using ubuntu and elementary's patchset due to reasons
+  # explained here -> https://github.com/elementary/greeter/issues/92#issuecomment-376215614
+  # Take note of "I am holding off on "fixing" this bug for as long as possible."
+  elementary-settings-daemon = callPackage ./elementary-settings-daemon { };
 
   pantheon-agent-geoclue2 = callPackage ./pantheon-agent-geoclue2 { };
 
