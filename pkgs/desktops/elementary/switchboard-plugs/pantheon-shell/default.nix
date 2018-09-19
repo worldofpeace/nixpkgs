@@ -1,5 +1,5 @@
 { mkElementary, meson, ninja, pkgconfig, vala, libgee, granite
-, gexiv2, gnome-settings-daemon, gtk3, gnome-desktop, plank
+, gexiv2, elementary-settings-daemon, gtk3, gnome-desktop, plank
 , switchboard, appstream-glib, gettext, gobjectIntrospection, bamf }:
 
 mkElementary rec {
@@ -24,7 +24,7 @@ mkElementary rec {
     bamf
     gexiv2
     gnome-desktop
-    gnome-settings-daemon
+    elementary-settings-daemon
     granite
     gtk3
     libgee

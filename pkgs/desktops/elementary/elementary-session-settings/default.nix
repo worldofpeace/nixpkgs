@@ -1,4 +1,4 @@
-{ mkElementary, gnome-settings-daemon, gnome-keyring, gnome-session, wingpanel, orca, at-spi2-core }:
+{ mkElementary, gnome-keyring, gnome-session, wingpanel, orca, at-spi2-core }:
 
 mkElementary rec {
   pname = "session-settings";
@@ -15,7 +15,6 @@ mkElementary rec {
     cp -avr applications $out/share/
 
     mkdir -p $out/etc/xdg/autostart
-    cp -av ${gnome-settings-daemon}/etc/xdg/autostart/* $out/etc/xdg/autostart
     cp -av ${gnome-keyring}/etc/xdg/autostart/* $out/etc/xdg/autostart
     cp -av ${orca}/etc/xdg/autostart/* $out/etc/xdg/autostart
     cp -av ${at-spi2-core}/etc/xdg/autostart/* $out/etc/xdg/autostart
@@ -39,9 +38,6 @@ mkElementary rec {
       echo "Patching OnlyShowIn to Pantheon in: $autostart"
       sed -i "s,OnlyShowIn=GNOME;,OnlyShowIn=Pantheon;," $autostart
     done
-
-    # Causes problems with lightdm and because I can't get GLOBIGNORE to work.
-    rm $out/etc/xdg/autostart/org.gnome.SettingsDaemon.ScreensaverProxy-pantheon.desktop
   '';
 
   meta = {

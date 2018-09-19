@@ -105,17 +105,17 @@ lib.makeScope pkgs.newScope (self: with self; {
   };
 
   elementary-greeter = callPackage ./elementary-greeter {
-    inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
+    inherit (gnome3) gnome-desktop mutter;
   };
 
   elementary-session-settings = callPackage ./elementary-session-settings {
-    inherit (gnome3) gnome-session gnome-settings-daemon gnome-keyring;
+    inherit (gnome3) gnome-session gnome-keyring;
    };
 
   elementary-shortcut-overlay = callPackage ./elementary-shortcut-overlay { };
 
   gala = callPackage ./gala {
-    inherit (gnome3) gnome-settings-daemon gnome-desktop mutter;
+    inherit (gnome3) gnome-desktop mutter;
   };
 
   wingpanel = callPackage ./wingpanel {
@@ -210,7 +210,7 @@ lib.makeScope pkgs.newScope (self: with self; {
   };
 
   switchboard-plug-pantheon-shell = callPackage ./switchboard-plugs/pantheon-shell {
-    inherit (gnome3)  gnome-settings-daemon gnome-desktop gexiv2;
+    inherit (gnome3) gnome-desktop gexiv2;
   };
 
   switchboard-plug-power = callPackage ./switchboard-plugs/power { };

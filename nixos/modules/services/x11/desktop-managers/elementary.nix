@@ -72,7 +72,7 @@ in
         default = with pkgs; [
           elementary.gala
           epiphany
-          gnome3.gnome-settings-daemon
+          elementary.elementary-settings-daemon
           gnome3.mutter
           gtk3
           plank
@@ -174,7 +174,7 @@ in
     services.gnome3.gnome-keyring.enable = true;
     services.gnome3.gvfs.enable = true;
     services.gnome3.rygel.enable = true;
-    services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
+    services.udev.packages = [ pkgs.elementary.elementary-settings-daemon ];
     services.udisks2.enable = true;
     services.upower.enable = config.powerManagement.enable;
     services.xserver.libinput.enable = mkDefault true;

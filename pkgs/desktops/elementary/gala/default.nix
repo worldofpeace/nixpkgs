@@ -1,5 +1,5 @@
 { mkElementary, pkgconfig, meson, python3, ninja, vala, desktop-file-utils, gettext
-, libxml2, gtk3, granite, libgee, bamf, gnome-settings-daemon, libcanberra
+, libxml2, gtk3, granite, libgee, bamf, elementary-settings-daemon, libcanberra
 , libcanberra-gtk3, gnome-desktop, mutter, clutter, plank, gobjectIntrospection
 , defaultIconTheme, appstream, appstream-glib, wrapGAppsHook }:
 
@@ -31,7 +31,7 @@ mkElementary rec {
     clutter
     defaultIconTheme
     gnome-desktop
-    gnome-settings-daemon
+    elementary-settings-daemon
     granite
     gtk3
     libcanberra

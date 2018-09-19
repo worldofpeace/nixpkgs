@@ -1,5 +1,5 @@
 { mkElementary, pkgconfig, fetchpatch, substituteAll, makeWrapper, meson
-, ninja, vala, desktop-file-utils, gtk3, granite, libgee, gnome-settings-daemon
+, ninja, vala, desktop-file-utils, gtk3, granite, libgee, elementary-settings-daemon
 , gnome-desktop, mutter, gobjectIntrospection, defaultIconTheme, wingpanel-with-indicators
 , elementary-gtk-theme, nixos-artwork, elementary-default-settings
 , lightdm, numlockx, clutter-gtk, libglvnd, dbus, wrapGAppsHook }:
@@ -27,7 +27,7 @@ mkElementary rec {
     defaultIconTheme
     elementary-gtk-theme
     gnome-desktop
-    gnome-settings-daemon
+    elementary-settings-daemon
     granite
     gtk3
     libgee
@@ -44,7 +44,7 @@ mkElementary rec {
     })
     (substituteAll {
       src = ./gsd.patch;
-      gnome-settings-daemon = "${gnome-settings-daemon}/libexec";
+      elementary-settings-daemon = "${elementary-settings-daemon}/libexec";
     })
     ./01-sbin-bin.patch
     ./01-sysconfdir-install.patch
