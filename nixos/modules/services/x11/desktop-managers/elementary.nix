@@ -59,7 +59,13 @@ in
 
           Note that this should be a last resort; patching the package is preferred (see GPaste).
         '';
-        apply = list: list ++ pkgs.elementary.wingpanelIndicators ++ [ pkgs.elementary.pantheon-agent-geoclue2 pkgs.gnome3.evolution-data-server ];
+        apply = list: list ++ pkgs.elementary.wingpanelIndicators ++
+        [
+          pkgs.elementary.elementary-dpms-helper
+          pkgs.elementary.elementary-settings-daemon # TODO: I shouldn't need to do this
+          pkgs.elementary.pantheon-agent-geoclue2
+          pkgs.gnome3.evolution-data-server
+        ];
       };
 
       extraGSettingsOverrides = mkOption {
