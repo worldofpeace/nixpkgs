@@ -41,7 +41,7 @@ mkElementary rec {
   '';
 
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
-  PKG_CONFIG_DBUS_1_SYSTEM_BUS_SERVICES_DIR = "etc/dbus-1/system-services";
+  PKG_CONFIG_DBUS_1_SYSTEM_BUS_SERVICES_DIR = "share/dbus-1/system-services";
   PKG_CONFIG_DBUS_1_SYSCONFDIR = "etc";
   PKG_CONFIG_POLKIT_GOBJECT_1_POLICYDIR = "share/polkit-1/actions";
 
