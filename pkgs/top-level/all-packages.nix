@@ -2833,6 +2833,8 @@ with pkgs;
 
   gnome-builder = callPackage ../applications/editors/gnome-builder { };
 
+  gnome-podcasts = callPackage ../applications/audio/gnome-podcasts { };
+
   gnokii = callPackage ../tools/misc/gnokii { };
 
   gnuapl = callPackage ../development/interpreters/gnu-apl { };
