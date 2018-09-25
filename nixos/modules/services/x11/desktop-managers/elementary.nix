@@ -117,6 +117,10 @@ in
               export LD_LIBRARY_PATH=$LD_LIBRARY_PATH''${LD_LIBRARY_PATH:+:}${p}/lib
             fi
           '') cfg.sessionPath}
+
+          # Makes qt applications look less alien
+          export QT_QPA_PLATFORMTHEME=gtk3
+          export QT_STYLE_OVERRIDE=adwaita
       fi
     '';
 
@@ -144,6 +148,7 @@ in
       ])
       ++ (with pkgs;
       [
+        adwaita-qt
         desktop-file-utils
         glib
         glib-networking
@@ -152,6 +157,7 @@ in
         hicolor-icon-theme
         lightlocker # TODO: This probably needs work
         plank
+        qgnomeplatform
         shared-mime-info
         xdg-user-dirs
         xfce4-13.tumbler
