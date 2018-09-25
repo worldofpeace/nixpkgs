@@ -29,6 +29,7 @@ mkElementary rec {
       src = ./lspci-path.patch;
       pciutils = "${pciutils}";
     })
+    ./remove-update-button.patch
   ];
 
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
