@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "files";
-  version = "27df27c1c7242f2d997b96a4e55f6b86233d7e26";
+  version = "b8ef9bfa37cd2264a2cab27b7094357b3c929f15";
 
-  name = "elementary-${pname}-2018-09-05";
+  name = "elementary-${pname}-2018-10-01";
 
-  sha256 = "1c7ymf4za1ffcih3b4x528sn9ckp6vz05k88bv44a5kva5kad8mm";
+  sha256 = "1ypbg68yp41kg7i5a0p1w0qyz4yrsrrki48jn523sw76kw2k96ak";
 
   nativeBuildInputs = [
     cmake
