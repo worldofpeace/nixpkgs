@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "screenshot-tool";
-  version = "775b4d69fd52e75df0d58500728591e633f72f6d";
+  version = "bbe21a949e90c34fdd3537e52033957a3d9a59e2";
 
-  name = "elementary-${pname}-2018-09-09";
+  name = "elementary-${pname}-2018-10-01";
 
-  sha256 = "0wriml8drzx0ink58n7fmv0wnxvk62yp1n0gdz1bn7r6x7axfxh0";
+  sha256 = "1ll341bbsjzax7a02jmg7472bw9b7dh0pk8qadjysa11b87kcklw";
 
   nativeBuildInputs = [
     desktop-file-utils
