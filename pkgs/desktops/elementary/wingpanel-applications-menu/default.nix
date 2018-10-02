@@ -5,11 +5,11 @@
 
 mkElementary rec {
   pname = "applications-menu";
-  version = "2.4.0";
+  version = "8bdec5ec33825ea887e8d1b6c7cc1e3519a505da";
 
-  name = "wingpanel-${pname}-${version}";
+  name = "wingpanel-${pname}-2018-09-27";
 
-  sha256 = "1irkjs0zm4pm5rpwg6p7jq5ml78z9mkv35j4754g7c6pps6jlg8l";
+  sha256 = "18sv7xzkww9y5crncaqi8324fr8nw65ngw486fdbj8cqas5p9wif";
 
   nativeBuildInputs = [
     appstream
