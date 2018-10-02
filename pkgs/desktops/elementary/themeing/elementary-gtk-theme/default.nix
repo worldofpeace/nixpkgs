@@ -2,11 +2,11 @@
 
 mkElementary rec {
   pname = "stylesheet";
-  version = "b350fa09b6c4455e8cda012bd8a76127a96baf89";
+  version = "4000a3247b2ef264d8a7cf1df6eb4877386562c9";
 
-  name = "elementary-gtk-theme-2018-09-08";
+  name = "elementary-gtk-theme-2018-10-01";
 
-  sha256 = "0nkyaka2lmaj5mzqvvcsghr4nmilarwdvclc341ypsghy4i47pbh";
+  sha256 = "0c40zlrm1n4bbb77gch7q2kglfdk72lsfqp8d900c227chh6skhq";
 
   nativeBuildInputs = [
     meson
