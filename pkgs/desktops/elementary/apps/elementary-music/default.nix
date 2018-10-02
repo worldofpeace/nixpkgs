@@ -7,11 +7,11 @@
 
 mkElementary rec {
   pname = "music";
-  version = "5b7f42f2a313bdb2d70c903d327bb9a575076f00";
+  version = "1f1da4e54ab246859f8e88008987fa6c51d2de83";
 
-  name = "elementary-${pname}-2018-09-10";
+  name = "elementary-${pname}-2018-10-01";
 
-  sha256 = "0nzka4sp7z68ss8w51q5s287dsqkyd4vfz52rld4kfgbca7z1yaq";
+  sha256 = "1kda2ygvkng7gqi01f4szv7w68z16xpizfal3r1xvdcg1gv4ira5";
 
   nativeBuildInputs = [
     desktop-file-utils
