@@ -4,11 +4,11 @@
 
 mkElementary rec {
   pname = "videos";
-  version = "59dc6d61b0ad4a7e91cdda076169cd328f58a0c8";
+  version = "2.6.2";
 
-  name = "elementary-${pname}-2018-08-25";
+  name = "elementary-${pname}-${version}";
 
-  sha256 = "0kgdplc7w53id4059wcsarhslyqggzpqhy4wvkpvlna6pn9pzm0l";
+  sha256 = "1pbhkk2q83hsh2kmszsmihv84wmy6qszqzhnpasjv7vxp17k4gd2";
 
   nativeBuildInputs = [
     desktop-file-utils
