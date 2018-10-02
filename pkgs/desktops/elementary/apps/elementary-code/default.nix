@@ -1,19 +1,20 @@
 { mkElementary, lib, pkgconfig, meson, ninja, vala, substituteAll, python3
-, desktop-file-utils, gtk3, granite, libgee, defaultIconTheme, appstream
-, libpeas, editorconfig-core-c, gtksourceview3, gtkspell3, libsoup, vte
-, webkitgtk, zeitgeist, ctags, libgit2-glib, intltool, wrapGAppsHook }:
+, glibcLocales, desktop-file-utils, gtk3, granite, libgee, defaultIconTheme
+, appstream, libpeas, editorconfig-core-c, gtksourceview3, gtkspell3, libsoup
+, vte, webkitgtk, zeitgeist, ctags, libgit2-glib, intltool, wrapGAppsHook }:
 
 mkElementary rec {
   pname = "code";
-  version = "74e42c3a280314f03652b43673be11c299152f3f";
+  version = "dc5cc29e4642729b45074923531178278a395a09";
 
-  name = "elementary-${pname}-2018-09-06";
+  name = "elementary-${pname}-2018-09-29";
 
-  sha256 = "0g9va1f7p8fq7kkfg096yzmm4pjxxf4b2dsy1wblahk8svb4x3bx";
+  sha256 = "008clfvk5i77gsrfrcc52ns6vcxi3jpmqdjqi8nlig1g9x4k49b1";
 
   nativeBuildInputs = [
     appstream
     desktop-file-utils
+    glibcLocales
     meson
     ninja
     pkgconfig
@@ -48,6 +49,9 @@ mkElementary rec {
   ];
 
   LIBRARY_PATH = lib.makeLibraryPath [ editorconfig-core-c ];
+
+  # install script fails with UnicodeDecodeError because of printing a fancy elipsis character
+  LC_ALL = "en_US.UTF-8";
 
   postPatch = ''
     chmod +x meson/post_install.py
