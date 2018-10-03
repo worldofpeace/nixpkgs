@@ -1,7 +1,7 @@
-{ stdenv, fetchFromGitHub, elementary, cmake, ninja, pkgconfig, vala
-, granite, libgee, gettext, gtk3, appstream, gnome-menus, json-glib
-, plank, bamf, switchboard, libunity, libsoup, wingpanel, libwnck3
-, zeitgeist, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
+{ stdenv, fetchFromGitHub, elementary, substituteAll, cmake, ninja
+, pkgconfig, vala, granite, libgee, gettext, gtk3, appstream, gnome-menus
+, json-glib, plank, bamf, switchboard, libunity, libsoup, wingpanel, libwnck3
+, zeitgeist, gobjectIntrospection, defaultIconTheme, bc, wrapGAppsHook }:
 
 stdenv.mkDerivation rec {
   pname = "applications-menu";
@@ -44,11 +44,16 @@ stdenv.mkDerivation rec {
     zeitgeist
    ];
 
-
   PKG_CONFIG_WINGPANEL_2_0_INDICATORSDIR = "lib/wingpanel";
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
 
-  patches = [ ./xdg.patch ];
+  patches = [
+    (substituteAll {
+      src = ./bc.patch;
+      exec = "${bc}/bin/bc";
+    })
+    ./xdg.patch
+  ];
 
   meta = with stdenv.lib; {
     description = "Lightweight and stylish app launcher for Pantheon";

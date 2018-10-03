@@ -1,0 +1,42 @@
+diff --git a/lib/synapse-plugins/calculator-plugin.vala b/lib/synapse-plugins/calculator-plugin.vala
+index 1b5fa06..0573b80 100644
+--- a/lib/synapse-plugins/calculator-plugin.vala
++++ b/lib/synapse-plugins/calculator-plugin.vala
+@@ -51,9 +51,7 @@ namespace Synapse {
+                                                                     _("Calculator"),
+                                                                     _("Calculate basic expressions."),
+                                                                     "accessories-calculator",
+-                                                                    register_plugin,
+-                                                                    Environment.find_program_in_path ("bc") != null,
+-                                                                    _("bc is not installed"));
++                                                                    register_plugin);
+         }
+ 
+         static construct {
+@@ -65,7 +63,7 @@ namespace Synapse {
+         construct {
+             /* The regex describes a string which *resembles* a mathematical expression. It does not
+             check for pairs of parantheses to be used correctly and only whitespace-stripped strings
+-            will match. Basically it matches strings of the form: 
++            will match. Basically it matches strings of the form:
+             "paratheses_open* number (operator paratheses_open* number paratheses_close*)+"
+             */
+             try {
+@@ -79,7 +77,7 @@ namespace Synapse {
+             return (QueryFlags.ACTIONS in query.query_type);
+         }
+ 
+-        public async ResultSet? search (Query query) throws SearchError { 
++        public async ResultSet? search (Query query) throws SearchError {
+             string input = query.query_string.replace (" ", "").replace (",", ".");
+             bool matched = regex.match (input);
+ 
+@@ -90,7 +88,7 @@ namespace Synapse {
+             if (matched) {
+                 Pid pid;
+                 int read_fd, write_fd;
+-                string[] argv = {"bc", "-l"};
++                string[] argv = {"@exec@", "-l"};
+                 string? solution = null;
+ 
+                 try {
