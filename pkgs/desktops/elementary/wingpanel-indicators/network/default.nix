@@ -1,14 +1,19 @@
-{ mkElementary, pkgconfig, meson, ninja, vala, gtk3
-, granite, networkmanager, networkmanagerapplet, wingpanel
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, meson, ninja, vala
+, gtk3, granite, networkmanager, networkmanagerapplet, wingpanel
 , libgee, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-network";
   version = "2.2.0";
 
   name = "${pname}-${version}";
 
-  sha256 = "1yr743y3zk79jbsxvrlmqczp0agx50jbmjij0f25k7cwmjsv78jw";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1yr743y3zk79jbsxvrlmqczp0agx50jbmjij0f25k7cwmjsv78jw";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -31,7 +36,11 @@ mkElementary rec {
 
   PKG_CONFIG_WINGPANEL_2_0_INDICATORSDIR = "lib/wingpanel";
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Network Indicator for Wingpanel";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.lgpl21Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

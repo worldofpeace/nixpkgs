@@ -1,13 +1,18 @@
-{ mkElementary, substituteAll, meson, ninja, pkgconfig, vala, libgee, elementary-dpms-helper
-, makeWrapper, granite, gtk3, dbus, polkit, switchboard, gobjectIntrospection }:
+{ stdenv, fetchFromGitHub, elementary, substituteAll, meson, ninja, pkgconfig, vala, libgee
+, elementary-dpms-helper, makeWrapper, granite, gtk3, dbus, polkit, switchboard, gobjectIntrospection }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "switchboard-plug-power";
   version = "e89b64cb8891e1207102c85170c541ba706d26df";
 
   name = "${pname}-2018-09-15";
 
-  sha256 = "1s498na6dxr1hmmzhbg9dywapcpw22c8j42wvydar3sk06lk30sj";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1s498na6dxr1hmmzhbg9dywapcpw22c8j42wvydar3sk06lk30sj";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -38,8 +43,11 @@ mkElementary rec {
   PKG_CONFIG_DBUS_1_SYSCONFDIR = "etc";
   PKG_CONFIG_POLKIT_GOBJECT_1_POLICYDIR = "share/polkit-1/actions";
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Switchboard Power Plug";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.gpl2Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
-
 }

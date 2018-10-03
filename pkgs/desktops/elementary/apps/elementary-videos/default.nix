@@ -1,14 +1,19 @@
-{ mkElementary, pkgconfig, meson, ninja , vala, desktop-file-utils, python3
-, gtk3, granite, libgee, intltool, clutter-gst, clutter-gtk, gst_all_1
-, gobjectIntrospection, defaultIconTheme, wrapGAppsHook,  gst-ffmpeg }:
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, meson, ninja, vala
+, desktop-file-utils, python3, gtk3, granite, libgee, intltool, clutter-gst
+, clutter-gtk, gst_all_1, gobjectIntrospection, defaultIconTheme, wrapGAppsHook,  gst-ffmpeg }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "videos";
   version = "2.6.2";
 
   name = "elementary-${pname}-${version}";
 
-  sha256 = "1pbhkk2q83hsh2kmszsmihv84wmy6qszqzhnpasjv7vxp17k4gd2";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1pbhkk2q83hsh2kmszsmihv84wmy6qszqzhnpasjv7vxp17k4gd2";
+  };
 
   nativeBuildInputs = [
     desktop-file-utils
@@ -43,7 +48,11 @@ mkElementary rec {
     patchShebangs meson/post_install.py
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Video player and library app designed for elementary OS";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.gpl3Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

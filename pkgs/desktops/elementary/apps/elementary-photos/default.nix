@@ -1,15 +1,20 @@
-{ mkElementary, meson, ninja, pkgconfig, vala, desktop-file-utils, intltool, gtk3, glib
-, libaccounts-glib, libexif, libgee, geocode-glib, gexiv2,libgphoto2, granite, gst_all_1
-, libgudev, json-glib, libraw, rest, libgsignon-glib, libsoup, sqlite, scour, webkitgtk
-, libwebp, appstream, libunity, wrapGAppsHook, gobjectIntrospection, defaultIconTheme }:
+{ stdenv, fetchFromGitHub, elementary, meson, ninja, pkgconfig, vala, desktop-file-utils
+, intltool, gtk3, glib, libaccounts-glib, libexif, libgee, geocode-glib, gexiv2,libgphoto2
+, granite, gst_all_1, libgudev, json-glib, libraw, rest, libgsignon-glib, libsoup, sqlite
+, scour, webkitgtk, libwebp, appstream, libunity, wrapGAppsHook, gobjectIntrospection, defaultIconTheme }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "photos";
   version = "d1c9f90b81d561b7499c49f1715fa4de28097de9";
 
   name = "elementary-${pname}-2018-09-30";
 
-  sha256 = "1dl2dkqfhq2gg77bkq22djmj9iw65vxnp603fmbrfg8wpnrycxl1";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1dl2dkqfhq2gg77bkq22djmj9iw65vxnp603fmbrfg8wpnrycxl1";
+  };
 
   nativeBuildInputs = [
     appstream
@@ -59,7 +64,11 @@ mkElementary rec {
     ${glib.dev}/bin/glib-compile-schemas $out/share/glib-2.0/schemas
   '';
 
-  meta = {
+  meta =  with stdenv.lib; {
     description = "Photo viewer and organizer designed for elementary OS";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.lgpl21Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

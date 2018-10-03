@@ -1,13 +1,18 @@
-{ mkElementary, fetchpatch, meson, ninja, pkgconfig, vala, libgee
-, granite, gtk3, switchboard, gobjectIntrospection }:
+{ stdenv, fetchFromGitHub, elementary, fetchpatch, meson, ninja
+, pkgconfig, vala, libgee, granite, gtk3, switchboard, gobjectIntrospection }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "switchboard-plug-mouse-touchpad";
   version = "0.1.3";
 
   name = "${pname}-${version}";
 
-  sha256 = "1d91simqd4likx3lg3fi9bbiajkq4f95i3446nzqriy33m5g3yb2";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1d91simqd4likx3lg3fi9bbiajkq4f95i3446nzqriy33m5g3yb2";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -34,8 +39,11 @@ mkElementary rec {
 
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Switchboard Mouse & Touchpad Plug";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.gpl2Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
-
 }

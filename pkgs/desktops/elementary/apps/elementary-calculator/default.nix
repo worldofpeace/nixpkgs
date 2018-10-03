@@ -1,15 +1,20 @@
-{ mkElementary, pkgconfig, meson, ninja, vala
-, desktop-file-utils, libxml2, gtk3, python3
-, granite, libgee, gobjectIntrospection
+{ stdenv, fetchFromGitHub, elementary, pkgconfig
+, meson, ninja, vala, desktop-file-utils, libxml2
+, gtk3, python3, granite, libgee, gobjectIntrospection
 , defaultIconTheme, appstream, wrapGAppsHook }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "calculator";
   version = "0.1.5";
 
   name = "elementary-${pname}-${version}";
 
-  sha256 = "1hw7dfarinvi741ifvymfm7ys46bv9w5s5nqy6gpx64mnldcqizk";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1hw7dfarinvi741ifvymfm7ys46bv9w5s5nqy6gpx64mnldcqizk";
+  };
 
   nativeBuildInputs = [
     appstream
@@ -36,7 +41,11 @@ mkElementary rec {
     patchShebangs meson/post_install.py
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
+    homepage = "https://github.com/elementary/${pname}";
     description = "Calculator app designed for elementary OS";
+    license = licenses.gpl3Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

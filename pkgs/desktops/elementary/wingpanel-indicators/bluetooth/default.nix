@@ -1,14 +1,19 @@
-{ mkElementary, pkgconfig, meson, python3, ninja, vala
-, gtk3, granite, libnotify, wingpanel, libgee, libxml2
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, meson, python3
+, ninja, vala, gtk3, granite, libnotify, wingpanel, libgee, libxml2
 , gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-bluetooth";
   version = "2.1.0";
 
   name = "${pname}-${version}";
 
-  sha256 = "0zqw18wm72s8zz44irk8p7mksfvrdxf9gbhpd8hyyjv3j9byidzf";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "0zqw18wm72s8zz44irk8p7mksfvrdxf9gbhpd8hyyjv3j9byidzf";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -37,7 +42,11 @@ mkElementary rec {
     patchShebangs meson/post_install.py
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Bluetooth Indicator for Wingpanel";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.lgpl21Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

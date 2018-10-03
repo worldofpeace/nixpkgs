@@ -1,14 +1,19 @@
-{ mkElementary, meson, python3, ninja, pkgconfig, vala
-, libgee, granite, gtk3, polkit, zeitgeist, switchboard
-, lightlocker, pantheon-agent-geoclue2, gobjectIntrospection }:
+{ stdenv, fetchFromGitHub, elementary, meson, python3, ninja
+, pkgconfig, vala, libgee, granite, gtk3, polkit, zeitgeist
+, switchboard, lightlocker, pantheon-agent-geoclue2, gobjectIntrospection }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "switchboard-plug-security-privacy";
   version = "51421379d2b0739c74d6b7233627e4dbe4c55f9b";
 
   name = "${pname}-2018-06-25";
 
-  sha256 = "1jwrriqwxfv4z8rfw6m85sgc3wfcmfy5g8khc8w1af9r0l2cm79w";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1jwrriqwxfv4z8rfw6m85sgc3wfcmfy5g8khc8w1af9r0l2cm79w";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -43,8 +48,12 @@ mkElementary rec {
     substituteInPlace src/Views/FirewallPanel.vala --subst-var-by SWITCHBOARD_SEC_PRIV_GSETTINGS_PATH $out/share/gsettings-schemas/${name}/glib-2.0/schemas
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Switchboard Security & Privacy Plug ";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.lgpl3Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 
 }

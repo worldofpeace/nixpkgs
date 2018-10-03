@@ -1,16 +1,21 @@
-{ mkElementary, pkgconfig, fetchpatch, substituteAll, makeWrapper, meson
-, ninja, vala, desktop-file-utils, gtk3, granite, libgee, elementary-settings-daemon
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, fetchpatch, substituteAll, makeWrapper
+, meson, ninja, vala, desktop-file-utils, gtk3, granite, libgee, elementary-settings-daemon
 , gnome-desktop, mutter, gobjectIntrospection, defaultIconTheme, wingpanel-with-indicators
 , elementary-gtk-theme, nixos-artwork, elementary-default-settings
 , lightdm, numlockx, clutter-gtk, libglvnd, dbus, wrapGAppsHook }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "greeter";
   version = "23f1750ac6c25c7ea8581df71d75d946cd8e7773";
 
   name = "elementary-${pname}-2018-09-24";
 
-  sha256 = "07xdl8wy78hv3yl8m46rxn9c2y93z03zl8fv826x4j7jlfaqq721";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "07xdl8wy78hv3yl8m46rxn9c2y93z03zl8fv826x4j7jlfaqq721";
+  };
 
   nativeBuildInputs = [
     desktop-file-utils
@@ -85,7 +90,11 @@ mkElementary rec {
       --replace "#default-wallpaper=/usr/share/backgrounds/elementaryos-default" "default-wallpaper=${nixos-artwork.wallpapers.simple-dark-gray}/share/artwork/gnome/nix-wallpaper-simple-dark-gray.png"
   '';
 
-  meta = {
-    description = "LightDM Greeter for Pantheon.";
+  meta = with stdenv.lib; {
+    description = "LightDM Greeter for Pantheon";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.gpl3Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

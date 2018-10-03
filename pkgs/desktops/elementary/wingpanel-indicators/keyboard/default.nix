@@ -1,14 +1,19 @@
-{ mkElementary, pkgconfig, meson, ninja, substituteAll, vala
-,  gtk3, granite, libxml2, wingpanel, libgee, xlibs
-, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, meson, ninja
+, substituteAll, vala, gtk3, granite, libxml2, wingpanel, libgee
+, xlibs, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-keyboard";
   version = "2.1.0";
 
   name = "${pname}-${version}";
 
-  sha256 = "0l5axkn8zirpdn4j7a8k5728pjmgi716hwmp4fwmb6vavbi42v6z";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "0l5axkn8zirpdn4j7a8k5728pjmgi716hwmp4fwmb6vavbi42v6z";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -37,7 +42,11 @@ mkElementary rec {
 
   PKG_CONFIG_WINGPANEL_2_0_INDICATORSDIR = "lib/wingpanel";
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Keyboard Indicator for Wingpanel";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.lgpl21Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

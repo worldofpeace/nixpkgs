@@ -1,12 +1,18 @@
-{ mkElementary, pkgconfig, meson, python3, ninja, vala, desktop-file-utils, gtk3, granite, libgee, gcr, webkitgtk, gobjectIntrospection, wrapGAppsHook }:
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, meson, python3, ninja, vala
+, desktop-file-utils, gtk3, granite, libgee, gcr, webkitgtk, gobjectIntrospection, wrapGAppsHook }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "capnet-assist";
   version = "0.2.2";
 
   name = "elementary-${pname}-${version}";
 
-  sha256 = "03v1crayzgdwr16wq7xlqn2p5nmd8d9xm7qjxm8r76n9ika6xp80";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "03v1crayzgdwr16wq7xlqn2p5nmd8d9xm7qjxm8r76n9ika6xp80";
+  };
 
   nativeBuildInputs = [
     desktop-file-utils
@@ -35,7 +41,11 @@ mkElementary rec {
     patchShebangs meson/post_install.py
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "A small WebKit app that assists a user with login when a captive portal is detected";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.gpl2Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

@@ -54,6 +54,8 @@ lib.makeScope pkgs.newScope (self: with self; {
     wingpanel-indicator-sound
   ];
 
+  maintainers = with pkgs.stdenv.lib.maintainers; [ worldofpeace ];
+
   libgda = pkgs.gnome3.libgda;
   libgee = pkgs.gnome3.libgee;
   libpeas = pkgs.gnome3.libpeas;
@@ -61,8 +63,6 @@ lib.makeScope pkgs.newScope (self: with self; {
   vte = pkgs.gnome3.vte;
 
   defaultIconTheme = elementary-icon-theme;
-
-  mkElementary = callPackage ./mkElementary.nix { };
 
   extra-elementary-contracts = callPackage ./extra-elementary-contracts {
     inherit (gnome3) file-roller gnome-bluetooth;

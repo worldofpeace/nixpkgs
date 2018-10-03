@@ -1,12 +1,17 @@
-{ mkElementary, gnome-keyring, gnome-session, wingpanel, orca, at-spi2-core }:
+{ stdenv, fetchFromGitHub, elementary, gnome-keyring, gnome-session, wingpanel, orca, at-spi2-core }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "session-settings";
   version = "8fb8e993cd2cab3418e7144b36e7a097759f447c";
 
   name = "elementary-${pname}-2018-09-11";
 
-  sha256 = "1d0kdmc9nw9nh3bn8q33lkxjsqp5lsj1il2c5hh48m3br288wrvl";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1d0kdmc9nw9nh3bn8q33lkxjsqp5lsj1il2c5hh48m3br288wrvl";
+  };
 
   dontBuild = true;
 
@@ -40,7 +45,11 @@ mkElementary rec {
     done
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Session settings for elementary";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.lgpl3;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

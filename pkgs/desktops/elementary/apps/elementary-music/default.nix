@@ -1,17 +1,22 @@
-{ mkElementary, pkgconfig, meson, ninja, vala
-, desktop-file-utils, libxml2, gtk3, granite, python3
-, libgee, clutter-gtk, json-glib, libgda, libdbusmenu-glib
-, libaccounts-glib, libgpod, libnotify, libpeas, libsoup
-, zeitgeist, gst_all_1, defaultIconTheme, taglib, gsignond
-, libgsignon-glib, wrapGAppsHook }:
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, meson
+, ninja, vala, desktop-file-utils, libxml2, gtk3, granite
+, python3, libgee, clutter-gtk, json-glib, libgda, libgpod
+, libnotify, libpeas, libsoup, zeitgeist, gst_all_1, taglib
+, gsignond, libdbusmenu-glib, libgsignon-glib, libaccounts-glib
+, defaultIconTheme, wrapGAppsHook }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "music";
   version = "1f1da4e54ab246859f8e88008987fa6c51d2de83";
 
   name = "elementary-${pname}-2018-10-01";
 
-  sha256 = "1kda2ygvkng7gqi01f4szv7w68z16xpizfal3r1xvdcg1gv4ira5";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1kda2ygvkng7gqi01f4szv7w68z16xpizfal3r1xvdcg1gv4ira5";
+  };
 
   nativeBuildInputs = [
     desktop-file-utils
@@ -57,7 +62,11 @@ mkElementary rec {
     patchShebangs meson/post_install.py
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Music player and library designed for elementary OS";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.lgpl2Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

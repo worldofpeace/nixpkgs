@@ -1,14 +1,19 @@
-{ mkElementary, pkgconfig, fetchpatch, meson, ninja, python3
-, vala, desktop-file-utils, gtk3, libxml2, granite, libnotify, vte
-, libgee, defaultIconTheme, appstream, gobjectIntrospection, wrapGAppsHook }:
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, fetchpatch, meson
+, ninja, python3, vala, desktop-file-utils, gtk3, libxml2, granite
+, libnotify, vte, libgee, defaultIconTheme, appstream, gobjectIntrospection, wrapGAppsHook }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "terminal";
   version = "0.5.3";
 
   name = "elementary-${pname}-${version}";
 
-  sha256 = "1vrwnd5cp0mr5jg66fds3s37v7cl4vsyxrn67iy9jsvyaklmh8yb";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1vrwnd5cp0mr5jg66fds3s37v7cl4vsyxrn67iy9jsvyaklmh8yb";
+  };
 
   nativeBuildInputs = [
     appstream
@@ -40,11 +45,15 @@ mkElementary rec {
     patchShebangs meson/post_install.py
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Terminal emulator designed for elementary OS";
     longDescription = ''
       A super lightweight, beautiful, and simple terminal. Comes with sane defaults, browser-class tabs, sudo paste protection,
       smart copy/paste, and little to no configuration.
     '';
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.lgpl3;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

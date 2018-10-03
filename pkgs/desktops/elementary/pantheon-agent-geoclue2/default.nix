@@ -1,13 +1,18 @@
-{ mkElementary, pkgconfig, meson, ninja, vala, glib
-, gtk3, libgee, desktop-file-utils, dbus-glib, geoclue2, gobjectIntrospection, wrapGAppsHook }:
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, meson, ninja, vala, glib, gtk3
+, libgee, desktop-file-utils, dbus-glib, geoclue2, gobjectIntrospection, wrapGAppsHook }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "pantheon-agent-geoclue2";
   version = "1.0";
 
   name = "${pname}-${version}";
 
-  sha256 = "0m7wbyqqivfwpd2m4jcxg4vl3vmfxkj7285h283p9m6nfh9vz960";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "0m7wbyqqivfwpd2m4jcxg4vl3vmfxkj7285h283p9m6nfh9vz960";
+  };
 
   nativeBuildInputs = [
     desktop-file-utils
@@ -32,7 +37,11 @@ mkElementary rec {
     ${glib.dev}/bin/glib-compile-schemas $out/share/glib-2.0/schemas
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Pantheon Geoclue2 Agent";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.gpl3Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

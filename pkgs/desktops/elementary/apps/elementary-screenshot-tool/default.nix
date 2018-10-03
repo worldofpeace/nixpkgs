@@ -1,14 +1,19 @@
-{ mkElementary, pkgconfig, meson, ninja, vala, python3
-, desktop-file-utils, gtk3, granite, libgee, libcanberra
-, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, meson
+, ninja, vala, python3, desktop-file-utils, gtk3, granite
+, libgee, libcanberra, gobjectIntrospection, defaultIconTheme, wrapGAppsHook }:
 
-mkElementary rec {
-  pname = "screenshot-tool";
+stdenv.mkDerivation rec {
+  pname = "screenshot-tool"; # This will be renamed to "screenshot" soon. See -> https://github.com/elementary/screenshot/pull/93
   version = "bbe21a949e90c34fdd3537e52033957a3d9a59e2";
 
   name = "elementary-${pname}-2018-10-01";
 
-  sha256 = "1ll341bbsjzax7a02jmg7472bw9b7dh0pk8qadjysa11b87kcklw";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = "screenshot";
+    rev = version;
+    sha256 = "1ll341bbsjzax7a02jmg7472bw9b7dh0pk8qadjysa11b87kcklw";
+  };
 
   nativeBuildInputs = [
     desktop-file-utils
@@ -34,7 +39,11 @@ mkElementary rec {
     patchShebangs meson/post_install.py
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Screenshot tool designed for elementary OS";
+    homepage = "https://github.com/elementary/screenshot";
+    license = licenses.lgpl3;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }

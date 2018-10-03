@@ -1,14 +1,19 @@
-{ mkElementary, meson, ninja, pkgconfig, vala, libgee, granite
-, gtk3, pulseaudio, libcanberra, libcanberra-gtk3, switchboard
-, gobjectIntrospection }:
+{ stdenv, fetchFromGitHub, elementary, meson, ninja, pkgconfig
+, vala, libgee, granite, gtk3, pulseaudio, libcanberra, libcanberra-gtk3
+, switchboard, gobjectIntrospection }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "switchboard-plug-sound";
   version = "0.1.1";
 
   name = "${pname}-${version}";
 
-  sha256 = "117wfmxmz6l9fvinbv3ymlj0lh9kwcfspw17brgkin5i9vws8qqr";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "117wfmxmz6l9fvinbv3ymlj0lh9kwcfspw17brgkin5i9vws8qqr";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -30,8 +35,11 @@ mkElementary rec {
 
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Switchboard Sound Plug";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.lgpl2Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
-
 }

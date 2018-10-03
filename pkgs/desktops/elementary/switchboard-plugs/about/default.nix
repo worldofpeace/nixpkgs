@@ -1,13 +1,18 @@
-{ mkElementary, substituteAll, meson, ninja, pkgconfig, vala, libgee
-, granite, gtk3, switchboard, pciutils, gobjectIntrospection }:
+{ stdenv, fetchFromGitHub, elementary, substituteAll, meson, ninja, pkgconfig
+, vala, libgee, granite, gtk3, switchboard, pciutils, gobjectIntrospection }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "switchboard-plug-about";
   version = "08d07ed9026f9ed93860bb568ec5bcb295907ea2";
 
   name = "${pname}-2018-08-30";
 
-  sha256 = "1nfmlbkb33pdszawlappdprgib4a1nwlh77ji3j99v4fvjyn0m9z";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "1nfmlbkb33pdszawlappdprgib4a1nwlh77ji3j99v4fvjyn0m9z";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -34,8 +39,12 @@ mkElementary rec {
 
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Switchboard About Plug";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.gpl3Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 
 }

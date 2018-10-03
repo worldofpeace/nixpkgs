@@ -1,13 +1,18 @@
-{ mkElementary, lib, substituteAll, meson, ninja, pkgconfig, vala, libgee, granite
-, gtk3, libxml2, libgnomekbd, libxklavier, xlibs, switchboard, gobjectIntrospection }:
+{ stdenv, fetchFromGitHub, elementary, substituteAll, meson, ninja, pkgconfig, vala, libgee
+, granite, gtk3, libxml2, libgnomekbd, libxklavier, xlibs, switchboard, gobjectIntrospection }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "switchboard-plug-keyboard";
   version = "1757ad53a6bffde64a5443202fa2634019a68faa";
 
   name = "${pname}-2018-09-07";
 
-  sha256 = "0xvp44f29jg45ihwmgnyxzzz4sk6whrqmzqhkv5g91zj44bv0mc7";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "0xvp44f29jg45ihwmgnyxzzz4sk6whrqmzqhkv5g91zj44bv0mc7";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -34,12 +39,15 @@ mkElementary rec {
     })
   ];
 
-  LIBRARY_PATH = lib.makeLibraryPath [ libgnomekbd ];
+  LIBRARY_PATH = stdenv.lib.makeLibraryPath [ libgnomekbd ];
 
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Switchboard Keyboard Plug";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.gpl2Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
-
 }

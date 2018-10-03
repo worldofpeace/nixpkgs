@@ -1,15 +1,20 @@
-{ mkElementary, pkgconfig, meson, python3, ninja, vala
-, gtk3, granite, wingpanel, libnotify, pulseaudio
-, libcanberra-gtk3, libgee, libxml2, wrapGAppsHook
+{ stdenv, fetchFromGitHub, elementary, pkgconfig, meson
+, python3, ninja, vala, gtk3, granite, wingpanel, libnotify
+, pulseaudio, libcanberra-gtk3, libgee, libxml2, wrapGAppsHook
 , gobjectIntrospection, defaultIconTheme }:
 
-mkElementary rec {
+stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-sound";
   version = "c74ff97fc2b30a09e0dbe53f22372672c9d838e1";
 
   name = "${pname}-2018-08-08";
 
-  sha256 = "0vvhjsg10yznh7gpqmg39hlrylrjqj3g93nn3bv5ihxl17dg124y";
+  src = fetchFromGitHub {
+    owner = "elementary";
+    repo = pname;
+    rev = version;
+    sha256 = "0vvhjsg10yznh7gpqmg39hlrylrjqj3g93nn3bv5ihxl17dg124y";
+  };
 
   nativeBuildInputs = [
     gobjectIntrospection
@@ -40,7 +45,11 @@ mkElementary rec {
     patchShebangs meson/post_install.py
   '';
 
-  meta = {
+  meta = with stdenv.lib; {
     description = "Sound Indicator for Wingpanel";
+    homepage = "https://github.com/elementary/${pname}";
+    license = licenses.gpl2Plus;
+    platforms = platforms.linux;
+    maintainers = elementary.maintainers;
   };
 }
