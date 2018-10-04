@@ -16,6 +16,13 @@ stdenv.mkDerivation rec {
     sha256 = "1ypbg68yp41kg7i5a0p1w0qyz4yrsrrki48jn523sw76kw2k96ak";
   };
 
+  passthru = {
+    updateScript = elementary.updateScript {
+      repoName = pname;
+      attrPath = "elementary-${pname}";
+    };
+  };
+
   nativeBuildInputs = [
     cmake
     glib-networking

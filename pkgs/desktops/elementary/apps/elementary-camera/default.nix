@@ -15,6 +15,13 @@ stdenv.mkDerivation rec {
     sha256 = "130diipcxdw5dajxjjbqcjal7g8zvq2yfz90x27dl284gdw504lc";
   };
 
+  passthru = {
+    updateScript = elementary.updateScript {
+      repoName = pname;
+      attrPath = "elementary-${pname}";
+    };
+  };
+
   nativeBuildInputs = [
     appstream
     desktop-file-utils

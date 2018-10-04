@@ -13,6 +13,13 @@ stdenv.mkDerivation rec {
     sha256 = "1w3cfap7j42x14mqpfqdm46hk5xc0v5kv8r6wxcnknr3sfxi8qlp";
   };
 
+  passthru = {
+    updateScript = elementary.updateScript {
+      repoName = pname;
+      attrPath = "elementary-${pname}-shim";
+    };
+  };
+
   nativeBuildInputs = [
     meson
     ninja

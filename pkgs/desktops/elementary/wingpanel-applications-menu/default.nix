@@ -16,6 +16,13 @@ stdenv.mkDerivation rec {
     sha256 = "18sv7xzkww9y5crncaqi8324fr8nw65ngw486fdbj8cqas5p9wif";
   };
 
+  passthru = {
+    updateScript = elementary.updateScript {
+      repoName = pname;
+      attrPath = "wingpanel-${pname}";
+    };
+  };
+
   nativeBuildInputs = [
     appstream
     cmake

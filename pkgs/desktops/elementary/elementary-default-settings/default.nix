@@ -14,6 +14,13 @@ stdenv.mkDerivation rec {
     sha256 = "13gcp342vz9w0pr9w268b4k6506z0wm7mrbb7q39zqrpl1x26xs7";
   };
 
+  passthru = {
+    updateScript = elementary.updateScript {
+      repoName = pname;
+      attrPath = "elementary-${pname}";
+    };
+  };
+
   patches = [
     ./background.patch
     ./wingpanel-overrides.patch

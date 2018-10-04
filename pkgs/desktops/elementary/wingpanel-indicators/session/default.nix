@@ -15,6 +15,12 @@ stdenv.mkDerivation rec {
     sha256 = "1qjdi3qsz6vw4wmgjbha3jzzsic83za5znjbjclkqm6cwgzznmw7";
   };
 
+  passthru = {
+    updateScript = elementary.updateScript {
+      repoName = pname;
+    };
+  };
+
   nativeBuildInputs = [
     gobjectIntrospection
     meson

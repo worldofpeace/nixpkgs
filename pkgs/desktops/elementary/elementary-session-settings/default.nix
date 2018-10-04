@@ -13,6 +13,13 @@ stdenv.mkDerivation rec {
     sha256 = "1d0kdmc9nw9nh3bn8q33lkxjsqp5lsj1il2c5hh48m3br288wrvl";
   };
 
+  passthru = {
+    updateScript = elementary.updateScript {
+      repoName = pname;
+      attrPath = "elementary-${pname}";
+    };
+  };
+
   dontBuild = true;
 
   installPhase = ''

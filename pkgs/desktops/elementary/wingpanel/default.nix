@@ -15,6 +15,12 @@ stdenv.mkDerivation rec {
     sha256 = "0p64ygkcz7w3ynx3bhlmf15zgh9lcmlbi1gwkz3zpf3qg4j9g3g8";
   };
 
+  passthru = {
+    updateScript = elementary.updateScript {
+      repoName = pname;
+    };
+  };
+
   nativeBuildInputs = [
     appstream
     appstream-glib
