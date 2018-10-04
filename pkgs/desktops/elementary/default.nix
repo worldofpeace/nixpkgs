@@ -54,6 +54,8 @@ lib.makeScope pkgs.newScope (self: with self; {
     wingpanel-indicator-sound
   ];
 
+  updateScript = callPackage ./update.nix { };
+
   maintainers = with pkgs.stdenv.lib.maintainers; [ worldofpeace ];
 
   libgda = pkgs.gnome3.libgda;
