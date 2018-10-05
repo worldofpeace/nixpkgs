@@ -2,9 +2,9 @@
 
 stdenv.mkDerivation rec {
   pname = "sound-theme";
-  version = "1.0";
+  version = "5519eaffa7cd018a00e9b1e3a7da1c6e13fbd53b";
 
-  name = "elementary-${pname}-${version}";
+  name = "elementary-${pname}-2018-05-21";
 
   src = fetchFromGitHub {
     owner = "elementary";
