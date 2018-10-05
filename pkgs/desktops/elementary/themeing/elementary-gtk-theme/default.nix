@@ -2,15 +2,15 @@
 
 stdenv.mkDerivation rec {
   pname = "stylesheet";
-  version = "4000a3247b2ef264d8a7cf1df6eb4877386562c9";
+  version = "d8be6eb36531e347e777f412f6f0d8af05553371";
 
-  name = "elementary-gtk-theme-2018-10-01";
+  name = "elementary-gtk-theme-2018-10-04";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0c40zlrm1n4bbb77gch7q2kglfdk72lsfqp8d900c227chh6skhq";
+    sha256 = "106lsayy6gcwfnv7ixxm7lgzwyi57by0sa37rzw9naa8fr7a2ki5";
   };
 
   passthru = {
