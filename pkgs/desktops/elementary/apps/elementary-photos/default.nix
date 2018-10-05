@@ -1,19 +1,19 @@
 { stdenv, fetchFromGitHub, elementary, meson, ninja, pkgconfig, vala, desktop-file-utils
 , intltool, gtk3, glib, libaccounts-glib, libexif, libgee, geocode-glib, gexiv2,libgphoto2
-, granite, gst_all_1, libgudev, json-glib, libraw, rest, libgsignon-glib, libsoup, sqlite
+, granite, gst_all_1, libgudev, json-glib, libraw, rest, libsoup, sqlite
 , scour, webkitgtk, libwebp, appstream, libunity, wrapGAppsHook, gobjectIntrospection, defaultIconTheme }:
 
 stdenv.mkDerivation rec {
   pname = "photos";
-  version = "d1c9f90b81d561b7499c49f1715fa4de28097de9";
+  version = "2fb5101d25644b72e8bab4bec34fa9596c5c8d63";
 
-  name = "elementary-${pname}-2018-09-30";
+  name = "elementary-${pname}-2018-10-04";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1dl2dkqfhq2gg77bkq22djmj9iw65vxnp603fmbrfg8wpnrycxl1";
+    sha256 = "1rd5z8m7l4bw5yqqppq4v9kk0w366x9ig531s3zgfq54729s73ii";
   };
 
   passthru = {
