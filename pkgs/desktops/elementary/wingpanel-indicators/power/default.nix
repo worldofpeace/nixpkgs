@@ -4,15 +4,15 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-power";
-  version = "c5c4bee3573506136d4ca73a198557864256a0ca";
+  version = "824cc733e0bceaca95fa9085cc982e45d5762ead";
 
-  name = "${pname}-2018-09-22";
+  name = "${pname}-2018-10-02";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1ihhq6dc75715w0cj1sj5y2hnsbb0g732qy9pdhyf0kh14lnh126";
+    sha256 = "1rkqa27bsfai4psp19sy61in6730da0s7nds7dkcf06a0hvjvjc2";
   };
 
   passthru = {
