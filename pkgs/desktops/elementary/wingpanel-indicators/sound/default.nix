@@ -5,15 +5,15 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-sound";
-  version = "c74ff97fc2b30a09e0dbe53f22372672c9d838e1";
+  version = "74b7425e29df98971dce413295f0ccf7dc53c965";
 
-  name = "${pname}-2018-08-08";
+  name = "${pname}-2018-10-01";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0vvhjsg10yznh7gpqmg39hlrylrjqj3g93nn3bv5ihxl17dg124y";
+    sha256 = "086z4d0bgnarpxflcjkp1l1n00q4087xzja9r3dkdz535py55k93";
   };
 
   passthru = {
