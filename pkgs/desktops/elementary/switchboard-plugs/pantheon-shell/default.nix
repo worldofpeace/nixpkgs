@@ -4,15 +4,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-pantheon-shell";
-  version = "bbdcdb7112ed549aa073a7f26a9afff98325c8e0";
+  version = "61f8b72d7a7a703d8eb7ce602119228ecd04ff12";
 
-  name = "${pname}-2018-09-08";
+  name = "${pname}-2018-09-18";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1m3lvdmvi9qblf6ryafn8pkw8labixii2am0v87na49ssmwch8va";
+    sha256 = "0jsqfa5g7bkq6rp6y3kzaspl95vprbhi2dkv8qr6v1mvnvcqi9nv";
   };
 
   passthru = {
@@ -44,8 +44,6 @@ stdenv.mkDerivation rec {
   ];
 
   patches = [ ./backgrounds.patch ];
-
-  # TODO: this needs tumbler https://github.com/elementary/switchboard-plug-pantheon-shell/commit/7887cbc0894f9cef49a2ba181290c3e0dd14bcef
 
   PKG_CONFIG_SWITCHBOARD_2_0_PLUGSDIR = "lib/switchboard";
 
