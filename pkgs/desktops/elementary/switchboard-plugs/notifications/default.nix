@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-notifications";
-  version = "0.1.4";
+  version = "4d56a31499c08edbaaf173119f99fcadd2ef1b6c";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-10-02";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1g70g6nd01p103z9z3yv5b5mywfv5bbyfsqsfnfdnfqs6kqn5wfm";
+    sha256 = "1s9rl4l4ijq9qqsqbv00i6xmyia23zps6nfy1k9dg4z8ppmd6anr";
   };
 
   passthru = {
