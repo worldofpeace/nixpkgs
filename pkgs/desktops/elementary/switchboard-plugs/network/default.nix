@@ -5,7 +5,7 @@ stdenv.mkDerivation rec {
   pname = "switchboard-plug-network";
   version = "eface27727b061879ddf29aab4e2d164f2ef5186";
 
-  name = "${pname}-2018-09-28";
+  name = "${pname}-2018-09-29";
 
   src = fetchFromGitHub {
     owner = "elementary";
