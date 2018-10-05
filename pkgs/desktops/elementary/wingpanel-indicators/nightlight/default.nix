@@ -4,15 +4,15 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-nightlight";
-  version = "2.0";
+  version = "c9a8cc531a62bf99e2ba0a33a6d5488d3f7bcb9d";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-10-02";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0688pg68in0353z1m2898i41xlw8rpplg2qriipiyf0rb2sm7wy3";
+    sha256 = "17pa048asbkhzz5945hjp96dnghdl72nqp1zq0b999nawnfrb339";
   };
 
   passthru = {
