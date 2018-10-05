@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-power";
-  version = "e89b64cb8891e1207102c85170c541ba706d26df";
+  version = "91f9bf48bcca9ed5cad244954ab28d308920f000";
 
-  name = "${pname}-2018-09-15";
+  name = "${pname}-2018-09-28";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1s498na6dxr1hmmzhbg9dywapcpw22c8j42wvydar3sk06lk30sj";
+    sha256 = "0wwg1m0n8srf50x448pc2gbgadyfcyin7d14zi2k28hzd8cbxy0i";
   };
 
   passthru = {
