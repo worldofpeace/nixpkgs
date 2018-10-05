@@ -4,9 +4,9 @@
 
 stdenv.mkDerivation rec {
   pname = "videos";
-  version = "2.6.2";
+  version = "beb0c225fc363eaeeaff7c5760c0f41e4bcf8abd";
 
-  name = "elementary-${pname}-${version}";
+  name = "elementary-${pname}-2018-10-01";
 
   src = fetchFromGitHub {
     owner = "elementary";
