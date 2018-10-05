@@ -6,15 +6,15 @@
 
 stdenv.mkDerivation rec {
   pname = "calendar";
-  version = "88a9c4e13b09804bc93777e4ad0fb97824f3709c";
+  version = "196bae9e75088a8549e49f9f3d3bd5612fe1b22c";
 
-  name = "elementary-${pname}-2018-09-30";
+  name = "elementary-${pname}-2018-10-05";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1bavvljwm091cj4x2awbv6kv0vp9igcfilc04dk76i4jr10vpzzz";
+    sha256 = "0240y2aljqlcmf0fn1q8ca1vdvz4rvr8jd0ifqvjcmk7z3pk40im";
   };
 
   passthru = {
