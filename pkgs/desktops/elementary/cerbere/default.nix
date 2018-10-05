@@ -2,9 +2,9 @@
 
 stdenv.mkDerivation rec {
   pname = "cerbere";
-  version = "0.2.4";
+  version = "ef926bfe2ef4b95bc119683019f7800921ae123e";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-07-27";
 
   src = fetchFromGitHub {
     owner = "elementary";
