@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-applications";
-  version = "0.1.3.1";
+  version = "0975f8a1fa6b444b54e599284cd4f7cbcba0f904";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-10-03";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "086la8yl6snhf19ibksk4qnfdkzis8ks76ncm9bsyv9daxyyq5am";
+    sha256 = "0r08sqgfcqzmw11hh3m71hg1pfp25w5qh8nx76n0in8p1jp4rqg0";
   };
 
   passthru = {
