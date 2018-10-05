@@ -4,15 +4,15 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-network";
-  version = "2.2.0";
+  version = "c75795071e059e7c447e7d7bfa69a9e48cda07c0";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-10-03";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1yr743y3zk79jbsxvrlmqczp0agx50jbmjij0f25k7cwmjsv78jw";
+    sha256 = "0k039qqlpwhl34mdhwjqhp7bz8vi432p0zfxzcdhsjhglpk8srlw";
   };
 
   passthru = {
