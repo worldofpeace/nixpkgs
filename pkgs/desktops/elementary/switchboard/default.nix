@@ -4,15 +4,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard";
-  version = "0fc05c5422c934aab5c83307396a93b6f4cdd77c";
+  version = "6682a0cfa791814fc777e696085a0d98a2407623";
 
-  name = "${pname}-2018-08-14";
+  name = "${pname}-2018-10-04";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0nvnbycd9iiy9zb89847nwbrlwb8s9ycir33n1fyb9hpqnamym2v";
+    sha256 = "14pw342qsflghc19fyswc1hn6jq17b8ijwm0ygz3xf1ysdf2lil0";
   };
 
   passthru = {
