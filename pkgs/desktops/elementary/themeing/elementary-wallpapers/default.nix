@@ -2,15 +2,15 @@
 
 stdenv.mkDerivation rec {
   pname = "wallpapers";
-  version = "337bd28558fd0c716b581925bfbde0620b8df994";
+  version = "d45586cf1e18f5941141190aa98b6eafc089e217";
 
-  name = "elementary-${pname}-2018-08-15";
+  name = "elementary-${pname}-2018-10-05";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1kh63ixcw697fac8rplj7dckpmiakipkqb13pa53br73c8y6zbxf";
+    sha256 = "1rhi8f3rqlavwzhbnw0vs802bmih209gxiv8fdn01vv3cp4kls27";
   };
 
   passthru = {
