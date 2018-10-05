@@ -4,15 +4,15 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-keyboard";
-  version = "2.1.0";
+  version = "8195bba4ff0eb058525e61f1c72d0e30c6695513";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-09-21";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0l5axkn8zirpdn4j7a8k5728pjmgi716hwmp4fwmb6vavbi42v6z";
+    sha256 = "19v934sx20ixrrif44ybvaqbarc2a10pc9bqmvrxfn410ny7vgkq";
   };
 
   passthru = {
