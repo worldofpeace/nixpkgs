@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-printers";
-  version = "dcefa0d3a04a72750cea912706701e5b28322e1d";
+  version = "f78b3e784ba4c35fab5d04d5ab4685d92d48dd55";
 
-  name = "${pname}-2018-09-07";
+  name = "${pname}-2018-10-02";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "11pfrg8dz1riz4nj64kn074qhbjna1dy72jhmq64l5qg0n2p52n0";
+    sha256 = "150c3yas41za1q9vi0gcwrpicq13rrs0fz2kl3kp2qcr404jc5sk";
   };
 
   passthru = {
