@@ -7,15 +7,15 @@
 
 stdenv.mkDerivation rec {
   pname = "music";
-  version = "1f1da4e54ab246859f8e88008987fa6c51d2de83";
+  version = "3bd473c2a3486db068bb4bbdad820b3a5969738c";
 
-  name = "elementary-${pname}-2018-10-01";
+  name = "elementary-${pname}-2018-10-05";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1kda2ygvkng7gqi01f4szv7w68z16xpizfal3r1xvdcg1gv4ira5";
+    sha256 = "1hj9bjnv56p30fmv68808kbhwz589nr67mq2jpfnqn51gxfdbvpn";
   };
 
   passthru = {
