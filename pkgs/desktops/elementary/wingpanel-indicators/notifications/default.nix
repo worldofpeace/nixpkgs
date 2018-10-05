@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-notifications";
-  version = "2.1.0";
+  version = "37cf797679853b258cb71f2e372e09d5e4139e34";
 
-  name = "${pname}-${version}";
+  name = "${pname}-2018-10-03";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1dyv984is41fa32fxwjdqksz9cdki2mv20gwznfbzssf8ly13k6l";
+    sha256 = "0kbpqwamh0y42ak4j5icdrjkbcy045dwc3wpwpya9a80ca9s0i2x";
   };
 
   passthru = {
