@@ -2,20 +2,20 @@
 , ninja, vala, desktop-file-utils, libxml2, gtk3, granite
 , python3, libgee, clutter-gtk, json-glib, libgda, libgpod
 , libnotify, libpeas, libsoup, zeitgeist, gst_all_1, taglib
-, gsignond, libdbusmenu-glib, libgsignon-glib, libaccounts-glib
+, libdbusmenu-glib, libsignon-glib, libaccounts-glib
 , defaultIconTheme, wrapGAppsHook }:
 
 stdenv.mkDerivation rec {
   pname = "music";
-  version = "3bd473c2a3486db068bb4bbdad820b3a5969738c";
+  version = "c5ef00803ded5dfac6cddb61f46a50dc9757c63e";
 
-  name = "elementary-${pname}-2018-10-05";
+  name = "elementary-${pname}-2018-10-12";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1hj9bjnv56p30fmv68808kbhwz589nr67mq2jpfnqn51gxfdbvpn";
+    sha256 = "1aqnnaya1vghzwrv88llabky62mlkwxwczqj7sx0ddmhd0vipn1q";
   };
 
   passthru = {
@@ -39,7 +39,6 @@ stdenv.mkDerivation rec {
     clutter-gtk
     defaultIconTheme
     granite
-    gsignond
     gst-plugins-bad
     gst-plugins-base
     gst-plugins-good
@@ -52,7 +51,7 @@ stdenv.mkDerivation rec {
     libgda
     libgee
     libgpod
-    libgsignon-glib
+    libsignon-glib
     libnotify
     libpeas
     libsoup
