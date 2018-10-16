@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "pantheon-agent-polkit";
-  version = "a9ebabf0478840c9f1a614adf6d9c848be048fed";
+  version = "0.1.5";
 
-  name = "${pname}-2018-10-03";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "1q2b0x2bpmk8md1k07700c0w267rb5jjypiyq8smg5gl84876dpr";
+    sha256 = "12aq47s0xgqwfi9hd6n653ysrjn580mi3ypfnn2xp7awbs30s650";
   };
 
   passthru = {
