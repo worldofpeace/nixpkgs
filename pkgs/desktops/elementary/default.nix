@@ -128,10 +128,6 @@ lib.makeScope pkgs.newScope (self: with self; {
     indicators = null;
   };
 
-  wingpanel-applications-menu = callPackage ./wingpanel-applications-menu {
-     inherit (gnome3) gnome-menus;
-  };
-
   #### SERVICES
 
   cerbere = callPackage ./cerbere { };
@@ -152,6 +148,10 @@ lib.makeScope pkgs.newScope (self: with self; {
   pantheon-agent-polkit = callPackage ./pantheon-agent-polkit { };
 
   #### WINGPANEL INDICATORS
+
+  wingpanel-applications-menu = callPackage ./wingpanel-indicators/applications-menu {
+     inherit (gnome3) gnome-menus;
+  };
 
   wingpanel-indicator-a11y = callPackage ./wingpanel-indicators/a11y { };
 

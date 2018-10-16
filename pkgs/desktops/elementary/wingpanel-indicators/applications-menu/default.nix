@@ -5,15 +5,15 @@
 
 stdenv.mkDerivation rec {
   pname = "applications-menu";
-  version = "8bdec5ec33825ea887e8d1b6c7cc1e3519a505da";
+  version = "2.4.0";
 
-  name = "wingpanel-${pname}-2018-09-27";
+  name = "wingpanel-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "18sv7xzkww9y5crncaqi8324fr8nw65ngw486fdbj8cqas5p9wif";
+    sha256 = "1irkjs0zm4pm5rpwg6p7jq5ml78z9mkv35j4754g7c6pps6jlg8l";
   };
 
   passthru = {
