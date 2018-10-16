@@ -11,6 +11,6 @@ let
 in
 writeScript "update-${repoName}" ''
   PATH=${lib.makeBinPath [ perl git jq nix nix-prefetch-scripts coreutils common-updater-scripts gnugrep gnused ]}
-  ${updateScript} -m "${repoName}" "${attrPath}"
+  ${updateScript} -r "${repoName}" "${attrPath}"
 ''
 
