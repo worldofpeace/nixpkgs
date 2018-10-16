@@ -35,15 +35,15 @@ in
 
 stdenv.mkDerivation rec {
   pname = "screenshot-tool"; # This will be renamed to "screenshot" soon. See -> https://github.com/elementary/screenshot/pull/93
-  version = "bbe21a949e90c34fdd3537e52033957a3d9a59e2";
+  version = "1.6.0";
 
-  name = "elementary-${pname}-2018-10-01";
+  name = "elementary-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = "screenshot";
     rev = version;
-    sha256 = "1ll341bbsjzax7a02jmg7472bw9b7dh0pk8qadjysa11b87kcklw";
+    sha256 = "0hxgh7br12kw8bs2cdm2q9ivhnj2zb0i7fs43pkgf3z0fidjf1yv";
   };
 
   passthru = {
