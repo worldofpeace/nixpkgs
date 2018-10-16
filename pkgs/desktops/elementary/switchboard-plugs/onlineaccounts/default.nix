@@ -4,15 +4,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-onlineaccounts";
-  version = "76df4d61ac24b5f78ac24441a269412cadeef89d";
+  version = "2.0";
 
-  name = "${pname}-2018-10-12";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "18rgr8sa1glm8636x383x2q4r840gxgwszxk8p5yj8480n3a6liy";
+    sha256 = "19q2i0nvxqsca0r4a3rg89zm8r0c5z9h5g2n8l88n8if24rsjj0k";
   };
 
   passthru = {
