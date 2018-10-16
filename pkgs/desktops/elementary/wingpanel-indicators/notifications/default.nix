@@ -3,9 +3,9 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-notifications";
-  version = "37cf797679853b258cb71f2e372e09d5e4139e34";
+  version = "2.1.1";
 
-  name = "${pname}-2018-10-03";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
