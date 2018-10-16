@@ -5,9 +5,9 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-sound";
-  version = "74b7425e29df98971dce413295f0ccf7dc53c965";
+  version = "2.1.1";
 
-  name = "${pname}-2018-10-01";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
