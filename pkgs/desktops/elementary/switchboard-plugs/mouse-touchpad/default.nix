@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-mouse-touchpad";
-  version = "84eb7078b118fe513b276ab5365a8f4242004d86";
+  version = "2.1.4";
 
-  name = "${pname}-2018-09-19";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "007dg0klr0v7fjiq658kybwdc2w10yygizlq6wcjh1df3y6kbris";
+    sha256 = "1zh5472ab01bckrc1py5bqqsal9i9pbgx6i8ap2d4yzhc8sirjrf";
   };
 
   passthru = {
