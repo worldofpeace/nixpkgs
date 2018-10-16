@@ -1,5 +1,34 @@
+diff --git a/src/Widgets/SettingsButton.vala b/src/Widgets/SettingsButton.vala
+index 19fd514..bc800d9 100644
+--- a/src/Widgets/SettingsButton.vala
++++ b/src/Widgets/SettingsButton.vala
+@@ -23,7 +23,7 @@
+             label = _("Edit Connections…");
+             clicked.connect (() => {
+                 try {
+-                    var appinfo = AppInfo.create_from_commandline ("nm-connection-editor", null, AppInfoCreateFlags.NONE);
++                    var appinfo = AppInfo.create_from_commandline ("@networkmanagerapplet@/bin/nm-connection-editor", null, AppInfoCreateFlags.NONE);
+                     appinfo.launch (null, null);
+                 } catch (Error e) {
+                     warning ("%s", e.message);
+@@ -61,13 +61,13 @@
+             label = title;
+             clicked.connect (() => {
+                 edit_connection_uuid (connection.get_uuid ());
+-            });  
++            });
+         }
+ 
+         private void edit_connection_uuid (string uuid) {
+             try {
+                 var appinfo = AppInfo.create_from_commandline (
+-                    "nm-connection-editor --edit=%s".printf (uuid), null, AppInfoCreateFlags.NONE
++                    "@networkmanagerapplet@/bin/nm-connection-editor --edit=%s".printf (uuid), null, AppInfoCreateFlags.NONE
+                 );
+ 
+                 appinfo.launch (null, null);
 diff --git a/src/Widgets/VPN/VPNPage.vala b/src/Widgets/VPN/VPNPage.vala
-index 23c3ae9..a678cbf 100644
+index 23c3ae9..c71984c 100644
 --- a/src/Widgets/VPN/VPNPage.vala
 +++ b/src/Widgets/VPN/VPNPage.vala
 @@ -86,8 +86,7 @@ namespace Network {
