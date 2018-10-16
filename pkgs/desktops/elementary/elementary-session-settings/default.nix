@@ -2,9 +2,9 @@
 
 stdenv.mkDerivation rec {
   pname = "session-settings";
-  version = "3697be7bd74161c39f9cfb1366ef6d93722e4d77";
+  version = "5.0.3";
 
-  name = "elementary-${pname}-2018-09-14";
+  name = "elementary-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
