@@ -2,15 +2,15 @@
 
 stdenv.mkDerivation rec {
   pname = "contractor";
-  version = "250e42792324cc2ca8e3a7bdd1f7071e74560716";
+  version = "0.3.4";
 
-  name = "${pname}-2018-10-04";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "11r3x0lzrg127rrw280rm0j4dv2kffsbqmabzka3igl4cahnb3v3";
+    sha256 = "1jzqv7pglhhyrkj1pfk1l624zn1822wyl5dp6gvwn4sk3iqxwwhl";
   };
 
   passthru = {
