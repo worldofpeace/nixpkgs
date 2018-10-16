@@ -5,15 +5,15 @@
 
 stdenv.mkDerivation rec {
   pname = "files";
-  version = "edce30e32bbf68606579984eca77fdb3a732ea5e";
+  version = "4.0";
 
-  name = "elementary-${pname}-2018-10-03";
+  name = "elementary-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0z5haxqq3pszx4jsb3z6bv0396a4k7q8z6f54bpx9k1vgmr4kpbj";
+    sha256 = "0gl5f1mzsrqy3wg6jzzm7lmzlmnq569qk18aaws5k6gdrsj2b5qz";
   };
 
   passthru = {
