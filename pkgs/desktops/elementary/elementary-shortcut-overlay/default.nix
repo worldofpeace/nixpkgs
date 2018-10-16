@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "shortcut-overlay";
-  version = "0a0a718df213010ca7e47399ed81aad86dd98433";
+  version = "1.0.1";
 
-  name = "elementary-${pname}-2018-09-25";
+  name = "elementary-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "016zcwwqbl5020xfxgbdg0n3llg53zcx209hjb7wcdwdzm9h525p";
+    sha256 = "1ph4rx2l5fn0zh4fjfjlgbgskmzc0lvzqgcv7v4kr5m4rij1p4y4";
   };
 
   passthru = {
