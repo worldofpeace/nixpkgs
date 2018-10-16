@@ -6,9 +6,9 @@
 
 stdenv.mkDerivation rec {
   pname = "greeter";
-  version = "25aeaf6870a29bd52c622ffc2f7b7f8e3ff3e663";
+  version = "3.3.0";
 
-  name = "elementary-${pname}-2018-10-02";
+  name = "elementary-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
