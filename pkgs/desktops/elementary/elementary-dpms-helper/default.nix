@@ -2,9 +2,9 @@
 
 stdenv.mkDerivation rec {
   pname = "dpms-helper";
-  version = "e2547fdb3cfb695cd0e34511c43e3750602d5d0b";
+  version = "1.0";
 
-  name = "elementary-${pname}-2018-05-18";
+  name = "elementary-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
