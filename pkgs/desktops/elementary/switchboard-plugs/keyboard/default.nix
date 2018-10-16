@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-keyboard";
-  version = "e33d199ee7fa1b175b7b9af31b11ce03ee69536f";
+  version = "2.3.4";
 
-  name = "${pname}-2018-10-04";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0sxb0322nmv50zsfmr60212azkh6qg5fjl9lpz7687r0fxyhj169";
+    sha256 = "1997hnhlcp2jmf3z70na42vl1b7i5vxhp7k5ga5sl68dv0g4126y";
   };
 
   passthru = {
