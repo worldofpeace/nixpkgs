@@ -4,15 +4,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-pantheon-shell";
-  version = "61f8b72d7a7a703d8eb7ce602119228ecd04ff12";
+  version = "2.7.1";
 
-  name = "${pname}-2018-09-18";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0jsqfa5g7bkq6rp6y3kzaspl95vprbhi2dkv8qr6v1mvnvcqi9nv";
+    sha256 = "00s2ng3ypy4diqyvimi7hw5z5z3fpvp2mbgxvrikwfxb061z3va2";
   };
 
   passthru = {
