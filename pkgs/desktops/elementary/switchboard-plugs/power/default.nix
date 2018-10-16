@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-power";
-  version = "91f9bf48bcca9ed5cad244954ab28d308920f000";
+  version = "2.3.4";
 
-  name = "${pname}-2018-09-28";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0wwg1m0n8srf50x448pc2gbgadyfcyin7d14zi2k28hzd8cbxy0i";
+    sha256 = "0kfnnghyzvy368sh39j4jdl7cnz2yc239hp00054lc4rjs8m61nv";
   };
 
   passthru = {
@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
       repoName = pname;
     };
   };
-  
+
   nativeBuildInputs = [
     gobjectIntrospection
     meson
