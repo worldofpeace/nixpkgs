@@ -4,15 +4,15 @@
 
 stdenv.mkDerivation rec {
   pname = "camera";
-  version = "65562711c96651dddf6eb5b94e3921f21837beab";
+  version = "1.0.2";
 
-  name = "elementary-${pname}-2018-10-05";
+  name = "elementary-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "05hq9ga0zqszvlqyq6l9rdhjxs8dak34mjixngwflk3sir4dqs51";
+    sha256 = "1cs72dk25dpqdy4ya5is0ccgilba7kfw2dnh108ig2f1iys9jsmr";
   };
 
   passthru = {
