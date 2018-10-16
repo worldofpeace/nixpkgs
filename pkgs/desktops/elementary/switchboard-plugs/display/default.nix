@@ -3,9 +3,9 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-display";
-  version = "d10358ddc1e39f2595a10f072059ed74b2f05d8c";
+  version = "2.1.5";
 
-  name = "${pname}-2018-10-01";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
