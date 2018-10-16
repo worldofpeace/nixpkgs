@@ -118,6 +118,9 @@ in
             fi
           '') cfg.sessionPath}
 
+          # Horrible aweful workaround for https://github.com/NixOS/nixpkgs/issues/45043
+          export XDG_DATA_DIRS=$XDG_DATA_DIRS''${XDG_DATA_DIRS:+:}${pkgs.networkmanagerapplet}/share
+
           # Makes qt applications look less alien
           export QT_QPA_PLATFORMTHEME=gtk3
           export QT_STYLE_OVERRIDE=adwaita
