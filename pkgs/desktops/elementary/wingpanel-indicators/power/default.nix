@@ -4,9 +4,9 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-power";
-  version = "824cc733e0bceaca95fa9085cc982e45d5762ead";
+  version = "2.1.3";
 
-  name = "${pname}-2018-10-02";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
