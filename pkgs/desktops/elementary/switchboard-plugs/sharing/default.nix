@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-sharing";
-  version = "61a8838014571f56009f056d4af672a07dfde6cf";
+  version = "2.1.3";
 
-  name = "${pname}-2018-09-22";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0f0j1mipxw66r5dpg884d4i84p29dz2kaz589zx102f3pxkl2q15";
+    sha256 = "1yi6aga9i18wwn22zwmfbhsk16f92fka837is5r8xghqb7a50hyh";
   };
 
   passthru = {
