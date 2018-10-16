@@ -4,9 +4,9 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-network";
-  version = "c75795071e059e7c447e7d7bfa69a9e48cda07c0";
+  version = "2.2.1";
 
-  name = "${pname}-2018-10-03";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
