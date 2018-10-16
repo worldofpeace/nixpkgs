@@ -4,9 +4,9 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-nightlight";
-  version = "c9a8cc531a62bf99e2ba0a33a6d5488d3f7bcb9d";
+  version = "2.0.1";
 
-  name = "${pname}-2018-10-02";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
