@@ -46,12 +46,11 @@ lib.makeScope pkgs.newScope (self: with self; {
   ];
 
   wingpanelIndicators = [
-    wingpanel-applications-menu wingpanel-indicator-a11y
-    wingpanel-indicator-bluetooth wingpanel-indicator-datetime
-    wingpanel-indicator-keyboard wingpanel-indicator-network
-    wingpanel-indicator-nightlight wingpanel-indicator-notifications
-    wingpanel-indicator-power wingpanel-indicator-session
-    wingpanel-indicator-sound
+    wingpanel-applications-menu wingpanel-indicator-bluetooth
+    wingpanel-indicator-datetime wingpanel-indicator-keyboard
+    wingpanel-indicator-network wingpanel-indicator-nightlight
+    wingpanel-indicator-notifications wingpanel-indicator-power
+    wingpanel-indicator-session wingpanel-indicator-sound
   ];
 
   updateScript = callPackage ./update.nix { };
@@ -152,8 +151,6 @@ lib.makeScope pkgs.newScope (self: with self; {
   wingpanel-applications-menu = callPackage ./wingpanel-indicators/applications-menu {
      inherit (gnome3) gnome-menus;
   };
-
-  wingpanel-indicator-a11y = callPackage ./wingpanel-indicators/a11y { };
 
   wingpanel-indicator-bluetooth = callPackage ./wingpanel-indicators/bluetooth { };
 
