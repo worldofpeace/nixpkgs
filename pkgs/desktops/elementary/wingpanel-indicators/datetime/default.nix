@@ -5,15 +5,15 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-datetime";
-  version = "67809d961cef8d02e64e5ea7cb7b78758409596d";
+  version = "2.1.2";
 
-  name = "${pname}-2018-10-02";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0290vqhjwlwjhdrl4rma6z02vbr8ihxrc24h3lyvgzinmvxzd427";
+    sha256 = "1p52w9djvqj7qmz5a6mabqdcjj5f1w27w02g9dj0plv2fkk8rbc1";
   };
 
   passthru = {
