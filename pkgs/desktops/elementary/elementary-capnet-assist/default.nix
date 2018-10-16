@@ -3,15 +3,15 @@
 
 stdenv.mkDerivation rec {
   pname = "capnet-assist";
-  version = "2e49e2c39b9b0bd979bc5219a9350a4dfd6c6292";
+  version = "2.2.2";
 
-  name = "elementary-${pname}-2018-10-05";
+  name = "elementary-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0cnra33i5h6b2rgp0d6q4gr3d5cd1d0pjj055wn6p0b2n82jlbsf";
+    sha256 = "138fxijnnp0gqzj7h0p9r4crpafas1kmvb3r9bb76mmygbdixkgh";
   };
 
   passthru = {
