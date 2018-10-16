@@ -1,20 +1,20 @@
 { stdenv, fetchFromGitHub, elementary, pkgconfig, meson
-, ninja, vala, desktop-file-utils, gtk3, granite, libgee
+, ninja, vala, desktop-file-utils, gtk3, granite, libgee, geoclue2
 , intltool, libchamplain, clutter, folks, geocode-glib, python3
 , libnotify, libical, evolution-data-server, appstream-glib
 , defaultIconTheme, gobjectIntrospection, wrapGAppsHook }:
 
 stdenv.mkDerivation rec {
   pname = "calendar";
-  version = "196bae9e75088a8549e49f9f3d3bd5612fe1b22c";
+  version = "4.2.3";
 
-  name = "elementary-${pname}-2018-10-05";
+  name = "elementary-${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
     rev = version;
-    sha256 = "0240y2aljqlcmf0fn1q8ca1vdvz4rvr8jd0ifqvjcmk7z3pk40im";
+    sha256 = "100wy8lkp4nrxj57ywyx44ckm3k7n8h5l6av92hr5pyx8fxn9m48";
   };
 
   passthru = {
@@ -41,6 +41,7 @@ stdenv.mkDerivation rec {
     defaultIconTheme
     evolution-data-server
     folks
+    geoclue2
     geocode-glib
     granite
     gtk3
