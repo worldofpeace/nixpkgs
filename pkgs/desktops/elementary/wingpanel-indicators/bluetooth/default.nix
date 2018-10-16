@@ -4,9 +4,9 @@
 
 stdenv.mkDerivation rec {
   pname = "wingpanel-indicator-bluetooth";
-  version = "71ac479b89e74ef903d7bf7a91ec649203ba71b2";
+  version = "2.1.1";
 
-  name = "${pname}-2018-10-03";
+  name = "${pname}-${version}";
 
   src = fetchFromGitHub {
     owner = "elementary";
