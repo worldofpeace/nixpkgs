@@ -196,7 +196,7 @@ in
     services.xserver.updateDbusEnvironment = true;
     services.gsignond = {
       enable = true;
-      withPlugins = with pkgs.gsignondPlugins; [ lastfm mail oauth sasl ];
+      withPlugins = with pkgs.gsignondPlugins; [ lastfm mail oauth ];
     };
 
     fonts.fonts = with pkgs; [ opensans-ttf roboto-mono ];
