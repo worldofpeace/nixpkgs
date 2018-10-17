@@ -158,7 +158,7 @@ in
         gtk3.out
         gvfs
         hicolor-icon-theme
-        lightlocker # TODO: This probably needs work
+        lightlocker
         plank
         qgnomeplatform
         shared-mime-info
