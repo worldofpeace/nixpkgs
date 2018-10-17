@@ -219,12 +219,8 @@ in
                               networkmanager-iodine networkmanager-l2tp; };
 
     environment.pathsToLink = [
-      "/share/sounds"
-      "/share/backgrounds"
-      "/share/plank"
-      "/share/accounts" # FIXME: Not sure if this is needed
-      "/share/metainfo"
-      "/share/appdata"
+      # FIXME: modules should link subdirs of `/share` rather than relying on this
+      "/share"
     ];
 
   };
