@@ -1,23 +1,23 @@
 { fetchurl, fetchgit, substituteAll, stdenv, meson, ninja, pkgconfig, gnome3, perl, gettext, glib, libnotify, lcms2, libXtst
 , libxkbfile, libpulseaudio, alsaLib, libcanberra-gtk3, upower, colord, libgweather, polkit
-, geocode-glib, gtk3
+, geocode-glib, gtk3, gsettings-desktop-schemas
 , geoclue2, librsvg, xf86_input_wacom, udev, libgudev, libwacom, libxslt, libxml2, networkmanager
 , docbook_xsl, wrapGAppsHook, python3, ibus, xkeyboard_config, tzdata, nss, pantheon, accountsservice }:
 
 stdenv.mkDerivation rec {
   pname = "elementary-settings-daemon";
-  version = "3.30.2";
+  version = "3.32.0";
 
   src = fetchurl {
     url = "mirror://gnome/sources/gnome-settings-daemon/${stdenv.lib.versions.majorMinor version}/gnome-settings-daemon-${version}.tar.xz";
-    sha256 = "0c663csa3gnsr6wm0xfll6aani45snkdj7zjwjfzcwfh8w4a3z12";
+    sha256 = "15w3sn9qf1zqlmk8c93kgrh2a20s62m5yfizkp21m5ylrrd07f63";
   };
 
   # Source for ubuntu's patchset
   src2 = fetchgit {
     url = "https://git.launchpad.net/~ubuntu-desktop/ubuntu/+source/gnome-settings-daemon";
     rev = "refs/tags/ubuntu/${version}-1ubuntu1";
-    sha256 = "02awkhw6jqm7yh812mw0nsdmsljfi8ksz8mvd2qpns5pcv002g2c";
+    sha256 = "0ayd50mr0pv2h4j1r1haf8y2hj8jv59vypa7lx8jis0llrm7s3yn";
   };
 
   # We've omitted the 53_sync_input_sources_to_accountsservice patch because it breaks the build.
@@ -33,7 +33,6 @@ stdenv.mkDerivation rec {
     "${patchPath}/64_restore_terminal_keyboard_shortcut_schema.patch"
     "${patchPath}/correct_logout_action.patch"
     "${patchPath}/ubuntu-lid-close-suspend.patch"
-    "${patchPath}/revert-wacom-migration.patch"
     "${patchPath}/revert-gsettings-removals.patch"
     "${patchPath}/revert-mediakeys-dbus-interface-drop.patch"
     "${patchPath}/ubuntu_ibus_configs.patch"
@@ -60,6 +59,7 @@ stdenv.mkDerivation rec {
     done
 
     # This breaks lightlocker https://github.com/elementary/session-settings/commit/b0e7a2867608c3a3916f9e4e21a68264a20e44f8
+    # TODO: shouldn't be neeed for the 5.1 greeter (awaiting release)
     rm $out/etc/xdg/autostart/org.gnome.SettingsDaemon.ScreensaverProxy-pantheon.desktop
   '';
 
@@ -84,7 +84,7 @@ stdenv.mkDerivation rec {
     geocode-glib
     glib
     gnome3.gnome-desktop
-    gnome3.gsettings-desktop-schemas
+    gsettings-desktop-schemas
     gtk3
     ibus
     lcms2
