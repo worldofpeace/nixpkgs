@@ -49,6 +49,10 @@ stdenv.mkDerivation rec {
     done
   '';
 
+  preFixup = ''
+    gappsWrapperArgs+=(--set GSD_BACKLIGHT_HELPER "/run/wrappers/bin/gsd-backlight-helper")
+  '';
+
   postFixup = ''
     for f in $out/etc/xdg/autostart/*; do mv "$f" "''${f%.desktop}-pantheon.desktop"; done
 
