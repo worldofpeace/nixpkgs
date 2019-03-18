@@ -8037,6 +8037,8 @@ in
 
   simpleproxy = callPackage ../tools/networking/simpleproxy { };
 
+    screenrecorder = callPackage ../applications/video/screenrecorder { };
+
   simplescreenrecorder = libsForQt5.callPackage ../applications/video/simplescreenrecorder { };
 
   sipsak = callPackage ../tools/networking/sipsak { };
