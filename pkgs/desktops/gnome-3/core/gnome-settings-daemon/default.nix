@@ -50,6 +50,7 @@ stdenv.mkDerivation rec {
       src = ./fix-paths.patch;
       inherit tzdata;
     })
+    ./global-backlight-helper.patch
   ];
 
   nativeBuildInputs = [
@@ -92,6 +93,11 @@ stdenv.mkDerivation rec {
   mesonFlags = [
     "-Dudev_dir=${placeholder "out"}/lib/udev"
   ];
+
+  postFixup = ''
+    mkdir $out/bin
+    ln -s $out/libexec/gsd-backlight-helper $out/bin/gsd-backlight-helper
+  '';
 
   postPatch = ''
     for f in gnome-settings-daemon/codegen.py plugins/power/gsd-power-constants-update.pl meson_post_install.py; do
