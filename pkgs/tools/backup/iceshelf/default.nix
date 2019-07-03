@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, pythonPackages, git, awscli }:
+{ stdenv, lib, fetchFromGitHub, pythonPackages, git, awscli, python }:
 
 pythonPackages.buildPythonApplication rec {
   pname = "iceshelf";
@@ -16,9 +16,10 @@ pythonPackages.buildPythonApplication rec {
   propagatedBuildInputs = [ git awscli ] ++ (with pythonPackages; [ python-gnupg ]);
 
 	installPhase = ''
-		mkdir -p $out/bin $out/share/doc/${pname}
+		mkdir -p $out/bin $out/share/doc/${pname} $out/${python.sitePackages}
     cp iceshelf iceshelf-restore $out/bin
     cp iceshelf.sample.conf $out/share/doc/${pname}/
+    cp -r modules $out/${python.sitePackages}
 	'';
 
   meta = with lib; {
@@ -27,6 +28,5 @@ pythonPackages.buildPythonApplication rec {
     homepage = "https://github.com/mrworf/iceshelf";
     maintainers = with maintainers; [ mmahut ];
   };
-
 
 }
