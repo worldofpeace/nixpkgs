@@ -82,8 +82,6 @@ buildGoPackage rec {
      fixPath $out                    /usr/bin/startdde                         misc/deepin-session
     #fixPath ?                       /usr/lib/lightdm/config-error-dialog.sh   misc/deepin-session  # provided by lightdm on deepin linux
     #fixPath ?                       /usr/sbin/lightdm-session                 misc/deepin-session  # provided by lightdm on deepin linux
-     fixPath $out                    /usr/sbin/deepin-session                  misc/lightdm.conf
-     fixPath $out                    /usr/sbin/deepin-fix-xauthority-perm      misc/lightdm.conf
      fixPath ${dde-session-ui}       /usr/bin/dde-lock                         session.go
      fixPath ${dde-session-ui}       /usr/bin/dde-shutdown                     session.go
      fixPath ${dde-session-ui}       /usr/lib/deepin-daemon/dde-osd            session.go
@@ -93,19 +91,21 @@ buildGoPackage rec {
     #fixPath ?                       /usr/lib/UIAppSched.hooks                 startmanager.go  # not found anything about this
      fixPath ${dde-session-ui}       /usr/lib/deepin-daemon/dde-welcome        utils.go
      fixPath ${dde-polkit-agent}     /usr/lib/polkit-1-dde/dde-polkit-agent    watchdog/dde_polkit_agent.go
-     fixPath ${kmod}                 /sbin/lsmod                               wm/driver.go
     #fixPath ?                       /var/log/Xorg.0.log                       wm/driver.go
     #fixPath ?                       /etc/deepin-wm-switcher/config.json       wm/switcher_config.go  # not present on nixos, deepin linux and archlinux
 
-    substituteInPlace session.go      --replace 'LookPath("cgexec"'             'LookPath("${libcgroup}/bin/cgexec"'
-    substituteInPlace vm.go           --replace 'Command("dde-wm-chooser"'      'Command("${dde-session-ui}/bin/dde-wm-chooser"'
-    substituteInPlace vm.go           --replace 'Command("systemd-detect-virt"' 'Command("${systemd}/bin/systemd-detect-virt"'
-    substituteInPlace wm/card_info.go --replace 'Command("lspci"'               'Command("${pciutils}/bin/lspci"'
-    substituteInPlace wm/driver.go    --replace 'Command("lspci"'               'Command("${pciutils}/bin/lspci"'
-    substituteInPlace wm/driver.go    --replace 'Command("xdriinfo"'            'Command("${xorg.xdriinfo}/bin/xdriinfo"'
-    substituteInPlace wm/platform.go  --replace 'Command("gsettings"'           'Command("${glib}/bin/gsettings"'
-    substituteInPlace wm/platform.go  --replace 'Command("uname"'               'Command("${coreutils}/bin/uname"'
-    substituteInPlace wm/switcher.go  --replace 'Command("killall"'             'Command("${psmisc}/bin/killall"'
+    substituteInPlace misc/lightdm.conf --replace '/usr/sbin'                     "$out/bin"
+    substituteInPlace wm/driver.go      --replace '/sbin/lsmod'                   "${kmod}/bin/lsmod"
+
+    substituteInPlace session.go        --replace 'LookPath("cgexec"'             'LookPath("${libcgroup}/bin/cgexec"'
+    substituteInPlace vm.go             --replace 'Command("dde-wm-chooser"'      'Command("${dde-session-ui}/bin/dde-wm-chooser"'
+    substituteInPlace vm.go             --replace 'Command("systemd-detect-virt"' 'Command("${systemd}/bin/systemd-detect-virt"'
+    substituteInPlace wm/card_info.go   --replace 'Command("lspci"'               'Command("${pciutils}/bin/lspci"'
+    substituteInPlace wm/driver.go      --replace 'Command("lspci"'               'Command("${pciutils}/bin/lspci"'
+    substituteInPlace wm/driver.go      --replace 'Command("xdriinfo"'            'Command("${xorg.xdriinfo}/bin/xdriinfo"'
+    substituteInPlace wm/platform.go    --replace 'Command("gsettings"'           'Command("${glib}/bin/gsettings"'
+    substituteInPlace wm/platform.go    --replace 'Command("uname"'               'Command("${coreutils}/bin/uname"'
+    substituteInPlace wm/switcher.go    --replace 'Command("killall"'             'Command("${psmisc}/bin/killall"'
   '';
 
   buildPhase = ''
