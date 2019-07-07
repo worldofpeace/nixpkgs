@@ -23,20 +23,31 @@ in
 
   config = mkIf (xcfg.enable && cfg.enable) {
 
-    #services.xserver.displayManager.extraSessionFilePackages = [ pkgs.deepin.startdde ];
+    services.xserver.displayManager.extraSessionFilePackages = [ pkgs.deepin.startdde ];
+    services.xserver.desktopManager.default = mkForce "deepin";
 
-    services.xserver.desktopManager.session = singleton {
-      name = "deepin";
-      start = ''
-        exec ${pkgs.deepin.startdde}/sbin/startdde
-      '';
-    };
-
+    hardware.bluetooth.enable = mkDefault true;
+    hardware.pulseaudio.enable = mkDefault true;
+    security.polkit.enable = true;
+    services.accounts-daemon.enable = true;
+    services.bamf.enable = true;
+    services.dbus.packages = [ pkgs.gnome3.dconf ];
     services.deepin.core.enable = true;
+    services.gnome3.at-spi2-core.enable = true;
+    services.gnome3.glib-networking.enable = true;
     services.gnome3.gnome-keyring.enable = true;
+    services.gnome3.gvfs.enable = true;
+    services.udisks2.enable = true;
     services.upower.enable = config.powerManagement.enable;
-    programs.dconf.enable = true;
+    services.xserver.libinput.enable = mkDefault true;
+    services.xserver.updateDbusEnvironment = true;
+
     networking.networkmanager.enable = true;
+    networking.networkmanager.basePackages = {
+      inherit (pkgs) networkmanager modemmanager wpa_supplicant;
+      inherit (pkgs.gnome3) networkmanager-openvpn networkmanager-vpnc
+      networkmanager-openconnect networkmanager-l2tp;
+    };
 
     fonts.fonts = with pkgs; [ noto-fonts ];
 
@@ -85,7 +96,12 @@ in
 
     environment.variables.DDE_POLKIT_PLUGINS_DIRS = [ "${config.system.path}/lib/polkit-1-dde/plugins" ];
 
-    # Link some extra directories in /run/current-system/software/share
+    environment.variables.GIO_EXTRA_MODULES = [
+      "${lib.getLib pkgs.gnome3.dconf}/lib/gio/modules"
+      "${pkgs.gnome3.gvfs}/lib/gio/modules"
+    ];
+
+    # Link some extra directories in /run/current-system/sw/share
     environment.pathsToLink = [
       "/lib/polkit-1-dde/plugins"
       "/share"
