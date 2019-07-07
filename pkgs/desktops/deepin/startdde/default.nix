@@ -94,7 +94,6 @@ buildGoPackage rec {
     #fixPath ?                       /var/log/Xorg.0.log                       wm/driver.go
     #fixPath ?                       /etc/deepin-wm-switcher/config.json       wm/switcher_config.go  # not present on nixos, deepin linux and archlinux
 
-    substituteInPlace misc/lightdm.conf --replace '/usr/sbin'                     "$out/bin"
     substituteInPlace wm/driver.go      --replace '/sbin/lsmod'                   "${kmod}/bin/lsmod"
 
     substituteInPlace session.go        --replace 'LookPath("cgexec"'             'LookPath("${libcgroup}/bin/cgexec"'
@@ -114,6 +113,7 @@ buildGoPackage rec {
 
   installPhase = ''
     make install PREFIX="$out" -C go/src/${goPackagePath}
+    rm -rf $out/share/lightdm  # this is uselesss for NixOS
     remove-references-to -t ${go} $out/bin/* $out/sbin/*
   '';
 
