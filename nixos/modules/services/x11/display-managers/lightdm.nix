@@ -82,6 +82,7 @@ in
     ./lightdm-greeters/mini.nix
     ./lightdm-greeters/enso-os.nix
     ./lightdm-greeters/pantheon.nix
+    ./lightdm-greeters/deepin.nix
   ];
 
   options = {
