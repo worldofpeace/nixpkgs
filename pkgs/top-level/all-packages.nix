@@ -25420,6 +25420,8 @@ in
     autoreconfHook = buildPackages.autoreconfHook269;
   };
 
+  slick-greeter = callPackage ../applications/display-managers/slick-greeter { };
+
   ssrc = callPackage ../applications/audio/ssrc { };
 
   stalonetray = callPackage ../applications/window-managers/stalonetray {};
