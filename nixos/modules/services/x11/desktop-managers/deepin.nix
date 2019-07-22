@@ -54,25 +54,17 @@ in
     fonts.fonts = with pkgs; [ noto-fonts ];
 
     environment.systemPackages = with pkgs; [
-      deepin.dbus-factory
-      deepin.dde-api
       deepin.dde-calendar
       deepin.dde-daemon
       (deepin.dde-dock.override { plugins = [ deepin.dde-file-manager ]; })
       deepin.dde-file-manager
       deepin.dde-launcher
-      deepin.dde-network-utils
       deepin.dde-polkit-agent
-      deepin.dde-qt-dbus-factory
       deepin.dde-session-ui
-      deepin.deepin-anything
       deepin.deepin-desktop-base
-      deepin.deepin-desktop-schemas
-      deepin.deepin-gettext-tools
       deepin.deepin-gtk-theme
       deepin.deepin-icon-theme
       deepin.deepin-image-viewer
-      deepin.deepin-menu
       deepin.deepin-metacity
       deepin.deepin-movie-reborn
       deepin.deepin-mutter
@@ -80,17 +72,9 @@ in
       deepin.deepin-shortcut-viewer
       deepin.deepin-sound-theme
       deepin.deepin-terminal
-      deepin.deepin-turbo
       deepin.deepin-wallpapers
       deepin.deepin-wm
       deepin.dpa-ext-gnomekeyring
-      deepin.dtkcore
-      deepin.dtkwidget
-      deepin.dtkwm
-      deepin.go-dbus-factory
-      deepin.go-dbus-generator
-      deepin.go-gir-generator
-      deepin.go-lib
       deepin.qt5dxcb-plugin
       deepin.qt5integration
       deepin.startdde
