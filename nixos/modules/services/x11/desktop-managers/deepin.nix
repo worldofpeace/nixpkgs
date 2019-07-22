@@ -43,10 +43,12 @@ in
     services.xserver.updateDbusEnvironment = true;
 
     networking.networkmanager.enable = true;
+
     networking.networkmanager.basePackages = {
       inherit (pkgs) networkmanager modemmanager wpa_supplicant;
       inherit (pkgs.gnome3) networkmanager-openvpn networkmanager-vpnc
-      networkmanager-openconnect networkmanager-l2tp;
+      networkmanager-openconnect networkmanager-fortisslvpn
+      networkmanager-iodine networkmanager-l2tp;
     };
 
     fonts.fonts = with pkgs; [ noto-fonts ];
