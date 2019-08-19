@@ -6,6 +6,7 @@
 , libjpeg
 , libvisual
 , tremor # provides 'virbisidec'
+, graphene
 , gtk-doc, docbook_xsl, docbook_xml_dtd_412
 , enableX11 ? stdenv.isLinux, libXv
 , enableWayland ? stdenv.isLinux, wayland
@@ -58,7 +59,6 @@ stdenv.mkDerivation rec {
     # Enables all features, so that we know when new dependencies are necessary.
     "-Dauto_features=enabled"
     "-Dexamples=disabled" # requires many dependencies and probably not useful for our users
-    "-Dgl-graphene=disabled" # not packaged in nixpkgs as of writing
     # See https://github.com/GStreamer/gst-plugins-base/blob/d64a4b7a69c3462851ff4dcfa97cc6f94cd64aef/meson_options.txt#L15 for a list of choices
     "-Dgl_winsys=[${lib.concatStringsSep "," (lib.optional enableX11 "x11" ++ lib.optional enableWayland "wayland" ++ lib.optional enableCocoa "cocoa")}]"
     # We must currently disable gtk_doc API docs generation,
@@ -75,7 +75,7 @@ stdenv.mkDerivation rec {
   ++ lib.optional (!enableCdparanoia) "-Dcdparanoia=disabled"
   ;
 
-  buildInputs = [ orc libtheora libintl libopus isocodes libjpeg tremor ]
+  buildInputs = [ orc libtheora libintl libopus isocodes libjpeg tremor graphene ]
     ++ lib.optional (!stdenv.isDarwin) libvisual
     ++ lib.optional enableAlsa alsaLib
     ++ lib.optionals enableX11 [ libXv pango ]
