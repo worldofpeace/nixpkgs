@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
   pname = "graphene";
   version = "1.8.6";
 
-  outputs = [ "out" "devdoc" "installedTests" ];
+  outputs = [ "out" "dev" "devdoc" "installedTests" ];
 
   src = fetchFromGitHub {
     owner = "ebassi";
