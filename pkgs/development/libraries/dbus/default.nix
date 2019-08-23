@@ -11,10 +11,9 @@
 , dbus
 }:
 
-assert x11Support -> libX11 != null
-  && libICE != null
-  && libSM != null
-;
+assert
+  x11Support ->
+    libX11 != null && libICE != null && libSM != null;
 
 let
 
