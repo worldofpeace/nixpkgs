@@ -15,9 +15,7 @@ assert
   x11Support ->
     libX11 != null && libICE != null && libSM != null;
 
-let
-
-dbus = stdenv.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "dbus";
   version = "1.12.16";
 
@@ -109,6 +107,4 @@ dbus = stdenv.mkDerivation rec {
     license = licenses.gpl2Plus; # most is also under AFL-2.1
     platforms = platforms.unix;
   };
-};
-
-in dbus
+}
