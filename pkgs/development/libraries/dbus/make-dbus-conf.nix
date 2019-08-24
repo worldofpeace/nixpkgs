@@ -1,4 +1,4 @@
-{ runCommand, writeText, libxslt, dbus
+{ runCommand, writeText, libxslt, dbus-test
 , serviceDirectories ? []
 , suidHelper ? "/var/setuid-wrappers/dbus-daemon-launch-helper"
 }:
@@ -22,7 +22,7 @@ runCommand "dbus-1"
       <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
         <rewriteSystem
           systemIdStartString="http://www.freedesktop.org/standards/dbus/1.0/"
-          rewritePrefix="file://${dbus}/share/xml/dbus-1/"/>
+          rewritePrefix="file://${dbus-test}/share/xml/dbus-1/"/>
       </catalog>
     '';
     nativeBuildInputs = [ libxslt.bin ];
@@ -33,10 +33,10 @@ runCommand "dbus-1"
     xsltproc --nonet \
       --stringparam serviceDirectories "$serviceDirectories" \
       --stringparam suidHelper "$suidHelper" \
-      ${./make-system-conf.xsl} ${dbus}/share/dbus-1/system.conf \
+      ${./make-system-conf.xsl} ${dbus-test}/share/dbus-1/system.conf \
       > $out/system.conf
     xsltproc --nonet \
       --stringparam serviceDirectories "$serviceDirectories" \
-      ${./make-session-conf.xsl} ${dbus}/share/dbus-1/session.conf \
+      ${./make-session-conf.xsl} ${dbus-test}/share/dbus-1/session.conf \
       > $out/session.conf
   ''

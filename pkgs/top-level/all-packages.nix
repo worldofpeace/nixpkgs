@@ -10481,6 +10481,8 @@ in
   dbxml = callPackage ../development/libraries/dbxml { };
 
   dbus = callPackage ../development/libraries/dbus { };
+  dbus-test = callPackage ../development/libraries/dbus/default-2.nix {};
+
   dbus_cplusplus  = callPackage ../development/libraries/dbus-cplusplus { };
   dbus-glib       = callPackage ../development/libraries/dbus-glib { };
   dbus_java       = callPackage ../development/libraries/java/dbus-java { };

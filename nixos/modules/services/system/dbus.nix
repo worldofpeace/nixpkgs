@@ -52,6 +52,10 @@ in
         '';
       };
 
+      package = mkOption {
+        type = types.package;
+      };
+
       socketActivated = mkOption {
         type = types.bool;
         default = false;
@@ -66,7 +70,7 @@ in
 
   config = mkIf cfg.enable {
 
-    environment.systemPackages = [ pkgs.dbus.daemon pkgs.dbus ];
+    environment.systemPackages = [ cfg.package.daemon cfg.package ];
 
     environment.etc = singleton
       { source = configDir;
@@ -82,10 +86,10 @@ in
 
     users.groups.messagebus.gid = config.ids.gids.messagebus;
 
-    systemd.packages = [ pkgs.dbus.daemon ];
+    systemd.packages = [ cfg.package.daemon ];
 
     security.wrappers.dbus-daemon-launch-helper = {
-      source = "${pkgs.dbus.daemon}/libexec/dbus-daemon-launch-helper";
+      source = "${cfg.package.daemon}/libexec/dbus-daemon-launch-helper";
       owner = "root";
       group = "messagebus";
       setuid = true;
@@ -94,7 +98,7 @@ in
     };
 
     services.dbus.packages = [
-      pkgs.dbus.out
+      cfg.package.out
       config.system.path
     ];
 
