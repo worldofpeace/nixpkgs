@@ -9,7 +9,7 @@ let
   vteInitSnippet = ''
     # Show current working directory in VTE terminals window title.
     # Supports both bash and zsh, requires interactive shell.
-    . ${pkgs.vte}/etc/profile.d/vte.sh
+    . ${config.environment.vte.package}/etc/profile.d/vte.sh
   '';
 
 in
@@ -36,6 +36,12 @@ in
         This allows it to preserve the current directory of the shell
         across terminals.
       '';
+    };
+
+    environment.vte.package = mkOption {
+      type = types.package;
+      default = pkgs.vte;
+      description = "Which vte package to use.";
     };
 
   };
