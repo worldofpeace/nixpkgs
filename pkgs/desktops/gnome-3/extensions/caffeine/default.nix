@@ -32,5 +32,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl2;
     maintainers = with maintainers; [ eperuffo ];
     homepage = https://github.com/eonpatapon/gnome-shell-extension-caffeine;
+    broken = versionAtLeast gnome3.gnome-shell.version "3.32"; # Doesn't support 3.34
   };
 }
