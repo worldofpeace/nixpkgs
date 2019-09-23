@@ -38,5 +38,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ jonafato ];
     homepage = https://github.com/cinatic/taskwhisperer;
+    broken = versionAtLeast gnome3.gnome-shell.version "3.32"; # Doesnt't support 3.34 
   };
 }
