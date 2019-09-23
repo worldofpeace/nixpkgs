@@ -41,5 +41,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ aneeshusa tiramiseb ];
     homepage = https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet;
+    broken = versionAtLeast gnome3.gnome-shell.version "3.32";
   };
 }
