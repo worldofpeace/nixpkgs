@@ -39,7 +39,7 @@ let
 
 in stdenv.mkDerivation rec {
   pname = "egl-wayland";
-  version = "1.1.2";
+  version = "1.1.4";
 
   outputs = [ "out" "dev" ];
 
@@ -47,7 +47,7 @@ in stdenv.mkDerivation rec {
     owner = "Nvidia";
     repo = pname;
     rev = version;
-    sha256 = "0hskxb5riy2bc6z9nq05as57y51gi01303wqg53cfm2d8gqwljv3";
+    sha256 = "0w4k5f7nxj23iga5yc2lxzbpid1i969hvgpjragbjbggjkzj239f";
   };
 
   nativeBuildInputs = [
