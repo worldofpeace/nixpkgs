@@ -210,6 +210,8 @@ in
       ${optionalString !nvidiaWayland ''
         DRIVER=="nvidia", RUN+="${gdm}/libexec/gdm-disable-wayland"
       ''}
+      # disable Wayland when modesetting is disabled
+      IMPORT{cmdline}="nomodeset", RUN+="${gdm}/libexec/gdm-disable-wayland"
     '';
 
     systemd.user.services.dbus.wantedBy = [ "default.target" ];
