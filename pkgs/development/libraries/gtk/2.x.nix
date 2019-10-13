@@ -28,6 +28,7 @@ stdenv.mkDerivation rec {
   setupHooks =  [
     ./hooks/gtk2-clean-immodules-cache.sh
     ./hooks/drop-icon-theme-cache.sh
+    ./hooks/gtk-path.sh
   ];
 
   nativeBuildInputs = [ setupHooks perl pkgconfig gettext gobject-introspection ];

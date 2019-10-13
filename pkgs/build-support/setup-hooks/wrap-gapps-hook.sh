@@ -33,6 +33,10 @@ wrapGAppsHook() {
     gappsWrapperArgs+=(--prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH")
   fi
 
+  if [ -n "$GTK_PATH" ]; then
+    gappsWrapperArgs+=(--prefix GTK_PATH : "$GTK_PATH")
+  fi
+
   if [ -d "${prefix:?}/share" ]; then
     gappsWrapperArgs+=(--prefix XDG_DATA_DIRS : "$prefix/share")
   fi
