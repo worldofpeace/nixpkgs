@@ -1,0 +1,31 @@
+From 0bfd538d685644b224beab1e71d08f038908d414 Mon Sep 17 00:00:00 2001
+From: worldofpeace <worldofpeace@protonmail.ch>
+Date: Thu, 31 Oct 2019 07:56:36 -0400
+Subject: [PATCH] build: add PPPD_PATH to config.h.meson
+
+Without this using -Dpppd= was completely broken.
+
+First observed in NixOS [0]
+
+[0]: https://github.com/NixOS/nixpkgs/issues/72330
+---
+ config.h.meson | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/config.h.meson b/config.h.meson
+index c8f980552..e7e117edc 100644
+--- a/config.h.meson
++++ b/config.h.meson
+@@ -218,6 +218,9 @@
+ /* Define if you have PPP support */
+ #mesondefine WITH_PPP
+ 
++/* Define to path of pppd binary */
++#mesondefine PPPD_PATH
++
+ /* Whether compilation of ibft setting plugin is enabled */
+ #mesondefine WITH_SETTINGS_PLUGIN_IBFT
+ 
+-- 
+2.23.0
+

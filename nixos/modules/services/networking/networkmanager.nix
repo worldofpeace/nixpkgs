@@ -8,7 +8,7 @@ let
   basePackages = with pkgs; [
     crda
     modemmanager
-    networkmanager
+    networkmanager-test
     networkmanager-fortisslvpn
     networkmanager-iodine
     networkmanager-l2tp
