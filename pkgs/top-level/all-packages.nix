@@ -5059,6 +5059,8 @@ in
 
   networkmanager = callPackage ../tools/networking/network-manager { };
 
+  networkmanager-test = callPackage ../tools/networking/network-manager/test.nix { };
+
   networkmanager-iodine = callPackage ../tools/networking/network-manager/iodine { };
 
   networkmanager-openvpn = callPackage ../tools/networking/network-manager/openvpn { };
