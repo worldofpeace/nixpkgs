@@ -655,6 +655,22 @@ class Machine:
                 if status == 0:
                     return
 
+    def wait_for_wayland(self):
+        """Wait until it is possible to connect to the wayland server.
+        """
+        with self.nested("waiting for the wayland server"):
+            while True:
+                cmd = (
+                    "journalctl -b SYSLOG_IDENTIFIER=systemd | "
+                    + 'grep "Reached target Current graphical"'
+                )
+                status, _ = self.execute(cmd)
+                if status != 0:
+                    continue
+                status, _ = self.execute("[ -e /run/user/`id -u`/wayland-0 ]")
+                if status == 0:
+                    return
+
     def get_window_names(self):
         return self.succeed(
             r"xwininfo -root -tree | sed 's/.*0x[0-9a-f]* \"\([^\"]*\)\".*/\1/; t; d'"
