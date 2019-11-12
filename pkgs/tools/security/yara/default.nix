@@ -29,6 +29,13 @@ stdenv.mkDerivation rec {
     (stdenv.lib.enableFeature enableCuckoo "cuckoo")
   ];
 
+  # See: https://github.com/VirusTotal/yara/issues/1036
+  dontDisableStatic = true;
+
+  postInstall = ''
+    rm $out/lib/libyara.la $out/lib/libyara.a
+  '';
+
   meta = with stdenv.lib; {
     description = "The pattern matching swiss knife for malware researchers";
     homepage    = http://Virustotal.github.io/yara/;
