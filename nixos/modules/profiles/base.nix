@@ -49,6 +49,7 @@
 
     # Version control
     pkgs.git
+    pkgs.mercurial
   ];
 
   # Include support for various filesystems.
