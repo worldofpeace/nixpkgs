@@ -46,6 +46,9 @@
     # Some compression/archiver tools.
     pkgs.unzip
     pkgs.zip
+
+    # Version control
+    pkgs.git
   ];
 
   # Include support for various filesystems.
