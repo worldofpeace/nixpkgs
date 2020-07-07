@@ -16,39 +16,30 @@
 
 stdenv.mkDerivation rec {
   pname = "elementary-default-settings";
-  version = "5.1.2";
+  version = "2020-06-25";
 
   repoName = "default-settings";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = repoName;
-    rev = version;
-    sha256 = "sha256-HKrDs2frEWVPpwyGNP+NikrjyplSXJj1hFMLy6kK4wM=";
+    rev = "4a1fc685c25aceec0754d7bfc70b4ba2c79c1094";
+    sha256 = "0r1607fknwjjlbzlh5m3wd31q19xxjkhvm8hlgk985fpb6pmcnph";
   };
+
+  patches = [
+    (fetchpatch {
+      url = "https://github.com/elementary/default-settings/commit/671d9c63a99c30aa12b59bb6b7e86d36c8b71937.patch";
+      sha256 = "118sd4ynvf0brnhialn2bzz9h2i60rb76ay2szcnswwvh82wzabr";
+      revert = true;
+    })
+  ];
 
   passthru = {
     updateScript = nix-update-script {
       attrPath = "pantheon.${pname}";
     };
   };
-
-  patches = [
-    # Use new notifications
-    (fetchpatch {
-      url = "https://github.com/elementary/default-settings/commit/0658bb75b9f49f58b35746d05fb6c4b811f125e9.patch";
-      sha256 = "0wa7iq0vfp2av5v23w94a5844ddj4g48d4wk3yrp745dyrimg739";
-    })
-
-    # Fix media key syntax
-    (fetchpatch {
-      url = "https://github.com/elementary/default-settings/commit/332aefe1883be5dfe90920e165c39e331a53b2ea.patch";
-      sha256 = "0ypcaga55pw58l30srq3ga1mhz2w6hkwanv41jjr6g3ia9jvq69n";
-    })
-
-    # https://github.com/elementary/default-settings/pull/119
-    ./0001-Build-with-Meson.patch
-  ];
 
   nativeBuildInputs = [
     accountsservice
