@@ -14,18 +14,19 @@
 , polkit
 , zeitgeist
 , switchboard
-, lightlocker
+, gala
+, gsettings-desktop-schemas
 }:
 
 stdenv.mkDerivation rec {
   pname = "switchboard-plug-security-privacy";
-  version = "2.2.4";
+  version = "unstable-2020-06-09";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
-    rev = version;
-    sha256 = "sha256-Sws6FqUL7QAROInDrcqYAp6j1TCC4aGV0/hi5Kmm5wQ=";
+    rev = "b32d5553e0dbdd02eb6895e672da7ec18fad3ea1";
+    sha256 = "0sq6bamagnlqnj0sy2s8s3qlyv3l29ag08r3gwg4jjzd2b9310pn";
   };
 
   passthru = {
@@ -43,13 +44,14 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
+    gala
     glib
     granite
+    gsettings-desktop-schemas
     gtk3
     libgee
     polkit
     switchboard
-    lightlocker
     zeitgeist
   ];
 
