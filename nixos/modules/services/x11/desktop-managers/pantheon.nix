@@ -180,7 +180,6 @@ in
         gnome3.adwaita-icon-theme
         gtk3.out
         hicolor-icon-theme
-        lightlocker
         onboard
         qgnomeplatform
         shared-mime-info
