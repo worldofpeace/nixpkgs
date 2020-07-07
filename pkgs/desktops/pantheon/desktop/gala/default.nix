@@ -28,13 +28,13 @@
 
 stdenv.mkDerivation rec {
   pname = "gala";
-  version = "3.3.2";
+  version = "unstable-2020-07-04";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
-    rev = version;
-    sha256 = "sha256-BOarHUEgWqQM6jmVMauJi0JnsM+jE45MnPNnAqz1qOE=";
+    rev = "20d9eaebbe35f8ec72529e1954e665c90e90d0e5";
+    sha256 = "060x333mvvsrha2w4j1n9f77azb050f5pj4pzj23pbdjwy9i6ch7";
   };
 
   passthru = {
@@ -79,7 +79,6 @@ stdenv.mkDerivation rec {
       sha256 = "19jkvmxidf453qfrxkvi35igxzfz2cm8srwkabvyn9wyd1yhiw0l";
     })
     ./plugins-dir.patch
-    ./use-new-notifications-default.patch
   ];
 
   postPatch = ''
