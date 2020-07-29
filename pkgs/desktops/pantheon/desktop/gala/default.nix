@@ -28,13 +28,13 @@
 
 stdenv.mkDerivation rec {
   pname = "gala";
-  version = "unstable-2020-07-04";
+  version = "unstable-2020-07-28";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
-    rev = "20d9eaebbe35f8ec72529e1954e665c90e90d0e5";
-    sha256 = "060x333mvvsrha2w4j1n9f77azb050f5pj4pzj23pbdjwy9i6ch7";
+    rev = "517748bcac9484df6a1f03c84f77c9a066ed8793";
+    sha256 = "1azb6w1wiqm8vm4d71gvl0rgydj7qmnmznmb0k7mwxq3bdz80yc3";
   };
 
   passthru = {
