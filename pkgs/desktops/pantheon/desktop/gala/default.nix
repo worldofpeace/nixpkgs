@@ -28,13 +28,13 @@
 
 stdenv.mkDerivation rec {
   pname = "gala";
-  version = "unstable-2020-07-28";
+  version = "unstable-2020-08-09";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
-    rev = "517748bcac9484df6a1f03c84f77c9a066ed8793";
-    sha256 = "1azb6w1wiqm8vm4d71gvl0rgydj7qmnmznmb0k7mwxq3bdz80yc3";
+    rev = "a85bae2f8a43d849d4a18baa20251c3cbc8389dc";
+    sha256 = "J6OaLaDrkWN1Fk0F3j2CwolVSOkhcKNZP/grsvlS6rk=";
   };
 
   passthru = {
@@ -71,13 +71,6 @@ stdenv.mkDerivation rec {
   ];
 
   patches = [
-    # https://github.com/elementary/gala/pull/869
-    # build failure in vala 0.48.7
-    # https://github.com/elementary/gala/pull/869#issuecomment-657147695
-    (fetchpatch {
-      url = "https://github.com/elementary/gala/commit/85d290c75eaa147b704ad34e6c67498071707ee8.patch";
-      sha256 = "19jkvmxidf453qfrxkvi35igxzfz2cm8srwkabvyn9wyd1yhiw0l";
-    })
     ./plugins-dir.patch
   ];
 
