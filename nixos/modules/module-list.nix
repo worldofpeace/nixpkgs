@@ -1043,6 +1043,7 @@
   ./tasks/filesystems/nfs.nix
   ./tasks/filesystems/ntfs.nix
   ./tasks/filesystems/reiserfs.nix
+  ./tasks/filesystems/s3fs.nix
   ./tasks/filesystems/unionfs-fuse.nix
   ./tasks/filesystems/vboxsf.nix
   ./tasks/filesystems/vfat.nix
