@@ -28,13 +28,13 @@
 
 stdenv.mkDerivation rec {
   pname = "gala";
-  version = "unstable-2020-08-09";
+  version = "unstable-2020-10-23";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = pname;
-    rev = "a85bae2f8a43d849d4a18baa20251c3cbc8389dc";
-    sha256 = "J6OaLaDrkWN1Fk0F3j2CwolVSOkhcKNZP/grsvlS6rk=";
+    rev = "b19289cb7b70a0a88d92404c84e1de987d9b74d9";
+    sha256 = "H1WG7ianyFlVavA2DjHvvTkArg7jtXdY3Wzc+4yRZAM=";
   };
 
   passthru = {
@@ -71,6 +71,12 @@ stdenv.mkDerivation rec {
   ];
 
   patches = [
+    # https://github.com/elementary/gala/pull/945
+    (fetchpatch {
+      url = "https://github.com/elementary/gala/commit/63b8bc829697a69d8450dad094eb43a5d3e6dbbc.patch";
+      sha256 = "OeQeja4Y2XviPd3rNxFU7iaHFdQb2Tuvs8HnHU1XLik=";
+    })
+
     ./plugins-dir.patch
   ];
 
