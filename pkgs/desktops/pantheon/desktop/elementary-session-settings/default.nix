@@ -90,15 +90,15 @@ in
 
 stdenv.mkDerivation rec {
   pname = "elementary-session-settings-unstable";
-  version = "2020-07-06";
+  version = "2020-09-29";
 
   repoName = "session-settings";
 
   src = fetchFromGitHub {
     owner = "elementary";
     repo = repoName;
-    rev = "fa15cbd83fba0ba30e9a302db880350bff5ace52";
-    hash = "sha256-26H791c7OAjFYtjVChIatICSocMt0uTej1TKBOvw+6w=";
+    rev = "c6e743fd75b773f5d3afb83288494b7b70b18bf0";
+    hash = "sha256-yG02ltoQmqrgkEHWkF3p2Jb0UhOzNBuZzoTpm4MQJIE=";
   };
 
   nativeBuildInputs = [
