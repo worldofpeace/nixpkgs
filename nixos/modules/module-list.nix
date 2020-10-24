@@ -1038,6 +1038,7 @@
   ./tasks/filesystems/exfat.nix
   ./tasks/filesystems/ext.nix
   ./tasks/filesystems/f2fs.nix
+  ./tasks/filesystems/goofys.nix
   ./tasks/filesystems/jfs.nix
   ./tasks/filesystems/nfs.nix
   ./tasks/filesystems/ntfs.nix
