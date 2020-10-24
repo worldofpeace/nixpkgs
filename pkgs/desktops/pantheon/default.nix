@@ -25,7 +25,7 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   maintainers = with pkgs.lib.maintainers; [ worldofpeace ];
 
-  mutter = pkgs.gnome3.mutter334;
+  mutter = pkgs.gnome3.mutter336;
 
   elementary-gsettings-schemas = callPackage ./desktop/elementary-gsettings-schemas { };
 
