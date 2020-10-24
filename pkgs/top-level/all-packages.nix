@@ -4939,6 +4939,8 @@ in
 
   govc = callPackage ../tools/virtualization/govc { };
 
+  goofys = callPackage ../tools/filesystems/goofys { };
+
   gpart = callPackage ../tools/filesystems/gpart { };
 
   gparted = callPackage ../tools/misc/gparted { };
