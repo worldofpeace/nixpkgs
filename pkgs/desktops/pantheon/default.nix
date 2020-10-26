@@ -116,6 +116,8 @@ lib.makeScope pkgs.newScope (self: with self; {
 
   pantheon-agent-polkit = callPackage ./services/pantheon-agent-polkit { };
 
+  pantheon-settings-daemon = callPackage ./services/pantheon-settings-daemon { };
+
   #### WINGPANEL INDICATORS
 
   wingpanel-applications-menu = callPackage ./desktop/wingpanel-indicators/applications-menu { };
