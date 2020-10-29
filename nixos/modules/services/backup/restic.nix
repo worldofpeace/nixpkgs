@@ -5,6 +5,18 @@ with lib;
 let
   # Type for a valid systemd unit option. Needed for correctly passing "timerConfig" to "systemd.timers"
   unitOption = (import ../../system/boot/systemd-unit-options.nix { inherit config lib; }).unitOption;
+
+   mkPasswordEnv = cfg: with cfg;
+    if passwordCommand != null then
+      { RESTIC_PASSWORD_COMMAND = passwordCommand; }
+    else if passwordFile != null then
+      { RESTIC_PASSWORD_FILE = passwordFile; }
+    else { };
+
+  passwordAssertion = name: cfg: {
+    assertion = with cfg; passwordFile != null || passwordCommand != null;
+    message = "services.restic.backups.${name}: passwordFile or passwordCommand has to be specified";
+  };
 in
 {
   options.services.restic.backups = mkOption {
@@ -14,11 +26,19 @@ in
     type = types.attrsOf (types.submodule ({ name, ... }: {
       options = {
         passwordFile = mkOption {
-          type = types.str;
-          description = ''
-            Read the repository password from a file.
-          '';
+          type = with types; nullOr str;
+          description = "Read the repository password from a file.";
+          default = null;
           example = "/etc/nixos/restic-password";
+        };
+
+        passwordCommand = mkOption {
+          type = with types; nullOr str;
+          description = ''
+            Shell command to obtain the repository password from.
+            Mutually exclusive with <option>passwordFile</option>.
+          '';
+          default = null;
         };
 
         s3CredentialsFile = mkOption {
@@ -210,6 +230,8 @@ in
   };
 
   config = {
+    assertions = mapAttrsToList passwordAssertion config.services.restic.backups;
+
     systemd.services =
       mapAttrs' (name: backup:
         let
@@ -229,16 +251,25 @@ in
           rcloneAttrToConf = v: "RCLONE_CONFIG_" + toUpper (rcloneRemoteName + "_" + v);
           toRcloneVal = v: if lib.isBool v then lib.boolToString v else v;
         in nameValuePair "restic-backups-${name}" ({
-          environment = {
-            RESTIC_PASSWORD_FILE = backup.passwordFile;
-            RESTIC_REPOSITORY = backup.repository;
-          } // optionalAttrs (backup.rcloneOptions != null) (mapAttrs' (name: value:
-            nameValuePair (rcloneAttrToOpt name) (toRcloneVal value)
-          ) backup.rcloneOptions) // optionalAttrs (backup.rcloneConfigFile != null) {
-            RCLONE_CONFIG = backup.rcloneConfigFile;
-          } // optionalAttrs (backup.rcloneConfig != null) (mapAttrs' (name: value:
-            nameValuePair (rcloneAttrToConf name) (toRcloneVal value)
-          ) backup.rcloneConfig);
+          environment = mkMerge [
+            {
+              RESTIC_REPOSITORY = backup.repository;
+            }
+
+            (mkIf (backup.rcloneOptions != null) (mapAttrs' (name: value:
+              nameValuePair (rcloneAttrToOpt name) (toRcloneVal value)
+            ) backup.rcloneOptions))
+
+            (mkIf (backup.rcloneConfigFile != null) {
+              RCLONE_CONFIG = backup.rcloneConfigFile;
+            })
+
+            (mkIf (backup.rcloneConfig != null) (mapAttrs' (name: value:
+              nameValuePair (rcloneAttrToConf name) (toRcloneVal value)
+            ) backup.rcloneConfig))
+
+            (mkPasswordEnv backup)
+           ];
           path = [ pkgs.openssh ];
           restartIfChanged = false;
           serviceConfig = {
