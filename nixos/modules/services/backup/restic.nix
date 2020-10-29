@@ -17,6 +17,10 @@ let
     assertion = with cfg; passwordFile != null || passwordCommand != null;
     message = "services.restic.backups.${name}: passwordFile or passwordCommand has to be specified";
   };
+
+  mkExcludeFile = cfg:
+    # Write each exclude pattern to a new line
+    pkgs.writeText "excludefile" (concatStringsSep "\n" cfg.exclude);
 in
 {
   options.services.restic.backups = mkOption {
@@ -30,6 +34,20 @@ in
           description = "Read the repository password from a file.";
           default = null;
           example = "/etc/nixos/restic-password";
+        };
+
+        exclude = mkOption {
+          type = with types; listOf str;
+          description = ''
+            Exclude paths matching any of the given patterns.
+            See the documentation on the supported patterns https://restic.readthedocs.io/en/stable/040_backup.html#excluding-files.
+          '';
+          default = [ ];
+          example = [
+            "$HOME/.cache"
+            "/nix"
+            "$HOME/**/.git"
+          ];
         };
 
         passwordCommand = mkOption {
@@ -241,6 +259,8 @@ in
           backupPaths = if (backup.dynamicFilesFrom == null)
                         then concatStringsSep " " backup.paths
                         else "--files-from ${filesFromTmpFile}";
+          excludeFlag = optionalString (builtins.length backup.exclude > 0)
+            "--exclude-file ${mkExcludeFile backup}";
           pruneCmd = optionals (builtins.length backup.pruneOpts > 0) [
             ( resticCmd + " forget --prune " + (concatStringsSep " " backup.pruneOpts) )
             ( resticCmd + " check" )
@@ -274,7 +294,8 @@ in
           restartIfChanged = false;
           serviceConfig = {
             Type = "oneshot";
-            ExecStart = [ "${resticCmd} backup --cache-dir=%C/restic-backups-${name} ${concatStringsSep " " backup.extraBackupArgs} ${backupPaths}" ] ++ pruneCmd;
+            ExecStart = [ "${resticCmd} backup --cache-dir=%C/restic-backups-${name} ${excludeFlag}
+ ${concatStringsSep " " backup.extraBackupArgs} ${backupPaths}" ] ++ pruneCmd;
             User = backup.user;
             RuntimeDirectory = "restic-backups-${name}";
             CacheDirectory = "restic-backups-${name}";
