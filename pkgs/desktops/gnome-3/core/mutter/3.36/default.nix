@@ -54,8 +54,9 @@ let self = stdenv.mkDerivation rec {
   patches = [
     ./0001-drop-inheritable.patch
     ./0002-Fix-glitches-in-gala.patch
+    ./0003-build-bump-ABI-to-sysprof-capture-4.patch
     (substituteAll {
-      src = ./0003-fix-paths.patch;
+      src = ./0004-fix-paths.patch;
       inherit zenity;
     })
   ];
