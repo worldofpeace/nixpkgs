@@ -1,7 +1,7 @@
-From e05a906e75a7cdacc07b3a8b61106cdc01a6b4e7 Mon Sep 17 00:00:00 2001
-Message-Id: <e05a906e75a7cdacc07b3a8b61106cdc01a6b4e7.1605133998.git-series.worldofpeace@protonmail.ch>
-In-Reply-To: <e762a53b3e77ca16c5ebb08875720497d2ed5283.1605133998.git-series.worldofpeace@protonmail.ch>
-References: <e762a53b3e77ca16c5ebb08875720497d2ed5283.1605133998.git-series.worldofpeace@protonmail.ch>
+From e28b6612abc6c2e60d859bb6350b87ec09e7c2be Mon Sep 17 00:00:00 2001
+Message-Id: <e28b6612abc6c2e60d859bb6350b87ec09e7c2be.1605134428.git-series.worldofpeace@protonmail.ch>
+In-Reply-To: <8e9798aeed50c5e8b8e80da5bf19db4c6ac5e85f.1605134428.git-series.worldofpeace@protonmail.ch>
+References: <8e9798aeed50c5e8b8e80da5bf19db4c6ac5e85f.1605134428.git-series.worldofpeace@protonmail.ch>
 From: WORLDofPEACE <worldofpeace@protonmail.ch>
 Date: Sun,  5 Apr 2020 23:06:03 -0400
 Subject: [PATCH 2/4] Fix glitches in gala
@@ -17,10 +17,10 @@ Upstream report: https://gitlab.gnome.org/GNOME/mutter/issues/536
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/clutter/clutter/clutter-actor.c b/clutter/clutter/clutter-actor.c
-index efcc004..6c31771 100644
+index a67c35f..19e8458 100644
 --- a/clutter/clutter/clutter-actor.c
 +++ b/clutter/clutter/clutter-actor.c
-@@ -17589,7 +17589,7 @@ _clutter_actor_get_paint_volume_mutable (ClutterActor *self)
+@@ -17602,7 +17602,7 @@ _clutter_actor_get_paint_volume_mutable (ClutterActor *self)
    if (_clutter_actor_get_paint_volume_real (self, &priv->paint_volume))
      {
        priv->paint_volume_valid = TRUE;

@@ -1,7 +1,7 @@
-From 2ef35834fe939c4b83d494b4837bb5fa7141b9ad Mon Sep 17 00:00:00 2001
-Message-Id: <2ef35834fe939c4b83d494b4837bb5fa7141b9ad.1605133998.git-series.worldofpeace@protonmail.ch>
-In-Reply-To: <e762a53b3e77ca16c5ebb08875720497d2ed5283.1605133998.git-series.worldofpeace@protonmail.ch>
-References: <e762a53b3e77ca16c5ebb08875720497d2ed5283.1605133998.git-series.worldofpeace@protonmail.ch>
+From 986d66e2869988f748737d7a7741ead8b0ea816c Mon Sep 17 00:00:00 2001
+Message-Id: <986d66e2869988f748737d7a7741ead8b0ea816c.1605134428.git-series.worldofpeace@protonmail.ch>
+In-Reply-To: <8e9798aeed50c5e8b8e80da5bf19db4c6ac5e85f.1605134428.git-series.worldofpeace@protonmail.ch>
+References: <8e9798aeed50c5e8b8e80da5bf19db4c6ac5e85f.1605134428.git-series.worldofpeace@protonmail.ch>
 From: WORLDofPEACE <worldofpeace@protonmail.ch>
 Date: Sat,  4 Jul 2020 12:01:28 -0700
 Subject: [PATCH 3/4] build: bump ABI to sysprof-capture-4
@@ -17,22 +17,14 @@ libsysprof-capture-4.a using a subproject wrap.
 
 https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1352
 ---
- meson.build     | 19 ++++++++++++++++---
+ meson.build     | 17 +++++++++++++++--
  src/meson.build |  8 ++++++--
- 2 files changed, 22 insertions(+), 5 deletions(-)
+ 2 files changed, 21 insertions(+), 4 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 1a6b9e3..2f47fbf 100644
+index 8de856e..b8d39e5 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -1,6 +1,6 @@
- project('mutter', 'c',
-   version: '3.36.5',
--  meson_version: '>= 0.50.0',
-+  meson_version: '>= 0.51.0',
-   license: 'GPLv2+'
- )
- 
 @@ -54,7 +54,7 @@ gbm_req = '>= 10.3'
  libpipewire_req = '>= 0.3.0'
  
