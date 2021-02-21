@@ -8796,6 +8796,8 @@ in
 
   ursadb = callPackage ../servers/ursadb {};
 
+  uresourced = callPackage ../os-specific/linux/uresourced { };
+
   usbmuxd = callPackage ../tools/misc/usbmuxd {};
 
   usync = callPackage ../applications/misc/usync { };
